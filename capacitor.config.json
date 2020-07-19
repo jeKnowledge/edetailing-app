@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "edetailing",
+  "appId": "pt.jeknowledge.edetailing",
+  "appName": "Edetailing",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "build",

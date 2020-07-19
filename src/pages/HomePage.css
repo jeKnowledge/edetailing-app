@@ -1,0 +1,28 @@
+ion-img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#stack {
+  position: relative;
+  width: 100%;
+}
+
+#logo {
+  width: 60%;
+  margin-top: 4%;
+  z-index: 0;
+}
+
+#signature {
+  width: 65%;
+  margin-top: 25%;
+  z-index: 1;
+}
+
+ion-content {
+  --background: linear-gradient(322.72deg, #C4C4C4 -53.55%, rgb(60, 60, 60) -53.54%, rgb(196, 196, 196) 87.22%);
+}
