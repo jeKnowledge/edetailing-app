@@ -1,0 +1,7 @@
+{
+  "name": "edetailing",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
