@@ -5,7 +5,7 @@ import "./HomePage.css";
 const HomePage: React.FC = () => {
   return (
     <IonPage style={{ overflow: "hidden", position: "fixed" }}>
-      <IonContent class="ion-padding ">
+      <IonContent forceOverscroll={false} scrollY={false} class="ion-padding ">
         <div className="stack ">
           <IonImg
             id="logo"
