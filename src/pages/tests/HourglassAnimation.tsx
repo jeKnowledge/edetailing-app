@@ -6,6 +6,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import React from "react";
+import Hourglass from "../../components/HourglassAnimation.js";
 
 const HourglassAnimation: React.FC = () => {
   return (
@@ -15,7 +16,9 @@ const HourglassAnimation: React.FC = () => {
           <IonTitle>Hourglass Animation</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding">UI goes here...</IonContent>
+      <IonContent className="ion-padding">
+        <Hourglass timeService={6} />
+      </IonContent>
     </IonPage>
   );
 };
