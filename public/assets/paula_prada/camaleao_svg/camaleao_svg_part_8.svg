@@ -1,14 +1,28 @@
 <svg id="Layer_8" data-name="Layer 8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1070.16 834.82">
   <defs>
     <style>
-      .cls-1{fill:#871719;}.cls-2{fill:#ce2435;}.cls-3{fill:#e42836;}.cls-4{fill:#c62026;}
+      .cls-1 {
+        fill: #871719;
+      }
+
+      .cls-2 {
+        fill: #ce2435;
+      }
+
+      .cls-3 {
+        fill: #e42836;
+      }
+
+      .cls-4 {
+        fill: #c62026;
+      }
     </style>
   </defs>
   <title>
     logotipos Paula
   </title>
-  <polygon class="cls-1" points="459.01 422.46 498.03 422.28 433.67 453.53 459.01 422.46"/>
-  <polygon class="cls-2" points="459.01 422.46 429.95 421.21 433.67 453.53 459.01 422.46"/>
-  <polygon class="cls-3" points="459.01 422.46 429.95 421.21 476.41 395.31 459.01 422.46"/>
-  <polygon class="cls-4" points="459.01 422.46 498.03 422.28 476.41 395.31 459.01 422.46"/>
+  <polygon class="cls-1" points="459.01 422.46 498.03 422.28 433.67 453.53 459.01 422.46" />
+  <polygon class="cls-2" points="459.01 422.46 429.95 421.21 433.67 453.53 459.01 422.46" />
+  <polygon class="cls-3" points="459.01 422.46 429.95 421.21 476.41 395.31 459.01 422.46" />
+  <polygon class="cls-4" points="459.01 422.46 498.03 422.28 476.41 395.31 459.01 422.46" />
 </svg>

@@ -1,12 +1,18 @@
 <svg id="Layer_14" data-name="Layer 14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1070.16 834.82">
   <defs>
     <style>
-      .cls-1{fill:#8dc63f;}.cls-2{fill:#547836;}
+      .cls-1 {
+        fill: #8dc63f;
+      }
+
+      .cls-2 {
+        fill: #547836;
+      }
     </style>
   </defs>
   <title>
     logotipos Paula
   </title>
-  <polygon class="cls-1" points="378.79 284.84 397.2 257.23 406.46 279.46 378.79 284.84"/>
-  <polygon class="cls-2" points="434.88 273.93 397.2 257.23 406.46 279.46 434.88 273.93"/>
+  <polygon class="cls-1" points="378.79 284.84 397.2 257.23 406.46 279.46 378.79 284.84" />
+  <polygon class="cls-2" points="434.88 273.93 397.2 257.23 406.46 279.46 434.88 273.93" />
 </svg>
