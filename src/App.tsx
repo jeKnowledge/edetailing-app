@@ -18,6 +18,7 @@ import {
 import HomePage from "./pages/HomePage";
 import HourglassAnimation from "./pages/tests/HourglassAnimation";
 import PredefinedEmails from "./pages/tests/PredefinedEmails";
+import Consultoria from "./pages/tests/Consultoria";
 
 const App: React.FC = () => (
   <IonApp>
@@ -32,6 +33,9 @@ const App: React.FC = () => (
           </Route>
           <Route path="/tests/emails" exact={true}>
             <PredefinedEmails />
+          </Route>
+          <Route path="/tests/consultoria" exact={true}>
+            <Consultoria />
           </Route>
           <Route exact path="/" render={() => <Redirect to="/home" />} />
         </IonRouterOutlet>
@@ -48,6 +52,10 @@ const App: React.FC = () => (
           <IonTabButton tab="tests-emails" href="/tests/emails">
             <IonIcon icon={mailIcon} />
             <IonLabel>Predefined Emails</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="tests-consultoria" href="/tests/consultoria">
+            <IonIcon icon={homeIcon} />
+            <IonLabel>Consultoria</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
