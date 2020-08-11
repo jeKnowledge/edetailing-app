@@ -20,11 +20,13 @@ const HomePage: React.FC = () => {
           <div id="logo">
             <Chameleon id="main-chameleon" />
           </div>
-          <IonImg
-            id="signature"
-            src="/assets/paula_prada/signature_paula.svg"
-            alt="signature"
-          />
+          <div>
+            <IonImg
+              id="signature"
+              src="/assets/paula_prada/signature_paula.svg"
+              alt="signature"
+            />
+          </div>
         </div>
       </IonContent>
     </IonPage>

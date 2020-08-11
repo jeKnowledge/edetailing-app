@@ -1,31 +1,22 @@
-ion-img {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#stack {
-  position: relative;
-  width: 100%;
+.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #logo {
-  width: 60%;
-  margin-top: 10%;
-  z-index: 0;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
+  width: 650px;
+  height: 460px;
+}
+
+#main-chameleon {
   transform: scale(1.8, 1.5);
+  margin-top: 100px;
+  height: 100%;
 }
 
 #signature {
-  width: 65%;
-  margin-top: 25%;
+  width: 500px;
   z-index: 1;
 }
 
