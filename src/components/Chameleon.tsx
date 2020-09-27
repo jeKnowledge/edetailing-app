@@ -1,4 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useCallback } from "react";
+import { useHistory } from "react-router";
+import { colorToConsulting } from "../data/colorToConsulting";
 
 interface ChameleonParameters {
   id?: string;
@@ -6,9 +8,13 @@ interface ChameleonParameters {
 const Chameleon: React.FC<ChameleonParameters> = ({
   id = "main-chameleon",
 }) => {
-  useEffect(() => {
-    // TODO: onclick events
-  });
+  const history = useHistory();
+  const redirect = useCallback(
+    (path: string) => {
+      return history.push("/consultorias/" + path);
+    },
+    [history]
+  );
 
   return (
     <div
@@ -619,11 +625,13 @@ const Chameleon: React.FC<ChameleonParameters> = ({
         />
         {/* Part 3 */}
         <polygon
+          onClick={() => redirect(colorToConsulting.blue)}
           className="cls-1"
           fill="#27aae1"
           points="361.6 259.19 397.2 257.23 335.33 219.98 361.6 259.19"
         />
         <polygon
+          onClick={() => redirect(colorToConsulting.blue)}
           className="cls-2"
           fill="#1d708e"
           points="361.6 259.19 397.2 257.23 378.79 284.84 361.6 259.19"
@@ -672,21 +680,25 @@ const Chameleon: React.FC<ChameleonParameters> = ({
         />
         {/* Part 6 */}
         <polygon
+          onClick={() => redirect(colorToConsulting.blue)}
           className="cls-1"
           fill="#02a7c1"
           points="349.89 397.88 354.6 436.63 311.76 385.45 349.89 397.88"
         />
         <polygon
+          onClick={() => redirect(colorToConsulting.blue)}
           className="cls-2"
           fill="#02add3"
           points="349.89 397.88 348.82 369.4 311.76 385.45 349.89 397.88"
         />
         <polygon
+          onClick={() => redirect(colorToConsulting.blue)}
           className="cls-3"
           fill="#088ab8"
           points="349.89 397.88 348.82 369.4 376.22 408.3 349.89 397.88"
         />
         <polygon
+          onClick={() => redirect(colorToConsulting.blue)}
           className="cls-4"
           fill="#064c60"
           points="349.89 397.88 354.6 436.63 376.22 408.3 349.89 397.88"

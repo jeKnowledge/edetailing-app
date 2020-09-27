@@ -19,12 +19,17 @@ import HomePage from "./pages/HomePage";
 import HourglassAnimation from "./pages/tests/HourglassAnimation";
 import PredefinedEmails from "./pages/tests/PredefinedEmails";
 import Consultoria from "./pages/tests/Consultoria";
+import EstiloImagemTotal from "./pages/Consultorias/EstiloImagemTotal/EstiloImagemTotal";
 
 const App: React.FC = () => (
   <IonApp>
+    {/* TODO: Extract this to component */}
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
+          <Route path="/consultorias/estilo-imagem-total" exact={true}>
+            <EstiloImagemTotal />
+          </Route>
           <Route path="/home" exact={true}>
             <HomePage />
           </Route>
