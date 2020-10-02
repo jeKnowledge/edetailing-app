@@ -1,40 +1,82 @@
 import {
   IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonSlides,
-  IonSlide,
   IonImg,
   IonLabel,
-  IonText,
+  IonPage,
+  IonSlide,
+  IonSlides,
 } from "@ionic/react";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+
+const slideTexts = [
+  [
+    "Identificar o seu estilo;",
+    "Saber explorar os seus pontos fortes e camuflar os menos",
+    "positivos;",
+    "Acompanhamento personalizado até ao objetivo definido;",
+    "Organizar e coordenar o seu guarda-roupa.",
+  ],
+  [
+    "Aumento da autoimagem e autoestima",
+    "Ter consciência da mudança que a Consultoria de Imagem fará na sua vida enquanto ferramenta facilitadora",
+    "Fazer compras consistentes e não por impulso.",
+  ],
+  [
+    "Fazer com que a escolha matinal do seu look se torne simples e intuitiva e não mais um momento stressante do seu dia",
+    "Combinar cores de forma harmoniosa Evitar erros cromáticos e o medo de usar cor.",
+  ],
+];
+
+const mod = (n: number, m: number): number => {
+  return ((n % m) + m) % m;
+};
 
 const Consultoria: React.FC = () => {
   const imgs = useMemo(
     () => [
-      "/assets/consultoria_estilo/img_example.png",
-      "/assets/consultoria_estilo/ex.png",
+      {
+        img: "/assets/consultorias/estilo_imagem_total/estilo/img_example.png",
+        label: "ola",
+      },
+      {
+        img: "/assets/consultorias/estilo_imagem_total/estilo/ex.png",
+        label: "adeus",
+      },
     ],
     []
   );
 
   const [currentImg, setCurrentImg] = useState<number>(0);
+  const [currentTextSlide, setCurrentTextSlide] = useState<number>(0);
   const currentImgRef = useRef(currentImg);
   currentImgRef.current = currentImg;
 
+  const forwardCurrentTextSlide = useCallback(() => {
+    setCurrentTextSlide(mod(currentTextSlide + 1, slideTexts.length));
+  }, [currentTextSlide]);
+
+  const backwardCurrentTextSlide = useCallback(() => {
+    setCurrentTextSlide(mod(currentTextSlide - 1, slideTexts.length));
+  }, [currentTextSlide]);
+
+  const updateSlideImage = useCallback(() => {
+    setCurrentImg((currentImgRef.current + 1) % imgs.length);
+  }, [imgs.length]);
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setCurrentImg((currentImgRef.current + 1) % imgs.length);
-      console.log((currentImgRef.current + 1) % imgs.length);
-      console.log("olaaa");
-    }, 1000);
+    const timer = setInterval(() => {
+      updateSlideImage();
+    }, 2000);
     return () => {
       clearTimeout(timer);
     };
-  }, []);
+  }, [updateSlideImage]);
 
   return (
     <IonPage>
@@ -52,30 +94,26 @@ const Consultoria: React.FC = () => {
               </div>
               <IonImg
                 className="forma-branca forma-branca-esq"
-                src="/assets/consultoria_estilo/forma_branca_esq.svg"
+                src="/assets/formas_consultorias_geral/forma_branca_esq.svg"
               />
               <div className="description-content">
                 <div className="description">
-                  <p className="description-text">Identificar o seu estilo;</p>
-                  <p className="description-text">
-                    Saber explorar os seus pontos fortes e camuflar os menos
-                    positivos;
-                  </p>
-                  <p className="description-text">
-                    Acompanhamento personalizado até ao objectivo definido;
-                  </p>
-                  <p className="description-text">
-                    Organizar e coordenar o seu guarda-roupa.
-                  </p>
+                  {slideTexts[currentTextSlide].map((t) => (
+                    <p className="description-text" key={t}>
+                      {t}
+                    </p>
+                  ))}
                 </div>
                 <div className="setas">
                   <IonImg
+                    onClick={backwardCurrentTextSlide}
                     className="setas-esq"
-                    src="/assets/consultoria_estilo/seta_esq.svg"
+                    src="/assets/consultorias/estilo_imagem_total/seta_esq.svg"
                   />
                   <IonImg
+                    onClick={forwardCurrentTextSlide}
                     className="setas-dir"
-                    src="/assets/consultoria_estilo/seta_dir.svg"
+                    src="/assets/consultorias/estilo_imagem_total/seta_dir.svg"
                   />
                 </div>
               </div>
@@ -85,11 +123,12 @@ const Consultoria: React.FC = () => {
             <div className="slide-content">
               <IonImg
                 className="forma-branca forma-branca-dir"
-                src="/assets/consultoria_estilo/forma_branca_dir.svg"
+                src="/assets/formas_consultorias_geral/forma_branca_dir.svg"
               />
-              <IonImg className="img-inclui" src={imgs[currentImg]} />
+              <IonImg className="img-inclui" src={imgs[currentImg].img} />
               <span className="title title-dir">
-                plano de identidade visual
+                {/* plano de identidade visual */}
+                {imgs[currentImg].label}
               </span>
               <div className="text-content text-content-dir">
                 <div className="title-content title-content-dir">
