@@ -1,51 +1,28 @@
 import {
+  IonButton,
   IonContent,
   IonHeader,
   IonPage,
   IonTitle,
   IonToolbar,
-  IonButton,
 } from "@ionic/react";
-import React from "react";
-import axios from "axios";
-import { API_KEY } from "../../secrets";
+import React, { useCallback } from "react";
+import { sendEmail } from "../../hooks/sendEmail";
 
 const PredefinedEmails: React.FC = () => {
-  const sendEmail = () => {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${API_KEY}`;
-    axios.defaults.headers.post["Content-Type"] = "application/json";
-
-    axios({
-      method: "post",
-      url: "https://api.sendgrid.com/v3/mail/send",
-      data: {
-        personalizations: [
-          {
-            to: [
-              {
-                email: "goncalo_services@protonmail.com",
-              },
-            ],
-          },
-        ],
-        from: {
-          email: "edetailingtest1@gmail.com",
-        },
-        reply_to: {
-          email: "edetailingtest2@gmail.com",
-        },
-        subject: "Lorem ipsum dolor sit amet consectetur, adipisicing",
-        content: [
-          {
-            type: "text/plain",
-            value:
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos praesentium enim quo, accusantium, obcaecati dolor dolorum corporis quia, ad adipisci error illo ipsa in voluptatum repellendus ex labore quod necessitatibus!" +
-              "\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa beatae dignissimos, repudiandae cum veritatis ex nostrum quidem voluptatem natus iure officia atque exercitationem eaque quasi voluptates! Enim, voluptas iste. Ea.",
-          },
-        ],
-      },
-    });
-  };
+  const onEmailButtonClick = useCallback(async () => {
+    try {
+      await sendEmail({
+        to: "goncalo_services@protonmail.com",
+        mailTemplate: undefined,
+      });
+      // TODO: Message sent with success
+    } catch (error) {
+      console.error(error);
+      if (error.response) console.error(error.response.body);
+      // TODO: Message failed
+    }
+  }, []);
 
   return (
     <IonPage>
@@ -55,7 +32,7 @@ const PredefinedEmails: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-        <IonButton onClick={sendEmail}>SEND MAIL</IonButton>
+        <IonButton onClick={onEmailButtonClick}>SEND MAIL</IonButton>
       </IonContent>
     </IonPage>
   );

@@ -1,7 +1,7 @@
-import { IonContent, IonPage, IonImg } from "@ionic/react";
+import { IonContent, IonImg, IonPage } from "@ionic/react";
 import React from "react";
-import "./HomePage.css";
 import Chameleon from "../components/Chameleon";
+import "./HomePage.css";
 
 const HomePage: React.FC = () => {
   return (
@@ -33,4 +33,4 @@ const HomePage: React.FC = () => {
   );
 };
 
-export default HomePage;
+export default React.memo(HomePage);

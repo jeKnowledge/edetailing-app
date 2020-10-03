@@ -1,5 +1,5 @@
-import React from "react";
 import { IonContent, IonPage } from "@ionic/react";
+import React from "react";
 import "./EstiloImagemTotal.css";
 
 const EstiloImagemTotal: React.FC = () => {
@@ -24,4 +24,4 @@ const EstiloImagemTotal: React.FC = () => {
   );
 };
 
-export default EstiloImagemTotal;
+export default React.memo(EstiloImagemTotal);
