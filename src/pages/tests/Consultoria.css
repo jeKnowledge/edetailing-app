@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Inter:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Inter:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap");
 
 ion-slides {
   height: 100%;
@@ -17,14 +17,14 @@ ion-slide {
 }
 
 .ion-content {
-  --background: #8CB8BA;
+  --background: #8cb8ba;
 }
 
 .slide-content {
   position: relative;
   width: 100%;
   height: 100%;
-}   
+}
 
 p {
   margin: 0px;
@@ -36,11 +36,11 @@ p {
   height: -webkit-fill-available;
 }
 .text-content-esq {
-  left: 200px;
+  left: 25px;
 }
 
 .text-content-dir {
-  right: 200px;
+  right: 25px;
 }
 
 .title-content {
@@ -49,8 +49,8 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 150px;
+  padding-bottom: 150px;
 }
 
 .title-content-esq {
@@ -67,33 +67,34 @@ p {
   bottom: 0;
 }
 
-.forma-branca{
+.forma-branca {
   position: absolute;
   bottom: 0;
 }
 
 .forma-branca-esq {
-  right: 0; 
+  right: 0;
+  width: 970px;
 }
 
 .forma-branca-dir {
-  left: 0; 
+  left: 0;
+  width: 984px;
 }
 
 .img-inclui {
   position: absolute;
   z-index: -1;
-  width: 800px;
+  width: 700px;
   left: 20px;
-  bottom: 100px;
+  bottom: 130px;
 }
 
 .description-content {
-  width: max-content;
+  width: 600px;
   position: absolute;
-  bottom: 90px;
-  right: 160px;
-  
+  bottom: 100px;
+  right: 50px;
 }
 
 .description {
@@ -129,7 +130,7 @@ p {
 }
 
 .title-non-select {
-  color: #8CB8BA;
+  color: #8cb8ba;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
