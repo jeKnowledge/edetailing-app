@@ -18,19 +18,19 @@ import "./Consultoria.css";
 const slideTexts = [
   [
     "Identificar o seu estilo;",
-    "Saber explorar os seus pontos fortes e camuflar os menos",
-    "positivos;",
+    "Saber explorar os seus pontos fortes e camuflar os menos positivos;",
     "Acompanhamento personalizado até ao objetivo definido;",
-    "Organizar e coordenar o seu guarda-roupa.",
+    "Organizar e coordenar o seu guarda-roupa;",
   ],
   [
-    "Aumento da autoimagem e autoestima",
-    "Ter consciência da mudança que a Consultoria de Imagem fará na sua vida enquanto ferramenta facilitadora",
-    "Fazer compras consistentes e não por impulso.",
+    "Aumento da autoimagem e autoestima;",
+    "Ter consciência da mudança que a Consultoria de Imagem fará na sua vida enquanto ferramenta facilitadora;",
+    "Fazer compras consistentes e não por impulso;",
   ],
   [
-    "Fazer com que a escolha matinal do seu look se torne simples e intuitiva e não mais um momento stressante do seu dia",
-    "Combinar cores de forma harmoniosa Evitar erros cromáticos e o medo de usar cor.",
+    "Fazer com que a escolha matinal do seu look se torne simples e intuitiva e não mais um momento stressante do seu dia;",
+    "Combinar cores de forma harmoniosa;",
+    "Evitar erros cromáticos e o medo de usar cor.",
   ],
 ];
 
