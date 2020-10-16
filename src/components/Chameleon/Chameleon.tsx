@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { useHistory } from "react-router";
-import { colorToConsulting } from "../data/colorToConsulting";
+import { colorToConsulting } from "../../data/colorToConsulting";
 
 interface ChameleonParameters {
   id?: string;

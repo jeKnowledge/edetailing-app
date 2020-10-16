@@ -1,0 +1,19 @@
+.image-stack {
+  position: relative;
+  width: 400px;
+  height: 280px;
+}
+
+.image-stack > :first-child {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-stack > :last-child {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

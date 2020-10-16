@@ -13,6 +13,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import "./Consultoria.css";
 
 const slideTexts = [
   [
@@ -95,6 +96,7 @@ const Consultoria: React.FC = () => {
               <IonImg
                 className="forma-branca forma-branca-esq"
                 src="/assets/formas_consultorias_geral/forma_branca_esq.svg"
+                alt="forma branca esquerda"
               />
               <div className="description-content">
                 <div className="description">
@@ -124,6 +126,7 @@ const Consultoria: React.FC = () => {
               <IonImg
                 className="forma-branca forma-branca-dir"
                 src="/assets/formas_consultorias_geral/forma_branca_dir.svg"
+                alt="forma branca direita"
               />
               <IonImg className="img-inclui" src={imgs[currentImg].img} />
               <span className="title title-dir">

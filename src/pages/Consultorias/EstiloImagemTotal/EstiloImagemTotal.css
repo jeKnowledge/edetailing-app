@@ -1,5 +1,5 @@
 ion-content {
-  --background: white;
+  --background: var(--white) !important;
 }
 
 #page {
@@ -8,21 +8,10 @@ ion-content {
   height: 100%;
 }
 
-#floating-button {
-  position: absolute;
-  background-color: grey;
-  width: 12vh;
-  height: 12vh;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  text-align: center;
-}
-
 #top-right-stack {
   position: absolute;
   right: 0;
-  top: 0,
+  top: 0;
 }
 
 #bottom-left-stack {
@@ -35,6 +24,7 @@ ion-content {
   position: absolute;
   top: 30%;
   left: 15%;
+  z-index: 1;
 }
 
 #infobox-2 {

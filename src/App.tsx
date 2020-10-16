@@ -1,25 +1,20 @@
-import React from "react";
-import { Redirect, Route } from "react-router-dom";
 import {
   IonApp,
+  IonIcon,
+  IonLabel,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
   IonTabs,
-  IonIcon,
-  IonLabel,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import {
-  home as homeIcon,
-  hourglass as hourglassIcon,
-  mail as mailIcon,
-} from "ionicons/icons";
-import HomePage from "./pages/HomePage";
-import HourglassAnimation from "./pages/tests/HourglassAnimation";
-import PredefinedEmails from "./pages/tests/PredefinedEmails";
-import Consultoria from "./pages/tests/Consultoria";
+import { home as homeIcon, mail as mailIcon } from "ionicons/icons";
+import React from "react";
+import { Redirect, Route } from "react-router-dom";
 import EstiloImagemTotal from "./pages/Consultorias/EstiloImagemTotal/EstiloImagemTotal";
+import HomePage from "./pages/HomePage";
+import Consultoria from "./pages/tests/Consultoria";
+import PredefinedEmails from "./pages/tests/PredefinedEmails";
 
 const App: React.FC = () => (
   <IonApp>
@@ -32,9 +27,6 @@ const App: React.FC = () => (
           </Route>
           <Route path="/home" exact={true}>
             <HomePage />
-          </Route>
-          <Route path="/tests/hourglass" exact={true}>
-            <HourglassAnimation />
           </Route>
           <Route path="/tests/emails" exact={true}>
             <PredefinedEmails />
@@ -49,10 +41,6 @@ const App: React.FC = () => (
           <IonTabButton tab="home" href="/home">
             <IonIcon icon={homeIcon} />
             <IonLabel>HomePage</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tests-hourglass" href="/tests/hourglass">
-            <IonIcon icon={hourglassIcon} />
-            <IonLabel>Hourglass Animation</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tests-emails" href="/tests/emails">
             <IonIcon icon={mailIcon} />
