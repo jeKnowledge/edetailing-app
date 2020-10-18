@@ -1,29 +1,29 @@
 @import url("https://fonts.googleapis.com/css?family=Inter:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap");
 
 ion-slides {
-  height: 100%;
-  width: 100%;
+  height: 100% !important;
+  width: 100% !important;
 }
 
 ion-slide {
-  width: 100%;
+  width: 100% !important;
 }
 
 .ion-padding {
-  --padding-top: none;
-  --padding-bottom: none;
-  --padding-end: none;
-  --padding-start: none;
+  --padding-top: none !important;
+  --padding-bottom: none !important;
+  --padding-end: none !important;
+  --padding-start: none !important;
 }
 
 .ion-content {
-  --background: #8cb8ba;
+  --background: #8cb8ba !important;
 }
 
 .slide-content {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 p {
@@ -103,6 +103,10 @@ p {
   flex-direction: column;
   padding: 40px;
   z-index: 9999;
+}
+
+.description > p {
+  text-align: left;
 }
 
 .description-text {

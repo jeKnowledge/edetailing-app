@@ -1,32 +1,42 @@
-import React, { SetStateAction } from "react";
+import React, { useCallback, useState } from "react";
 import {
   ChildButton,
   Directions,
   FloatingMenu,
   MainButton,
 } from "react-floating-button-menu";
+import { useHistory } from "react-router";
 import "./ConsultancyFloatingMenu.css";
 
 interface ConsultancyFloatingMenuProps {
-  backButtonAction: () => void;
-  homeButtonAction: () => void;
-  isOpen: boolean;
-  updateIsOpen: (v: SetStateAction<boolean>) => void;
+  backButtonAction?: () => void;
+  homeButtonAction?: () => void;
 }
 
 const ConsultancyFloatingMenu = ({
   backButtonAction,
   homeButtonAction,
-  isOpen,
-  updateIsOpen,
 }: ConsultancyFloatingMenuProps) => {
+  const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
+  const history = useHistory();
+
+  const home = useCallback(() => {
+    if (homeButtonAction) homeButtonAction();
+    else history.replace("/home");
+  }, [history, homeButtonAction]);
+
+  const back = useCallback(() => {
+    if (backButtonAction) backButtonAction();
+    else history.goBack();
+  }, [backButtonAction, history]);
+
   return (
     <span id="floating-button">
       <FloatingMenu
         slideSpeed={500}
         direction={Directions.Down}
         spacing={8}
-        isOpen={isOpen}
+        isOpen={menuIsOpen}
       >
         <MainButton
           iconResting={<img src="/assets/menu-icon.svg" alt="menu" />}
@@ -38,20 +48,20 @@ const ConsultancyFloatingMenu = ({
             />
           }
           background="transparent"
-          onClick={() => updateIsOpen((prev) => !prev)}
+          onClick={() => setMenuIsOpen((prev) => !prev)}
           size={80}
         />
         <ChildButton
           icon={<img src="/assets/menu-icon.svg" alt="home" />}
           background="transparent"
           size={80}
-          onClick={() => homeButtonAction()}
+          onClick={home}
         />
         <ChildButton
           icon={<img src="/assets/menu-icon.svg" alt="home" />}
           background="transparent"
           size={80}
-          onClick={() => backButtonAction()}
+          onClick={back}
         />
       </FloatingMenu>
     </span>

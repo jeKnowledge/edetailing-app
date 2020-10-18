@@ -13,6 +13,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import ConsultancyFloatingMenu from "../../components/ConsultancyFloatingMenu";
 import "./Consultoria.css";
 
 const slideTexts = [
@@ -82,6 +83,8 @@ const Consultoria: React.FC = () => {
   return (
     <IonPage>
       <IonContent fullscreen className="ion-padding ion-content">
+        {/* FIXME: cant click this */}
+        <ConsultancyFloatingMenu />
         <IonSlides>
           <IonSlide>
             <div className="slide-content">

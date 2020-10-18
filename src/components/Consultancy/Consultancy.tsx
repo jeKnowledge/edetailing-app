@@ -1,18 +1,29 @@
 import { IonContent, IonPage } from "@ionic/react";
 import React from "react";
-import ConsultancyFloatingMenu from "../../../components/ConsultancyFloatingMenu";
-import InfoBox from "../../../components/InfoBox/InfoBox";
-import MaskedImage from "../../../components/MaskedImage/MaskedImage";
-import "./EstiloImagemTotal.css";
+import ConsultancyFloatingMenu from "../ConsultancyFloatingMenu";
+import InfoBox, { InfoBoxProps } from "../InfoBox/InfoBox";
+import MaskedImage from "../MaskedImage/MaskedImage";
 
-const EstiloImagemTotal: React.FC = () => {
+interface ConsultancyProps {
+  variant: "single" | "double";
+  leftInfoBox?: InfoBoxProps;
+  rightInfoBox?: InfoBoxProps;
+  centerInfoBox?: InfoBoxProps;
+  topRightPhotos: string[];
+  bottomRightPhotos: string[];
+}
+
+const Consultancy = ({
+  variant,
+  leftInfoBox,
+  rightInfoBox,
+  centerInfoBox,
+  topRightPhotos,
+  bottomRightPhotos,
+}: ConsultancyProps) => {
   return (
     <IonPage>
-      <IonContent
-        style={{ backgroundColor: "red" }}
-        forceOverscroll={false}
-        scrollY={false}
-      >
+      <IonContent forceOverscroll={false} scrollY={false}>
         <div id="page">
           <ConsultancyFloatingMenu />
           <div id="top-right-stack">
@@ -39,4 +50,4 @@ const EstiloImagemTotal: React.FC = () => {
   );
 };
 
-export default React.memo(EstiloImagemTotal);
+export default React.memo(Consultancy);
