@@ -16,9 +16,9 @@ const HomeFloatingMenu = ({ isOpen, updateIsOpen }: HomeFloatingMenuProps) => {
   return (
     <span id="floating-button">
       <FloatingMenu
-        slideSpeed={500}
+        slideSpeed={1000}
         direction={Directions.Down}
-        spacing={8}
+        spacing={0}
         isOpen={isOpen}
       >
         <MainButton

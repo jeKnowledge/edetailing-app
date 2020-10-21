@@ -35,7 +35,7 @@ const ConsultancyFloatingMenu = ({
       <FloatingMenu
         slideSpeed={500}
         direction={Directions.Down}
-        spacing={8}
+        spacing={1}
         isOpen={menuIsOpen}
       >
         <MainButton

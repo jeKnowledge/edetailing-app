@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { useHistory } from "react-router";
-import { colorToConsulting } from "../../data/colorToConsulting";
+import { colorToConsultancy } from "../../data/data";
+import "./Chameleon.css";
 
 interface ChameleonParameters {
   id?: string;
@@ -11,7 +12,7 @@ const Chameleon: React.FC<ChameleonParameters> = ({
   const history = useHistory();
   const redirect = useCallback(
     (path: string) => {
-      return history.push("/consultorias/" + path);
+      return history.push("/consultancy/" + path);
     },
     [history]
   );
@@ -211,7 +212,7 @@ const Chameleon: React.FC<ChameleonParameters> = ({
             xlinkHref="#linear-gradient"
           />
         </defs>
-        <title>logotipos Paula</title>
+        <title>Camaleão Paula Prada</title>
         <polygon
           className="cls-1"
           fill="#d1d3d4"
@@ -604,186 +605,214 @@ const Chameleon: React.FC<ChameleonParameters> = ({
         />
         {/* Part 2 */}
         <polygon
+          onClick={() => redirect(colorToConsultancy["yellow"])}
           className="cls-1 "
           fill="#f2d145"
           points="364.37 174.52 364.37 215.87 335.33 219.98 364.37 174.52"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy["yellow"])}
           className="cls-2"
           fill="#9e732b"
           points="397.2 257.23 364.37 215.87 335.33 219.98 397.2 257.23"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy["yellow"])}
           className="cls-3"
           fill="#e0bf24"
           points="397.2 257.23 364.37 215.87 364.37 174.52 397.2 257.23"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy["yellow"])}
           className="cls-4"
           fill="#fff"
           points="364.37 174.52 391.2 168.38 393.56 143.12 364.37 174.52"
         />
         {/* Part 3 */}
         <polygon
-          onClick={() => redirect(colorToConsulting.blue)}
+          onClick={() => redirect(colorToConsultancy.blue)}
           className="cls-1"
           fill="#27aae1"
           points="361.6 259.19 397.2 257.23 335.33 219.98 361.6 259.19"
         />
         <polygon
-          onClick={() => redirect(colorToConsulting.blue)}
+          onClick={() => redirect(colorToConsultancy.blue)}
           className="cls-2"
           fill="#1d708e"
           points="361.6 259.19 397.2 257.23 378.79 284.84 361.6 259.19"
         />
         {/* Part 4 */}
         <polygon
+          onClick={() => redirect(colorToConsultancy.purple)}
           className="cls-1"
           fill="#64419a"
           points="341.25 298.4 304.93 311.39 335.33 219.98 341.25 298.4"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.purple)}
           className="cls-2"
           fill="#552b83"
           points="341.25 298.4 304.93 311.39 347.1 334.51 341.25 298.4"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.purple)}
           className="cls-3"
           fill="#2d0f46"
           points="341.25 298.4 378.79 284.84 347.1 334.51 341.25 298.4"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.purple)}
           className="cls-4"
           fill="#503585"
           points="341.25 298.4 378.79 284.84 335.33 219.98 341.25 298.4"
         />
         {/* Part 5 */}
         <polygon
+          onClick={() => redirect(colorToConsultancy.orange)}
           className="cls-1"
           fill="#d66b27"
           points="333.4 351.21 304.93 311.39 311.76 385.45 333.4 351.21"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.orange)}
           className="cls-2"
           fill="#ec7a23"
           points="333.4 351.21 304.93 311.39 347.1 334.51 333.4 351.21"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.orange)}
           className="cls-3"
           fill="#aa4a25"
           points="333.4 351.21 348.82 369.4 347.1 334.51 333.4 351.21"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.orange)}
           className="cls-4"
           fill="#99211f"
           points="333.4 351.21 348.82 369.4 311.76 385.45 333.4 351.21"
         />
         {/* Part 6 */}
         <polygon
-          onClick={() => redirect(colorToConsulting.blue)}
+          onClick={() => redirect(colorToConsultancy.blue)}
           className="cls-1"
           fill="#02a7c1"
           points="349.89 397.88 354.6 436.63 311.76 385.45 349.89 397.88"
         />
         <polygon
-          onClick={() => redirect(colorToConsulting.blue)}
+          onClick={() => redirect(colorToConsultancy.blue)}
           className="cls-2"
           fill="#02add3"
           points="349.89 397.88 348.82 369.4 311.76 385.45 349.89 397.88"
         />
         <polygon
-          onClick={() => redirect(colorToConsulting.blue)}
+          onClick={() => redirect(colorToConsultancy.blue)}
           className="cls-3"
           fill="#088ab8"
           points="349.89 397.88 348.82 369.4 376.22 408.3 349.89 397.88"
         />
         <polygon
-          onClick={() => redirect(colorToConsulting.blue)}
+          onClick={() => redirect(colorToConsultancy.blue)}
           className="cls-4"
           fill="#064c60"
           points="349.89 397.88 354.6 436.63 376.22 408.3 349.89 397.88"
         />
         {/* Part 7 */}
         <polygon
+          onClick={() => redirect(colorToConsultancy.yellow)}
           className="cls-1"
           fill="#9e732b"
           points="400.73 426.56 354.6 436.63 433.67 453.53 400.73 426.56"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.yellow)}
           className="cls-2"
           fill="#ddbd35"
           points="400.73 426.56 354.6 436.63 376.22 408.3 400.73 426.56"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.yellow)}
           className="cls-3"
           fill="#f2d145"
           points="400.73 426.56 429.95 421.21 376.22 408.3 400.73 426.56"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.yellow)}
           className="cls-4"
           fill="#e0bf24"
           points="400.73 426.56 429.95 421.21 433.67 453.53 400.73 426.56"
         />
         {/* Part 8 */}
         <polygon
+          onClick={() => redirect(colorToConsultancy.red)}
           className="cls-1"
           fill="#871719"
           points="459.01 422.46 498.03 422.28 433.67 453.53 459.01 422.46"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.red)}
           className="cls-2"
           fill="#ce2435"
           points="459.01 422.46 429.95 421.21 433.67 453.53 459.01 422.46"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.red)}
           className="cls-3"
           fill="#e42836"
           points="459.01 422.46 429.95 421.21 476.41 395.31 459.01 422.46"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.red)}
           className="cls-4"
           fill="#c62026"
           points="459.01 422.46 498.03 422.28 476.41 395.31 459.01 422.46"
         />
         {/* Part 9 */}
         <polygon
+          onClick={() => redirect(colorToConsultancy.green)}
           className="cls-1"
           fill="#028a61"
           points="476.41 395.31 498.03 422.28 495.57 381.18 476.41 395.31"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.green)}
           className="cls-2"
           fill="#00ae7e"
           points="476.41 395.31 492.36 361.91 495.57 381.18 476.41 395.31"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.green)}
           className="cls-3"
           fill="#079e70"
           points="521.58 365.12 492.36 361.91 495.57 381.18 521.58 365.12"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.green)}
           className="cls-4"
           fill="#037152"
           points="521.58 365.12 498.03 422.28 495.57 381.18 521.58 365.12"
         />
         {/* Part 10 */}
         <polygon
+          onClick={() => redirect(colorToConsultancy.pink)}
           className="cls-1"
           fill="#891d5b"
           points="492.36 361.91 513.23 315.46 521.58 365.12 492.36 361.91"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.pink)}
           className="cls-2"
           fill="#c42b91"
           points="492.36 361.91 513.23 315.46 489.47 327.44 492.36 361.91"
         />
         {/* Part 11 */}
         <polygon
+          onClick={() => redirect(colorToConsultancy.red)}
           className="cls-1"
           fill="#871719"
           points="489.47 327.44 513.23 315.46 487.11 276.92 489.47 327.44"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.pink)}
           className="cls-2"
           fill="#e42836"
           points="489.47 327.44 471.48 296.83 487.11 276.92 489.47 327.44"
@@ -795,38 +824,45 @@ const Chameleon: React.FC<ChameleonParameters> = ({
           points="434.88 273.93 457.78 264.93 464.63 277.71 434.88 273.93"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.yellow)}
           className="cls-2"
           fill="#e0bf24"
           points="434.88 273.93 471.48 296.83 464.63 277.71 434.88 273.93"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.yellow)}
           className="cls-3"
           fill="#9e732b"
           points="487.11 276.92 471.48 296.83 464.63 277.71 487.11 276.92"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.yellow)}
           className="cls-4"
           fill="#ddbd35"
           points="487.11 276.92 457.78 264.93 464.63 277.71 487.11 276.92"
         />
         {/* Part 13 */}
         <polygon
+          onClick={() => redirect(colorToConsultancy.brown)}
           className="cls-1"
           fill="#a97c50"
           points="429.31 243.1 397.2 257.23 434.88 273.93 429.31 243.1"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.brown)}
           className="cls-2"
           fill="#603913"
           points="429.31 243.1 457.78 264.93 434.88 273.93 429.31 243.1"
         />
         {/* Part 14 */}
         <polygon
+          onClick={() => redirect(colorToConsultancy.turquoise)}
           className="cls-1"
           fill="#8dc63f"
           points="378.79 284.84 397.2 257.23 406.46 279.46 378.79 284.84"
         />
         <polygon
+          onClick={() => redirect(colorToConsultancy.turquoise)}
           className="cls-2"
           fill="#547836"
           points="434.88 273.93 397.2 257.23 406.46 279.46 434.88 273.93"

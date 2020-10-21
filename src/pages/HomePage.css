@@ -20,6 +20,11 @@
   z-index: 1;
 }
 
-ion-content {
-  --background: linear-gradient(322.72deg, #C4C4C4 -53.55%, rgb(60, 60, 60) -53.54%, rgb(196, 196, 196) 87.22%);
+#homepage {
+  --background: linear-gradient(
+    322.72deg,
+    #c4c4c4 -53.55%,
+    rgb(60, 60, 60) -53.54%,
+    rgb(196, 196, 196) 87.22%
+  ) !important;
 }

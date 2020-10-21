@@ -16,8 +16,32 @@ ion-slide {
   --padding-start: none !important;
 }
 
-.ion-content {
+.ion-content-yellow {
+  --background: #fcd9a4 !important;
+}
+.ion-content-purple {
+  --background: #a184a5 !important;
+}
+.ion-content-orange {
+  --background: #eda48a !important;
+}
+.ion-content-blue {
   --background: #8cb8ba !important;
+}
+.ion-content-red {
+  --background: #a05d63 !important;
+}
+.ion-content-green {
+  --background: #98a881 !important;
+}
+.ion-content-pink {
+  --background: #d376b4 !important;
+}
+.ion-content-brown {
+  --background: #ad8679 !important;
+}
+.ion-content-turquoise {
+  --background: #7fb29d !important;
 }
 
 .slide-content {
@@ -133,8 +157,40 @@ p {
   color: #f0f0f0;
 }
 
-.title-non-select {
+.title-non-select-yellow {
+  color: #fcd9a4;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+.title-non-select-purple {
+  color: #a184a5;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+.title-non-select-orange {
+  color: #eda48a;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+.title-non-select-blue {
   color: #8cb8ba;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+.title-non-select-red {
+  color: #a05d63;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+.title-non-select-green {
+  color: #98a881;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+.title-non-select-pink {
+  color: #d376b4;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+.title-non-select-brown {
+  color: #ad8679;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+.title-non-select-turquoise {
+  color: #7fb29d;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 

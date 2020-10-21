@@ -10,6 +10,7 @@ const HomePage: React.FC = () => {
   return (
     <IonPage style={{ overflow: "hidden", position: "fixed" }}>
       <IonContent
+        id="homepage"
         forceOverscroll={false}
         scrollY={false}
         className="ion-padding "

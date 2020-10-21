@@ -13,8 +13,9 @@ import React, {
   useRef,
   useState,
 } from "react";
-import ConsultancyFloatingMenu from "../../components/ConsultancyFloatingMenu";
-import "./Consultoria.css";
+import { serviceData, serviceToColor } from "../../data/data";
+import ConsultancyFloatingMenu from "../ConsultancyFloatingMenu";
+import "./Service.css";
 
 const slideTexts = [
   [
@@ -39,7 +40,15 @@ const mod = (n: number, m: number): number => {
   return ((n % m) + m) % m;
 };
 
-const Consultoria: React.FC = () => {
+export interface ServiceProps {
+  serviceID: string;
+}
+
+const Service = ({ serviceID }: ServiceProps) => {
+  const theme = useMemo(() => serviceToColor[serviceID], [serviceID]);
+
+  const thisServiceData = useMemo(() => serviceData[serviceID], [serviceID]);
+
   const imgs = useMemo(
     () => [
       {
@@ -82,7 +91,11 @@ const Consultoria: React.FC = () => {
 
   return (
     <IonPage>
-      <IonContent fullscreen className="ion-padding ion-content">
+      <IonContent
+        style={{}}
+        fullscreen
+        className={`ion-padding ion-content-${theme}`}
+      >
         {/* FIXME: cant click this */}
         <ConsultancyFloatingMenu />
         <IonSlides>
@@ -91,14 +104,14 @@ const Consultoria: React.FC = () => {
               <div className="text-content text-content-esq">
                 <div className="title-content title-content-esq">
                   <IonLabel className="title">benefícios</IonLabel>
-                  <IonLabel className="title title-non-select">
+                  <IonLabel className={`title title-non-select-${theme}`}>
                     o que inclui?
                   </IonLabel>
                 </div>
               </div>
               <IonImg
                 className="forma-branca forma-branca-esq"
-                src="/assets/formas_consultorias_geral/forma_branca_esq.svg"
+                src="/assets/formas_geral/forma_branca_esq.svg"
                 alt="forma branca esquerda"
               />
               <div className="description-content">
@@ -128,7 +141,7 @@ const Consultoria: React.FC = () => {
             <div className="slide-content">
               <IonImg
                 className="forma-branca forma-branca-dir"
-                src="/assets/formas_consultorias_geral/forma_branca_dir.svg"
+                src="/assets/formas_geral/forma_branca_dir.svg"
                 alt="forma branca direita"
               />
               <IonImg className="img-inclui" src={imgs[currentImg].img} />
@@ -138,7 +151,7 @@ const Consultoria: React.FC = () => {
               </span>
               <div className="text-content text-content-dir">
                 <div className="title-content title-content-dir">
-                  <IonLabel className="title title-non-select">
+                  <IonLabel className={`title title-non-select-${theme}`}>
                     benefícios
                   </IonLabel>
                   <IonLabel className="title">o que inclui?</IonLabel>
@@ -152,4 +165,4 @@ const Consultoria: React.FC = () => {
   );
 };
 
-export default Consultoria;
+export default React.memo(Service);

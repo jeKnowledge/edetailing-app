@@ -2,28 +2,41 @@ import { IonApp, IonRouterOutlet } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
-import EstiloImagemTotal from "./pages/Consultorias/EstiloImagemTotal/EstiloImagemTotal";
+import ConsultancyWrapper from "./components/ConsultancyWrapper";
+import Service from "./components/Service";
+import { colorToConsultancy, ConsultancyID, serviceToColor } from "./data/data";
 import HomePage from "./pages/HomePage";
-import Consultoria from "./pages/tests/Consultoria";
-import PredefinedEmails from "./pages/tests/PredefinedEmails";
 
 const App: React.FC = () => (
   <IonApp>
     {/* TODO: Extract this to component */}
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route path="/consultorias/estilo-imagem-total" exact={true}>
-          <EstiloImagemTotal />
-        </Route>
         <Route path="/home" exact={true}>
           <HomePage />
         </Route>
-        <Route path="/tests/emails" exact={true}>
-          <PredefinedEmails />
-        </Route>
-        <Route path="/tests/consultoria" exact={true}>
-          <Consultoria />
-        </Route>
+
+        {/* Consultancies */}
+        {Object.keys(colorToConsultancy).map((color) => (
+          <Route
+            key={colorToConsultancy[color]}
+            path={`/consultancy/${colorToConsultancy[color]}`}
+            exact={true}
+          >
+            <ConsultancyWrapper
+              key={colorToConsultancy[color]}
+              consultancyId={colorToConsultancy[color] as ConsultancyID}
+            />
+          </Route>
+        ))}
+
+        {/* Services */}
+        {Object.keys(serviceToColor).map((service) => (
+          <Route key={service} path={`/services/${service}`} exact={true}>
+            <Service key={service} serviceID={service} />
+          </Route>
+        ))}
+
         <Route exact path="/" render={() => <Redirect to="/home" />} />
       </IonRouterOutlet>
     </IonReactRouter>
