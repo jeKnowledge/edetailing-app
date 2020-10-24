@@ -1,11 +1,21 @@
-import { IonContent, IonImg, IonPage } from "@ionic/react";
-import React, { useState } from "react";
+import { IonButton, IonContent, IonImg, IonPage } from "@ionic/react";
+import axios from "axios";
+import React, { useCallback, useState } from "react";
 import Chameleon from "../components/Chameleon/Chameleon";
 import HomeFloatingMenu from "../components/HomeFloatingMenu";
 import "./HomePage.css";
 
 const HomePage: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const test = useCallback(async () => {
+    axios.defaults.headers.common["Authorization"] =
+      "Bearer M0m_VAkl-IIAAAAAAAAAAfEX_iD7hwQEiUTLi0EZcdT2toZIm9TB_DViOzVWpuos";
+    axios.defaults.headers.common["Dropbox-API-Arg"] =
+      '{"path": "/DOCS/citing.md"}';
+
+    await axios.post("http://content.dropboxapi.com/2/files/download");
+  }, []);
 
   return (
     <IonPage style={{ overflow: "hidden", position: "fixed" }}>
@@ -29,6 +39,7 @@ const HomePage: React.FC = () => {
             </div>
           </div>
           <HomeFloatingMenu isOpen={isOpen} updateIsOpen={setIsOpen} />
+          <IonButton onClick={test}>click me</IonButton>
         </>
       </IonContent>
     </IonPage>
