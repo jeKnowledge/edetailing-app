@@ -22,15 +22,15 @@ ion-content {
 
 #infobox-left {
   position: absolute;
-  top: 30%;
-  left: 15%;
+  top: 0;
+  left: -13%;
   z-index: 1;
 }
 
 #infobox-right {
   position: absolute;
-  bottom: 30%;
-  right: 15%;
+  top: 25%;
+  right: -7%;
 }
 
 #infobox-central {

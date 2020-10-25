@@ -17,3 +17,17 @@
   height: 100%;
   object-fit: cover;
 }
+
+#top-image {
+  top: 0;
+  right: 0;
+  border-bottom: 2px solid var(--white);
+  border-left: 2px solid var(--white);
+}
+
+#bottom-image {
+  bottom: 0;
+  left: 0;
+  width: 80%;
+  height: 80%;
+}

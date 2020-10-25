@@ -1,4 +1,100 @@
-#infobox-link {
+#infobox-stack {
+  transition: all 300ms;
+  position: relative;
+  height: 650px;
+  width: 650px;
+}
+
+#infobox-stack > :first-child {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#infobox-title {
+  position: absolute;
+  font-size: 34px;
+  font-weight: bold;
+  width: 340px;
+  height: 70px;
+  top: 28%;
+  left: 30%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+#infobox-title-reverse {
+  position: absolute;
+  font-size: 34px;
+  font-weight: bold;
+  width: 340px;
+  height: 70px;
+  bottom: 28%;
+  right: 30%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.infobox-button {
+  position: absolute;
+  top: 37%;
+  left: 67%;
+  width: 24%;
+}
+
+.infobox-button-reverse {
+  position: absolute;
+  width: 24%;
+  bottom: 37%;
+  right: 67%;
+  transform: scale(1, -1);
+}
+
+#infobox-text {
+  position: absolute;
   color: black;
-  text-decoration: none;
+  font-size: 18px;
+  width: 400px;
+  height: 110px;
+  top: 57%;
+  left: 25%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+#infobox-text-reverse {
+  position: absolute;
+  color: black;
+  font-size: 18px;
+  width: 420px;
+  height: 110px;
+  bottom: 55%;
+  right: 20%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.show-infobox-text {
+  visibility: visible;
+}
+
+.hide-infobox-text {
+  visibility: hidden;
+}
+
+#infobox-button-rotate {
+  transform: scale(1, -1);
+}
+
+#infobox-button-remove-rotate {
+  transform: none;
+}
+
+.infobox-reverse {
+  transform: rotate(180deg);
 }

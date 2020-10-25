@@ -6,6 +6,7 @@ import MaskedImage from "../MaskedImage/MaskedImage";
 import "./Consultancy.css";
 
 interface ConsultancyProps {
+  consultancyId: string;
   variant: "single" | "double";
   leftInfoBox?: InfoBoxProps;
   rightInfoBox?: InfoBoxProps;
@@ -15,6 +16,7 @@ interface ConsultancyProps {
 }
 
 const Consultancy = ({
+  consultancyId,
   variant,
   leftInfoBox,
   rightInfoBox,
@@ -29,36 +31,42 @@ const Consultancy = ({
           <ConsultancyFloatingMenu />
           <div id="top-right-stack">
             <MaskedImage
-              mask="/assets/consultorias/estilo_imagem_total/mask.svg"
-              image="/assets/consultorias/estilo_imagem_total/butterfly.png"
+              mask={`/assets/consultorias/${consultancyId}/top-mask.svg`}
+              image={`/assets/consultorias/${consultancyId}/ce/ce1.jpeg`}
+              variant="top"
             />
           </div>
           <div id="bottom-left-stack">
             <MaskedImage
-              mask="/assets/consultorias/estilo_imagem_total/mask.svg"
-              image="/assets/consultorias/estilo_imagem_total/butterfly.png"
+              mask={`/assets/consultorias/${consultancyId}/bottom-mask.svg`}
+              image={`/assets/consultorias/${consultancyId}/ce/ce2.jpeg`}
+              variant="bottom"
             />
           </div>
           {variant === "double" ? (
             <>
               <div id="infobox-left">
                 <InfoBox
-                  title="I'm left infobox"
+                  title={leftInfoBox?.title as string}
                   to={"/services/" + leftInfoBox?.to}
+                  consultancyID={leftInfoBox?.consultancyID as string}
                 />
               </div>
               <div id="infobox-right">
                 <InfoBox
-                  title="I'm right infobox"
+                  title={rightInfoBox?.title as string}
                   to={"/services/" + rightInfoBox?.to}
+                  consultancyID={rightInfoBox?.consultancyID as string}
+                  variant="reverse"
                 />
               </div>
             </>
           ) : (
             <div id="infobox-central">
               <InfoBox
-                title="I'm central infobox"
+                title={centerInfoBox?.title as string}
                 to={"/services/" + centerInfoBox?.to}
+                consultancyID={centerInfoBox?.consultancyID as string}
               />
             </div>
           )}

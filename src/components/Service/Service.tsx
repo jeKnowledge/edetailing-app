@@ -17,25 +17,6 @@ import { serviceData, serviceToColor } from "../../data/data";
 import ConsultancyFloatingMenu from "../ConsultancyFloatingMenu";
 import "./Service.css";
 
-const slideTexts = [
-  [
-    "Identificar o seu estilo;",
-    "Saber explorar os seus pontos fortes e camuflar os menos positivos;",
-    "Acompanhamento personalizado até ao objetivo definido;",
-    "Organizar e coordenar o seu guarda-roupa;",
-  ],
-  [
-    "Aumento da autoimagem e autoestima;",
-    "Ter consciência da mudança que a Consultoria de Imagem fará na sua vida enquanto ferramenta facilitadora;",
-    "Fazer compras consistentes e não por impulso;",
-  ],
-  [
-    "Fazer com que a escolha matinal do seu look se torne simples e intuitiva e não mais um momento stressante do seu dia;",
-    "Combinar cores de forma harmoniosa;",
-    "Evitar erros cromáticos e o medo de usar cor.",
-  ],
-];
-
 const mod = (n: number, m: number): number => {
   return ((n % m) + m) % m;
 };
@@ -52,11 +33,11 @@ const Service = ({ serviceID }: ServiceProps) => {
   const imgs = useMemo(
     () => [
       {
-        img: "/assets/consultorias/estilo_imagem_total/estilo/img_example.png",
+        img: "/assets/consultorias/ce-it/ce/ce1.jpeg",
         label: "ola",
       },
       {
-        img: "/assets/consultorias/estilo_imagem_total/estilo/ex.png",
+        img: "/assets/consultorias/ce-it/ce/ce2.jpeg",
         label: "adeus",
       },
     ],
@@ -69,12 +50,16 @@ const Service = ({ serviceID }: ServiceProps) => {
   currentImgRef.current = currentImg;
 
   const forwardCurrentTextSlide = useCallback(() => {
-    setCurrentTextSlide(mod(currentTextSlide + 1, slideTexts.length));
-  }, [currentTextSlide]);
+    setCurrentTextSlide(
+      mod(currentTextSlide + 1, thisServiceData.slideText.length)
+    );
+  }, [currentTextSlide, thisServiceData.slideText.length]);
 
   const backwardCurrentTextSlide = useCallback(() => {
-    setCurrentTextSlide(mod(currentTextSlide - 1, slideTexts.length));
-  }, [currentTextSlide]);
+    setCurrentTextSlide(
+      mod(currentTextSlide - 1, thisServiceData.slideText.length)
+    );
+  }, [currentTextSlide, thisServiceData.slideText.length]);
 
   const updateSlideImage = useCallback(() => {
     setCurrentImg((currentImgRef.current + 1) % imgs.length);
@@ -88,6 +73,10 @@ const Service = ({ serviceID }: ServiceProps) => {
       clearTimeout(timer);
     };
   }, [updateSlideImage]);
+
+  useEffect(() => {
+    console.log(thisServiceData.slideText, currentTextSlide);
+  }, [currentTextSlide, thisServiceData.slideText]);
 
   return (
     <IonPage>
@@ -116,7 +105,7 @@ const Service = ({ serviceID }: ServiceProps) => {
               />
               <div className="description-content">
                 <div className="description">
-                  {slideTexts[currentTextSlide].map((t) => (
+                  {thisServiceData.slideText[currentTextSlide]?.map((t) => (
                     <p className="description-text" key={t}>
                       {t}
                     </p>
@@ -126,12 +115,12 @@ const Service = ({ serviceID }: ServiceProps) => {
                   <IonImg
                     onClick={backwardCurrentTextSlide}
                     className="setas-esq"
-                    src="/assets/consultorias/estilo_imagem_total/seta_esq.svg"
+                    src="/assets/consultorias/ce-it/seta_esq.svg"
                   />
                   <IonImg
                     onClick={forwardCurrentTextSlide}
                     className="setas-dir"
-                    src="/assets/consultorias/estilo_imagem_total/seta_dir.svg"
+                    src="/assets/consultorias/ce-it/seta_dir.svg"
                   />
                 </div>
               </div>

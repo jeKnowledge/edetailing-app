@@ -12,6 +12,7 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
     case "ce-it":
       return (
         <Consultancy
+          consultancyId="ce-it"
           variant={consultancyData["ce-it"].variant as "double"}
           bottomRightPhotos={consultancyData["ce-it"].bottomRightPhotos}
           topRightPhotos={consultancyData["ce-it"].topRightPhotos}
@@ -22,6 +23,7 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
     case "cp":
       return (
         <Consultancy
+          consultancyId="cp"
           variant={consultancyData["cp"].variant}
           bottomRightPhotos={consultancyData["cp"].bottomRightPhotos}
           topRightPhotos={consultancyData["cp"].topRightPhotos}
@@ -31,6 +33,7 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
     case "af":
       return (
         <Consultancy
+          consultancyId="af"
           variant={consultancyData["af"].variant}
           bottomRightPhotos={consultancyData["af"].bottomRightPhotos}
           topRightPhotos={consultancyData["af"].topRightPhotos}
@@ -40,6 +43,7 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
     case "ps":
       return (
         <Consultancy
+          consultancyId="ps"
           variant={consultancyData["ps"].variant}
           bottomRightPhotos={consultancyData["ps"].bottomRightPhotos}
           topRightPhotos={consultancyData["ps"].topRightPhotos}
@@ -49,6 +53,7 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
     case "cd":
       return (
         <Consultancy
+          consultancyId="cd"
           variant={consultancyData["cd"].variant}
           bottomRightPhotos={consultancyData["cd"].bottomRightPhotos}
           topRightPhotos={consultancyData["cd"].topRightPhotos}
@@ -58,6 +63,7 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
     case "cn":
       return (
         <Consultancy
+          consultancyId="cn"
           variant={consultancyData["cn"].variant}
           bottomRightPhotos={consultancyData["cn"].bottomRightPhotos}
           topRightPhotos={consultancyData["cn"].topRightPhotos}
@@ -67,6 +73,7 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
     case "ceo":
       return (
         <Consultancy
+          consultancyId="ceo"
           variant={consultancyData["ceo"].variant}
           bottomRightPhotos={consultancyData["ceo"].bottomRightPhotos}
           topRightPhotos={consultancyData["ceo"].topRightPhotos}
@@ -76,6 +83,7 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
     case "fp":
       return (
         <Consultancy
+          consultancyId="fp"
           variant={consultancyData["fp"].variant}
           bottomRightPhotos={consultancyData["fp"].bottomRightPhotos}
           topRightPhotos={consultancyData["fp"].topRightPhotos}
@@ -85,6 +93,7 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
     case "mp":
       return (
         <Consultancy
+          consultancyId="mp"
           variant={consultancyData["mp"].variant}
           bottomRightPhotos={consultancyData["mp"].bottomRightPhotos}
           topRightPhotos={consultancyData["mp"].topRightPhotos}
