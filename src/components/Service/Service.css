@@ -98,12 +98,12 @@ p {
 
 .forma-branca-esq {
   right: 0;
-  width: 970px;
+  width: 900px;
 }
 
 .forma-branca-dir {
   left: 0;
-  width: 984px;
+  width: 869px;
 }
 
 .img-inclui {
@@ -114,18 +114,18 @@ p {
   bottom: 130px;
 }
 
-.description-content {
-  width: 600px;
-  position: absolute;
-  bottom: 100px;
-  right: 50px;
-}
-
 .description {
+  width: 690px;
+  position: absolute;
+  top: 510px;
+  right: 0px;
+  height: 150px;
   display: flex;
+  justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  padding: 40px;
+  padding-left: 60px;
+  padding-right: 60px;
   z-index: 9999;
 }
 
@@ -143,9 +143,15 @@ p {
 }
 
 .setas {
+  position: absolute;
+  right: 0;
+  bottom: 50px;
+  width: 690px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .title {
@@ -155,6 +161,19 @@ p {
   line-height: 48px;
   text-transform: uppercase;
   color: #f0f0f0;
+}
+
+.title-content-slide {
+  width: 700px;
+  position: absolute;
+  padding-left: 50px;
+  padding-right: 50px;
+  left: 20px;
+  bottom: 0px;
+  height: 172px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .title-non-select-yellow {
@@ -196,9 +215,6 @@ p {
 
 .title-dir {
   color: black;
-  position: absolute;
-  bottom: 75px;
-  left: 210px;
   line-height: 36.31px;
-  font-size: 30px;
+  font-size: 27px;
 }

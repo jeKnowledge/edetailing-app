@@ -103,26 +103,24 @@ const Service = ({ serviceID }: ServiceProps) => {
                 src="/assets/formas_geral/forma_branca_esq.svg"
                 alt="forma branca esquerda"
               />
-              <div className="description-content">
-                <div className="description">
-                  {thisServiceData.slideText[currentTextSlide]?.map((t) => (
-                    <p className="description-text" key={t}>
-                      {t}
-                    </p>
-                  ))}
-                </div>
-                <div className="setas">
-                  <IonImg
-                    onClick={backwardCurrentTextSlide}
-                    className="setas-esq"
-                    src="/assets/consultorias/ce-it/seta_esq.svg"
-                  />
-                  <IonImg
-                    onClick={forwardCurrentTextSlide}
-                    className="setas-dir"
-                    src="/assets/consultorias/ce-it/seta_dir.svg"
-                  />
-                </div>
+              <div className="description">
+                {thisServiceData.slideText[currentTextSlide]?.map((t) => (
+                  <p className="description-text" key={t}>
+                    {t}
+                  </p>
+                ))}
+              </div>
+              <div className="setas">
+                <IonImg
+                  onClick={backwardCurrentTextSlide}
+                  className="setas-esq"
+                  src="/assets/consultorias/ce-it/seta_esq.svg"
+                />
+                <IonImg
+                  onClick={forwardCurrentTextSlide}
+                  className="setas-dir"
+                  src="/assets/consultorias/ce-it/seta_dir.svg"
+                />
               </div>
             </div>
           </IonSlide>
@@ -134,10 +132,12 @@ const Service = ({ serviceID }: ServiceProps) => {
                 alt="forma branca direita"
               />
               <IonImg className="img-inclui" src={imgs[currentImg].img} />
-              <span className="title title-dir">
-                {/* plano de identidade visual */}
-                {imgs[currentImg].label}
-              </span>
+              <div className="title-content-slide">
+                <span className="title title-dir">
+                  {/* plano de identidade visual */}
+                  {imgs[currentImg].label}
+                </span>
+              </div>
               <div className="text-content text-content-dir">
                 <div className="title-content title-content-dir">
                   <IonLabel className={`title title-non-select-${theme}`}>
