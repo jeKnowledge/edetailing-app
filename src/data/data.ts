@@ -70,23 +70,23 @@ export const serviceData: {
     ],
     photosSlide: [
       {
-        img: "",
+        img: "/assets/consultorias/ce-it/ce/ce2.jpeg",
         label: "entrevista",
       },
       {
-        img: "",
+        img: "/assets/consultorias/ce-it/ce/ce2.jpeg",
         label: "coloração pessoal",
       },
       {
-        img: "",
+        img: "/assets/consultorias/ce-it/ce/ce2.jpeg",
         label: "análise facial (básica)",
       },
       {
-        img: "",
+        img: "/assets/consultorias/ce-it/ce/ce2.jpeg",
         label: "análise de biótipo",
       },
       {
-        img: "",
+        img: "/assets/consultorias/ce-it/ce/ce2.jpeg",
         label: "book digital",
       },
     ],

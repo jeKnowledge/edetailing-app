@@ -30,20 +30,6 @@ const Service = ({ serviceID }: ServiceProps) => {
 
   const thisServiceData = useMemo(() => serviceData[serviceID], [serviceID]);
 
-  const imgs = useMemo(
-    () => [
-      {
-        img: "/assets/consultorias/ce-it/ce/ce1.jpeg",
-        label: "ola",
-      },
-      {
-        img: "/assets/consultorias/ce-it/ce/ce2.jpeg",
-        label: "adeus",
-      },
-    ],
-    []
-  );
-
   const [currentImg, setCurrentImg] = useState<number>(0);
   const [currentTextSlide, setCurrentTextSlide] = useState<number>(0);
   const currentImgRef = useRef(currentImg);
@@ -62,8 +48,10 @@ const Service = ({ serviceID }: ServiceProps) => {
   }, [currentTextSlide, thisServiceData.slideText.length]);
 
   const updateSlideImage = useCallback(() => {
-    setCurrentImg((currentImgRef.current + 1) % imgs.length);
-  }, [imgs.length]);
+    setCurrentImg(
+      (currentImgRef.current + 1) % thisServiceData.photosSlide.length
+    );
+  }, [thisServiceData.photosSlide.length]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -131,11 +119,14 @@ const Service = ({ serviceID }: ServiceProps) => {
                 src="/assets/formas_geral/forma_branca_dir.svg"
                 alt="forma branca direita"
               />
-              <IonImg className="img-inclui" src={imgs[currentImg].img} />
+              <IonImg
+                className="img-inclui"
+                src={thisServiceData.photosSlide[currentImg].img as string}
+              />
               <div className="title-content-slide">
                 <span className="title title-dir">
                   {/* plano de identidade visual */}
-                  {imgs[currentImg].label}
+                  {thisServiceData.photosSlide[currentImg].label}
                 </span>
               </div>
               <div className="text-content text-content-dir">
