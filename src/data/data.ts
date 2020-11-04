@@ -40,6 +40,7 @@ export type ConsultancyID =
 
 export const serviceData: {
   [key: string]: {
+    consultancyId: string;
     slideText: string[][];
     photosSlide: {
       img: string;
@@ -50,6 +51,7 @@ export const serviceData: {
   };
 } = {
   ce: {
+    consultancyId: "ce-it",
     slideText: [
       [
         "Identificar o seu estilo;",
@@ -93,6 +95,7 @@ export const serviceData: {
     duration: 0,
   },
   it: {
+    consultancyId: "ce-it",
     slideText: [
       [
         "Serviço desenhado individualmente à medida das suas necessidades;",
@@ -135,6 +138,7 @@ export const serviceData: {
     duration: 0,
   },
   cp: {
+    consultancyId: "cp",
     slideText: [
       [
         "Acompanhamento personalizado até ao objectivo definido;",
@@ -176,6 +180,7 @@ export const serviceData: {
     duration: 0,
   },
   af: {
+    consultancyId: "af",
     slideText: [
       [
         "Protagonismo do rosto na imagem;",
@@ -213,6 +218,7 @@ export const serviceData: {
     duration: 0,
   },
   ps: {
+    consultancyId: "ps",
     slideText: [
       [
         "Compras mais inteligentes e conscientes, aprendendo a investir nas peças certas e deixando de fazer compras por impulso desperdiçando dinheiro em peças inúteis ou que não o favoreçam;",
@@ -241,6 +247,7 @@ export const serviceData: {
     duration: 2,
   },
   cd: {
+    consultancyId: "cd",
     slideText: [
       [
         'Organizar e limpar o seu armário de toda a "poluição" visual, para que o mesmo possa ser coerente, prático e faça sentido de modo a maximizar o seu potencial;',
@@ -271,21 +278,25 @@ export const serviceData: {
     duration: 3,
   },
   cn: {
+    consultancyId: "cn",
     slideText: [],
     photosSlide: [],
     duration: 0,
   },
   ceo: {
+    consultancyId: "ceo",
     slideText: [],
     photosSlide: [],
     duration: 0,
   },
   fp: {
+    consultancyId: "fp",
     slideText: [],
     photosSlide: [],
     duration: 0,
   },
   mp: {
+    consultancyId: "mp",
     slideText: [],
     photosSlide: [],
     duration: 0,

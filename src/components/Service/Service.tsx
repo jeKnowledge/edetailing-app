@@ -102,12 +102,12 @@ const Service = ({ serviceID }: ServiceProps) => {
                 <IonImg
                   onClick={backwardCurrentTextSlide}
                   className="setas-esq"
-                  src="/assets/consultorias/ce-it/seta_esq.svg"
+                  src={`/assets/consultorias/${thisServiceData.consultancyId}/seta_esq.svg`}
                 />
                 <IonImg
                   onClick={forwardCurrentTextSlide}
                   className="setas-dir"
-                  src="/assets/consultorias/ce-it/seta_dir.svg"
+                  src={`/assets/consultorias/${thisServiceData.consultancyId}/seta_dir.svg`}
                 />
               </div>
             </div>
