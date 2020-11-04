@@ -42,10 +42,8 @@ export const serviceData: {
   [key: string]: {
     consultancyId: string;
     slideText: string[][];
-    photosSlide: {
-      img: string;
-      label: string;
-    }[];
+    labelsSlide: string[];
+    imgSlideSize: number;
     duration: number;
     //TODO: smth about
   };
@@ -70,28 +68,14 @@ export const serviceData: {
         "Evitar erros cromáticos e o medo de usar cor.",
       ],
     ],
-    photosSlide: [
-      {
-        img: "/assets/consultorias/ce-it/ce/ce2.jpeg",
-        label: "entrevista",
-      },
-      {
-        img: "/assets/consultorias/ce-it/ce/ce2.jpeg",
-        label: "coloração pessoal",
-      },
-      {
-        img: "/assets/consultorias/ce-it/ce/ce2.jpeg",
-        label: "análise facial (básica)",
-      },
-      {
-        img: "/assets/consultorias/ce-it/ce/ce2.jpeg",
-        label: "análise de biótipo",
-      },
-      {
-        img: "/assets/consultorias/ce-it/ce/ce2.jpeg",
-        label: "book digital",
-      },
+    labelsSlide: [
+      "entrevista",
+      "coloração pessoal",
+      "análise facial (básica)",
+      "análise de biótipo",
+      "book digital",
     ],
+    imgSlideSize: 7,
     duration: 0,
   },
   it: {
@@ -113,28 +97,14 @@ export const serviceData: {
         "Evitar erro cromáticos e o medo de usar cor.",
       ],
     ],
-    photosSlide: [
-      {
-        img: "",
-        label: "plano de identidade visual",
-      },
-      {
-        img: "",
-        label: "coloração pessoal",
-      },
-      {
-        img: "",
-        label: "primeira visita ao guarda-roupa do cliente",
-      },
-      {
-        img: "",
-        label: "segunda visita ao guarda-roupa do cliente",
-      },
-      {
-        img: "",
-        label: "book digital",
-      },
+    labelsSlide: [
+      "plano de identidade visual",
+      "coloração pessoal",
+      "primeira visita ao guarda-roupa do cliente",
+      "segunda visita ao guarda-roupa do cliente",
+      "book digital",
     ],
+    imgSlideSize: 1,
     duration: 0,
   },
   cp: {
@@ -155,28 +125,14 @@ export const serviceData: {
         "Fazer com que a escolha matinal do seu look se torne simples e intuitiva e não mais um momento stressante do seu dia.",
       ],
     ],
-    photosSlide: [
-      {
-        img: "",
-        label: "teste de cores através do método sazonal expandido",
-      },
-      {
-        img: "",
-        label: "identificação da paleta cromática",
-      },
-      {
-        img: "",
-        label: "identificação de maquilhagem e acessórios",
-      },
-      {
-        img: "",
-        label: "maquilhagem profissional",
-      },
-      {
-        img: "",
-        label: "entrega de paleta cromática digital",
-      },
+    labelsSlide: [
+      "teste de cores através do método sazonal expandido",
+      "identificação da paleta cromática",
+      "identificação de maquilhagem e acessórios",
+      "maquilhagem profissional",
+      "entrega de paleta cromática digital",
     ],
+    imgSlideSize: 4,
     duration: 0,
   },
   af: {
@@ -192,29 +148,14 @@ export const serviceData: {
         "Percepção ruídos e desejos de imagem.",
       ],
     ],
-    photosSlide: [
-      {
-        img: "",
-        label: "entrevista",
-      },
-      {
-        img: "",
-        label: "coloração pessoal",
-      },
-      {
-        img: "",
-        label: "análise facial detalhada",
-      },
-      {
-        img: "",
-        label:
-          "propostas de elementos design(cabelo, armações, acessórios, roupa, maquilhagem)",
-      },
-      {
-        img: "",
-        label: "book digital",
-      },
+    labelsSlide: [
+      "entrevista",
+      "coloração pessoal",
+      "análise facial detalhada",
+      "propostas de elementos design(cabelo, armações, acessórios, roupa, maquilhagem)",
+      "book digital",
     ],
+    imgSlideSize: 2,
     duration: 0,
   },
   ps: {
@@ -229,21 +170,12 @@ export const serviceData: {
         "Passará a visualizar as compras como um momento de prazer e não de stress.",
       ],
     ],
-    photosSlide: [
-      {
-        img: "",
-        label: "plano de identidade visual",
-      },
-      {
-        img: "",
-        label:
-          "acompanhamento personalizado nas compras ou podemos fazer as compras por si",
-      },
-      {
-        img: "",
-        label: "aconselhamento de ajustes e proporções",
-      },
+    labelsSlide: [
+      "plano de identidade visual",
+      "acompanhamento personalizado nas compras ou podemos fazer as compras por si",
+      "aconselhamento de ajustes e proporções",
     ],
+    imgSlideSize: 7,
     duration: 2,
   },
   cd: {
@@ -255,50 +187,41 @@ export const serviceData: {
         "Identificar o seu guarda-roupa cápsula, transformando o seu armário com os alicerces certos para um guarda-roupa funcional e de sucesso.",
       ],
     ],
-    photosSlide: [
-      {
-        img: "",
-        label: "deslocação a casa da cliente para uma triagem do guarda-roupa",
-      },
-      {
-        img: "",
-        label:
-          "organização de vários looks fotografados para colocar no armário (profissional, lazer, eventos)",
-      },
-      {
-        img: "",
-        label: "organização por peças e por tons ",
-      },
-      {
-        img: "",
-        label:
-          "elaboração de uma lista de compras com os possíveis itens em falta no guarda-roupa",
-      },
+    labelsSlide: [
+      "deslocação a casa da cliente para uma triagem do guarda-roupa",
+      "organização de vários looks fotografados para colocar no armário (profissional, lazer, eventos)",
+      "organização por peças e por tons ",
+      "elaboração de uma lista de compras com os possíveis itens em falta no guarda-roupa",
     ],
+    imgSlideSize: 1,
     duration: 3,
   },
   cn: {
     consultancyId: "cn",
     slideText: [],
-    photosSlide: [],
+    labelsSlide: [],
+    imgSlideSize: 14,
     duration: 0,
   },
   ceo: {
     consultancyId: "ceo",
     slideText: [],
-    photosSlide: [],
+    labelsSlide: [],
+    imgSlideSize: 4,
     duration: 0,
   },
   fp: {
     consultancyId: "fp",
     slideText: [],
-    photosSlide: [],
+    labelsSlide: [],
+    imgSlideSize: 3,
     duration: 0,
   },
   mp: {
     consultancyId: "mp",
     slideText: [],
-    photosSlide: [],
+    labelsSlide: [],
+    imgSlideSize: 4,
     duration: 0,
   },
 };

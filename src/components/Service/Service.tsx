@@ -30,9 +30,12 @@ const Service = ({ serviceID }: ServiceProps) => {
 
   const thisServiceData = useMemo(() => serviceData[serviceID], [serviceID]);
 
-  const [currentImg, setCurrentImg] = useState<number>(0);
+  const [currentLabel, setcurrentLabel] = useState<number>(0);
   const [currentTextSlide, setCurrentTextSlide] = useState<number>(0);
+  const [currentImg, setcurrentImg] = useState<number>(0);
+  const currentLabelRef = useRef(currentLabel);
   const currentImgRef = useRef(currentImg);
+  currentLabelRef.current = currentLabel;
   currentImgRef.current = currentImg;
 
   const forwardCurrentTextSlide = useCallback(() => {
@@ -48,19 +51,24 @@ const Service = ({ serviceID }: ServiceProps) => {
   }, [currentTextSlide, thisServiceData.slideText.length]);
 
   const updateSlideImage = useCallback(() => {
-    setCurrentImg(
-      (currentImgRef.current + 1) % thisServiceData.photosSlide.length
+    setcurrentLabel(
+      (currentLabelRef.current + 1) % thisServiceData.labelsSlide.length
     );
-  }, [thisServiceData.photosSlide.length]);
+  }, [thisServiceData.labelsSlide.length]);
+
+  const updateSlideImg = useCallback(() => {
+    setcurrentImg((currentImgRef.current + 1) % thisServiceData.imgSlideSize);
+  }, [thisServiceData.imgSlideSize]);
 
   useEffect(() => {
     const timer = setInterval(() => {
       updateSlideImage();
+      updateSlideImg();
     }, 2000);
     return () => {
       clearTimeout(timer);
     };
-  }, [updateSlideImage]);
+  }, [updateSlideImage, updateSlideImg]);
 
   useEffect(() => {
     console.log(thisServiceData.slideText, currentTextSlide);
@@ -121,12 +129,12 @@ const Service = ({ serviceID }: ServiceProps) => {
               />
               <IonImg
                 className="img-inclui"
-                src={thisServiceData.photosSlide[currentImg].img as string}
+                src={`/assets/consultorias/${thisServiceData.consultancyId}/${serviceID}/${serviceID}${currentImg}.jpeg`}
               />
               <div className="title-content-slide">
                 <span className="title title-dir">
                   {/* plano de identidade visual */}
-                  {thisServiceData.photosSlide[currentImg].label}
+                  {thisServiceData.labelsSlide[currentLabel]}
                 </span>
               </div>
               <div className="text-content text-content-dir">
