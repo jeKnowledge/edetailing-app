@@ -1,5 +1,5 @@
 import { IonContent, IonPage } from "@ionic/react";
-import React from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import ConsultancyFloatingMenu from "../ConsultancyFloatingMenu";
 import InfoBox, { InfoBoxProps } from "../InfoBox/InfoBox";
 import MaskedImage from "../MaskedImage/MaskedImage";
@@ -11,9 +11,12 @@ interface ConsultancyProps {
   leftInfoBox?: InfoBoxProps;
   rightInfoBox?: InfoBoxProps;
   centerInfoBox?: InfoBoxProps;
-  topRightPhotos: string[];
-  bottomRightPhotos: string[];
+  photos: string[];
 }
+
+const mod = (n: number, m: number): number => {
+  return ((n % m) + m) % m;
+};
 
 const Consultancy = ({
   consultancyId,
@@ -21,9 +24,35 @@ const Consultancy = ({
   leftInfoBox,
   rightInfoBox,
   centerInfoBox,
-  topRightPhotos,
-  bottomRightPhotos,
+  photos,
 }: ConsultancyProps) => {
+  console.log(photos);
+
+  const [currentTopImg, setCurrentTopImg] = useState<number>(0);
+  const [currentBottomImg, setCurrentBottomImg] = useState<number>(
+    photos.length - 1
+  );
+
+  const currentTopImgRef = useRef(currentTopImg);
+  const currentBottomImgRef = useRef(currentBottomImg);
+
+  currentTopImgRef.current = currentTopImg;
+  currentBottomImgRef.current = currentBottomImg;
+
+  const updateSlideImg = useCallback(() => {
+    setCurrentTopImg(mod(currentTopImgRef.current + 1, photos.length));
+    setCurrentBottomImg(mod(currentBottomImgRef.current - 1, photos.length));
+  }, [photos.length]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      updateSlideImg();
+    }, 4500);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [currentBottomImg, photos, updateSlideImg]);
+
   return (
     <IonPage>
       <IonContent forceOverscroll={false} scrollY={false}>
@@ -32,14 +61,14 @@ const Consultancy = ({
           <div id="top-right-stack">
             <MaskedImage
               mask={`/assets/consultorias/${consultancyId}/top-mask.svg`}
-              image={`/assets/consultorias/${consultancyId}/ce/ce1.jpeg`}
+              image={photos[currentTopImg]}
               variant="top"
             />
           </div>
           <div id="bottom-left-stack">
             <MaskedImage
               mask={`/assets/consultorias/${consultancyId}/bottom-mask.svg`}
-              image={`/assets/consultorias/${consultancyId}/ce/ce2.jpeg`}
+              image={photos[currentBottomImg]}
               variant="bottom"
             />
           </div>

@@ -40,16 +40,16 @@
 
 .infobox-button {
   position: absolute;
-  top: 37%;
-  left: 67%;
-  width: 24%;
+  top: 40%;
+  left: 72%;
+  width: 15%;
 }
 
 .infobox-button-reverse {
   position: absolute;
-  width: 24%;
-  bottom: 37%;
-  right: 67%;
+  width: 15%;
+  bottom: 40%;
+  right: 72%;
   transform: scale(1, -1);
 }
 

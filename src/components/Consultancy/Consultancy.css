@@ -35,6 +35,14 @@ ion-content {
 
 #infobox-central {
   position: absolute;
-  left: 45%;
-  top: 30%;
+  left: 12%;
+  top: 8%;
+}
+
+#infobox-central > #infobox-stack {
+  width: 700px;
+}
+
+#infobox-central > * > .infobox-button {
+  left: 70%;
 }

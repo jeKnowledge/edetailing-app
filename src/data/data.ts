@@ -233,8 +233,6 @@ export const consultancyData: {
     leftInfoBox?: InfoBoxProps;
     rightInfoBox?: InfoBoxProps;
     centerInfoBox?: InfoBoxProps;
-    topRightPhotos: string[];
-    bottomRightPhotos: string[];
   };
 } = {
   "ce-it": {
@@ -246,8 +244,6 @@ export const consultancyData: {
       consultancyID: "ce-it",
     },
     rightInfoBox: { title: "Imagem Total", to: "it", consultancyID: "ce-it" },
-    bottomRightPhotos: [],
-    topRightPhotos: [],
   },
   cp: {
     color: "red",
@@ -257,15 +253,11 @@ export const consultancyData: {
       to: "cp",
       consultancyID: "cp",
     },
-    bottomRightPhotos: [],
-    topRightPhotos: [],
   },
   af: {
     color: "green",
     variant: "single",
     centerInfoBox: { title: "Análise Facial", to: "af", consultancyID: "af" },
-    bottomRightPhotos: [],
-    topRightPhotos: [],
   },
   ps: {
     color: "orange",
@@ -275,15 +267,11 @@ export const consultancyData: {
       to: "ps",
       consultancyID: "ps",
     },
-    bottomRightPhotos: [],
-    topRightPhotos: [],
   },
   cd: {
     color: "pink",
     variant: "single",
     centerInfoBox: { title: "Closet Detox", to: "cd", consultancyID: "cd" },
-    bottomRightPhotos: [],
-    topRightPhotos: [],
   },
   cn: {
     color: "yellow",
@@ -293,8 +281,6 @@ export const consultancyData: {
       to: "cn",
       consultancyID: "cn",
     },
-    bottomRightPhotos: [],
-    topRightPhotos: [],
   },
   ceo: {
     color: "purple",
@@ -304,8 +290,6 @@ export const consultancyData: {
       to: "ceo",
       consultancyID: "ceo",
     },
-    bottomRightPhotos: [],
-    topRightPhotos: [],
   },
   fp: {
     color: "brown",
@@ -315,8 +299,6 @@ export const consultancyData: {
       to: "fp",
       consultancyID: "fp",
     },
-    bottomRightPhotos: [],
-    topRightPhotos: [],
   },
   mp: {
     color: "turquoise",
@@ -326,7 +308,5 @@ export const consultancyData: {
       to: "mp",
       consultancyID: "mp",
     },
-    bottomRightPhotos: [],
-    topRightPhotos: [],
   },
 };

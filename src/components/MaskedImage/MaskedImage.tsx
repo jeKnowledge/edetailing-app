@@ -20,7 +20,7 @@ const MaskedImage = ({
 
   return (
     <div className="image-stack">
-      <img id={imageId} src={image} alt="" />
+      <img className="auto-slider" id={imageId} src={image} alt="" />
       <img src={mask} alt="" />
     </div>
   );
