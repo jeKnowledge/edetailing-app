@@ -74,6 +74,61 @@ const Service = ({ serviceID }: ServiceProps) => {
     console.log(thisServiceData.slideText, currentTextSlide);
   }, [currentTextSlide, thisServiceData.slideText]);
 
+  let title;
+  if (thisServiceData.boasMasEscolhas) {
+    title = (
+      <IonLabel className={`title title-non-select-${theme}`}>
+        boa/má escolha
+      </IonLabel>
+    );
+  }
+
+  let slide;
+  if (thisServiceData.boasMasEscolhas) {
+    slide = (
+      <IonSlide>
+        <div className="text-content text-content-esq">
+          <div className="title-content title-content-esq">
+            <IonLabel className={`title title-non-select-${theme}`}>
+              benefícios
+            </IonLabel>
+            <IonLabel className={`title title-non-select-${theme}`}>
+              o que inclui?
+            </IonLabel>
+            <IonLabel className="title">boa/má escolha</IonLabel>
+          </div>
+        </div>
+
+        <IonImg
+          className="forma-boa-ma"
+          src="/assets/formas_geral/forma_ma_boa.svg"
+        />
+        <div className="content-boa-ma-escolha">
+          <div className="content-boa-escolha">
+            <p className="title-boa-ma-escolha style-boa-ma-escolha">
+              Boa Escolha de cores:
+            </p>
+            <div className="text-boa-ma-escolha style-boa-ma-escolha">
+              {thisServiceData.boasMasText[0]?.map((t) => (
+                <p key={t}>{t}</p>
+              ))}
+            </div>
+          </div>
+          <div className="content-ma-escolha">
+            <p className="title-boa-ma-escolha style-boa-ma-escolha">
+              Má Escolha de cores:
+            </p>
+            <div className="text-boa-ma-escolha style-boa-ma-escolha">
+              {thisServiceData.boasMasText[1]?.map((a) => (
+                <p key={a}>{a}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </IonSlide>
+    );
+  }
+
   return (
     <IonPage>
       <IonContent
@@ -92,6 +147,7 @@ const Service = ({ serviceID }: ServiceProps) => {
                   <IonLabel className={`title title-non-select-${theme}`}>
                     o que inclui?
                   </IonLabel>
+                  {title}
                 </div>
               </div>
               <IonImg
@@ -143,10 +199,12 @@ const Service = ({ serviceID }: ServiceProps) => {
                     benefícios
                   </IonLabel>
                   <IonLabel className="title">o que inclui?</IonLabel>
+                  {title}
                 </div>
               </div>
             </div>
           </IonSlide>
+          {slide}
         </IonSlides>
       </IonContent>
     </IonPage>

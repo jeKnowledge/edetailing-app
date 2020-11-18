@@ -69,7 +69,7 @@ p {
 
 .title-content {
   height: -webkit-fill-available;
-  width: max-content;
+  width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -79,10 +79,12 @@ p {
 
 .title-content-esq {
   align-items: flex-start;
+  text-align: start;
 }
 
 .title-content-dir {
   align-items: flex-end;
+  text-align: end;
 }
 
 .img-content {
@@ -104,6 +106,12 @@ p {
 .forma-branca-dir {
   left: 0;
   width: 869px;
+}
+
+.forma-boa-ma {
+  position: absolute;
+  width: 700px;
+  right: 30px;
 }
 
 .img-inclui {
@@ -178,6 +186,60 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.content-boa-ma-escolha {
+  width: 650px;
+  height: 500px;
+  display: grid;
+  z-index: 9999;
+  position: absolute;
+  right: 50px;
+}
+
+.content-boa-escolha {
+  position: absolute;
+  left: 20px;
+  width: 370px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content-ma-escolha {
+  width: 400px;
+  height: 250px;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.style-boa-ma-escolha {
+  font-family: Inter;
+  font-style: normal;
+  letter-spacing: 0em;
+  text-align: left;
+  color: black;
+}
+
+.title-boa-ma-escolha {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 34px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: black;
+}
+
+.text-boa-ma-escolha > p {
+  text-align: start;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 18px;
 }
 
 .title-non-select-yellow {

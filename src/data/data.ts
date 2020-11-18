@@ -44,6 +44,8 @@ export const serviceData: {
     slideText: string[][];
     labelsSlide: string[];
     imgSlideSize: number;
+    boasMasEscolhas: boolean;
+    boasMasText: string[][];
     duration: number;
     //TODO: smth about
   };
@@ -76,6 +78,8 @@ export const serviceData: {
       "book digital",
     ],
     imgSlideSize: 7,
+    boasMasEscolhas: false,
+    boasMasText: [[]],
     duration: 0,
   },
   it: {
@@ -105,6 +109,8 @@ export const serviceData: {
       "book digital",
     ],
     imgSlideSize: 1,
+    boasMasEscolhas: false,
+    boasMasText: [[]],
     duration: 0,
   },
   cp: {
@@ -133,6 +139,21 @@ export const serviceData: {
       "entrega de paleta cromática digital",
     ],
     imgSlideSize: 4,
+    boasMasEscolhas: true,
+    boasMasText: [
+      [
+        "Suaviza a textura da pele;",
+        "Valoriza traços;",
+        "Traz uma aparência saudável e jovem;",
+        "Suaviza olheiras e marcas de expressão;",
+        "Minimiza imperfeições;",
+      ],
+      [
+        "Evidencia manchas e sinais de expressão;",
+        "Destaca as imperfeições;",
+        "Denuncia sinais de cansaço;",
+      ],
+    ],
     duration: 0,
   },
   af: {
@@ -156,6 +177,8 @@ export const serviceData: {
       "book digital",
     ],
     imgSlideSize: 2,
+    boasMasEscolhas: false,
+    boasMasText: [[]],
     duration: 0,
   },
   ps: {
@@ -176,6 +199,8 @@ export const serviceData: {
       "aconselhamento de ajustes e proporções",
     ],
     imgSlideSize: 7,
+    boasMasEscolhas: false,
+    boasMasText: [[]],
     duration: 2,
   },
   cd: {
@@ -194,6 +219,8 @@ export const serviceData: {
       "elaboração de uma lista de compras com os possíveis itens em falta no guarda-roupa",
     ],
     imgSlideSize: 1,
+    boasMasEscolhas: false,
+    boasMasText: [[]],
     duration: 3,
   },
   cn: {
@@ -201,6 +228,8 @@ export const serviceData: {
     slideText: [],
     labelsSlide: [],
     imgSlideSize: 14,
+    boasMasEscolhas: false,
+    boasMasText: [[]],
     duration: 0,
   },
   ceo: {
@@ -208,6 +237,8 @@ export const serviceData: {
     slideText: [],
     labelsSlide: [],
     imgSlideSize: 4,
+    boasMasEscolhas: false,
+    boasMasText: [[]],
     duration: 0,
   },
   fp: {
@@ -215,6 +246,8 @@ export const serviceData: {
     slideText: [],
     labelsSlide: [],
     imgSlideSize: 3,
+    boasMasEscolhas: false,
+    boasMasText: [[]],
     duration: 0,
   },
   mp: {
@@ -222,6 +255,8 @@ export const serviceData: {
     slideText: [],
     labelsSlide: [],
     imgSlideSize: 4,
+    boasMasEscolhas: false,
+    boasMasText: [[]],
     duration: 0,
   },
 };
