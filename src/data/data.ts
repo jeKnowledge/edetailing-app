@@ -1,5 +1,4 @@
 import { InfoBoxProps } from "../components/InfoBox/InfoBox";
-
 // consultarias
 export const colorToConsultancy: Record<string, string> = {
   blue: "ce-it",
@@ -11,6 +10,19 @@ export const colorToConsultancy: Record<string, string> = {
   purple: "ceo",
   brown: "fp",
   turquoise: "mp",
+};
+
+// consultorias
+export const consultancyToColor: Record<string, string> = {
+  "ce-it": "blue",
+  cp: "red",
+  af: "green",
+  ps: "orange",
+  cd: "pink",
+  cn: "yellow",
+  ceo: "purple",
+  fp: "brown",
+  mp: "turquoise",
 };
 
 // serviços
@@ -261,14 +273,20 @@ export const serviceData: {
   },
 };
 
-export const consultancyData: {
-  [key: string]: {
-    color: string;
-    variant: "double" | "single";
-    leftInfoBox?: InfoBoxProps;
-    rightInfoBox?: InfoBoxProps;
-    centerInfoBox?: InfoBoxProps;
+export interface ConsultancyData {
+  color: string;
+  variant: "double" | "single";
+  leftInfoBox?: InfoBoxProps;
+  rightInfoBox?: InfoBoxProps;
+  centerInfoBox?: InfoBoxProps;
+  lampData: {
+    title: string;
+    text: string;
   };
+}
+
+export const consultancyData: {
+  [key: string]: ConsultancyData;
 } = {
   "ce-it": {
     color: "blue",
@@ -277,8 +295,23 @@ export const consultancyData: {
       title: "Consultoria de Estilo",
       to: "ce",
       consultancyID: "ce-it",
+      text: [
+        "E se pudesse ter um profissional a fazer-lhe um acompanhamento personalizado para ajudar a identificar e trabalhar o seu estilo? Faça esta viagem do seu interior para o seu exterior.",
+      ],
     },
-    rightInfoBox: { title: "Imagem Total", to: "it", consultancyID: "ce-it" },
+    rightInfoBox: {
+      title: "Imagem Total",
+      to: "it",
+      consultancyID: "ce-it",
+      text: [
+        "Gostaria de trabalhar a sua imagem de A a Z? Aqui encontra a consultoria mais completa e gratificante. Torne a sua imagem numa imagem inteligente.",
+      ],
+    },
+    lampData: {
+      title: "azul",
+      text:
+        "Sabia que o azul diminui a circulação sanguínea, reduza a temperatura corporal e baixa pressão arterial?",
+    },
   },
   cp: {
     color: "red",
@@ -287,12 +320,33 @@ export const consultancyData: {
       title: "Coloração Pessoal",
       to: "cp",
       consultancyID: "cp",
+      text: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam malesuada bibendum arcu vitae.",
+      ],
+    },
+    lampData: {
+      title: "vermelho",
+      text:
+        "sabia que o vermelho tem a capacidade de estimular, podendo mesmo aumentar a temperatura corporal e até provocar taquicardia?",
     },
   },
   af: {
     color: "green",
     variant: "single",
-    centerInfoBox: { title: "Análise Facial", to: "af", consultancyID: "af" },
+    centerInfoBox: {
+      title: "Consultoria De Análise Facial Detalhada",
+      to: "af",
+      consultancyID: "af",
+      text: [
+        "Qual o peso do rosto na nossa imagem?Quando ouvimos o nome ou nos lembramos de uma pessoa qual é a primeira imagem que nos vem à cabeça? É a imagem do rosto. Porquê? Porque o rosto carrega em si a identidade do indivíduo.",
+        "O rosto é a parte do corpo que carrega um maior número de elementos expressivos na identificação de uma pessoa e é a parte do corpo que mais se relaciona com o mundo e com os outros. É através do nosso rosto de nos expressamos e que criamos a empatia com os nossos interlocutores.",
+      ],
+    },
+    lampData: {
+      title: "verde",
+      text:
+        "Sabia que usar verde acalma e pode ajudar em momentos de depressão e tristeza?",
+    },
   },
   ps: {
     color: "orange",
@@ -301,12 +355,32 @@ export const consultancyData: {
       title: "Personal Shopping",
       to: "ps",
       consultancyID: "ps",
+      text: [
+        "Ajudamos na ida às compras para escolher os melhores cortes, cores e padrões para si. Tornamos as compras num momento consciente e prazeroso.",
+      ],
+    },
+    lampData: {
+      title: "laranja",
+      text:
+        "Sabia que o laranja é uma cor que os poder energético aumentar autoestima e incentivo ao intelecto?",
     },
   },
   cd: {
     color: "pink",
     variant: "single",
-    centerInfoBox: { title: "Closet Detox", to: "cd", consultancyID: "cd" },
+    centerInfoBox: {
+      title: "Closet Detox",
+      to: "cd",
+      consultancyID: "cd",
+      text: [
+        'E quando abrimos o nosso guarda-roupa que se encontra repleto e dizemos "não tenho nada para vestir!"?! Ajudamos a organizar o seu guarda-roupa de forma consciente e inteligente.',
+      ],
+    },
+    lampData: {
+      title: "rosa",
+      text:
+        "Sabia que a cor-de-rosa actua na área tegmental ventral que controla a sensação de recompensa pela saciedade de fome, sede e sexo.",
+    },
   },
   cn: {
     color: "yellow",
@@ -315,6 +389,14 @@ export const consultancyData: {
       title: "Consultoria de Noivos",
       to: "cn",
       consultancyID: "cn",
+      text: [
+        '"Só quero que o dia do meu casamento seja o mais feliz de sempre." Somos os parceiros certos. Ajudamos no processo de escolha do vestido ou fato em função do seu tipo de corpo. Também não esquecemos maquilhagem, acessórios e o ramo para lançar às suas amigas.',
+      ],
+    },
+    lampData: {
+      title: "azul",
+      text:
+        "Sabia que o azul diminui a circulação sanguínea, reduza a temperatura corporal e baixa pressão arterial? ",
     },
   },
   ceo: {
@@ -324,6 +406,15 @@ export const consultancyData: {
       title: "Consultoria Escolha de Óculos",
       to: "ceo",
       consultancyID: "ceo",
+      text: [
+        "O rosto é o elemento mais importante de toda a identidade visual. E os óculos são acessórios para auxiliar a visão mas também são elementos poderosíssimos para informar sobre estilo e personalidade de cada um.\n A depender dos elementos de design que o compõem (linhas, formas, cores, texturas e volumes parênteses eles influenciam o contacto visual e afetivo do interlocutor.",
+        "Os óculos também influenciam de maneira positiva ou negativa no equilíbrio das proporções faciais e corporais.\n Na minha consultoria de óculos todos esses pontos são analisados individualmente. Invista em si e na sua imagem.",
+      ],
+    },
+    lampData: {
+      title: "lilas",
+      text:
+        "Sabia que o lilás estimula a área do cérebro do pensamento abstrato? Ativando a criatividade e a imaginação?",
     },
   },
   fp: {
@@ -333,6 +424,14 @@ export const consultancyData: {
       title: "Formações e Palestras",
       to: "fp",
       consultancyID: "fp",
+      text: [
+        'Se tem uma destas perguntas, esta consultoria é para si! "Tenho uma empresa, como posso melhorar a sua imagem?", "será que a imagem que passo no meu local de trabalho é profissional?".',
+      ],
+    },
+    lampData: {
+      title: "castanho",
+      text:
+        "Sabia que o castanho a tua no sistema límbico  estrutura interna responsável pela resposta das nossas emoções?",
     },
   },
   mp: {
@@ -342,6 +441,15 @@ export const consultancyData: {
       title: "Maquilhagem Profissional",
       to: "mp",
       consultancyID: "mp",
+      text: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam malesuada bibendum arcu vitae. Habitasse platea dictumst quisque sagittis purus sit amet volutpat consequat.",
+        "Orci a scelerisque purus semper eget. Hac habitasse platea dictumst quisque sagittis purus. Ac odio tempor orci dapibus. Eget arcu dictum varius duis. Tellus integer feugiat scelerisque varius morbi enim nunc. Elit pellentesque habitant morbi tristique.",
+      ],
+    },
+    lampData: {
+      title: "verde",
+      text:
+        "Sabia que usar verde acalma e pode ajudar em momentos de depressão e tristeza?",
     },
   },
 };

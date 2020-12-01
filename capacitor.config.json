@@ -2,12 +2,16 @@
   "appId": "pt.jeknowledge.edetailing",
   "appName": "Edetailing",
   "bundledWebRuntime": false,
-  "npmClient": "npm",
+  "npmClient": "yarn",
   "webDir": "build",
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 0
     }
   },
-  "cordova": {}
+  "linuxAndroidStudioPath": "/opt/android-studio/bin/studio.sh",
+  "server": {
+    "url": "http://192.168.1.82:8100",
+    "cleartext": true
+  }
 }

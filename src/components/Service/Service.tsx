@@ -70,6 +70,7 @@ const Service = ({ serviceID }: ServiceProps) => {
     };
   }, [updateSlideImage, updateSlideImg]);
 
+  // DEBUG
   useEffect(() => {
     console.log(thisServiceData.slideText, currentTextSlide);
   }, [currentTextSlide, thisServiceData.slideText]);

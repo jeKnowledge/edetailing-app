@@ -26,3 +26,5 @@ package-lock.json
 yarn.lock
 secrets.ts
 sendgrid.env
+
+/android

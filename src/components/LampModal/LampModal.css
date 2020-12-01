@@ -1,0 +1,59 @@
+.lamp-modal {
+  --height: 40%;
+  --width: 55%;
+  background: transparent;
+}
+
+.lamp-modal > div[role="dialog"] {
+  border-radius: 40px !important;
+}
+
+.lamp-modal-base {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+#lamp-modal-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: x-large;
+  margin-bottom: 0.5rem;
+}
+
+#lamp-modal-text {
+  font-size: 20px;
+  width: 70%;
+  text-align: center;
+}
+
+.lamp-modal-yellow {
+  background: #fcd9a4 !important;
+}
+.lamp-modal-purple {
+  background: #a184a5 !important;
+}
+.lamp-modal-orange {
+  background: #eda48a !important;
+}
+.lamp-modal-blue {
+  background: #8cb8ba !important;
+}
+.lamp-modal-red {
+  background: #a05d63 !important;
+}
+.lamp-modal-green {
+  background: #98a881 !important;
+}
+.lamp-modal-pink {
+  background: #d376b4 !important;
+}
+.lamp-modal-brown {
+  background: #ad8679 !important;
+}
+.lamp-modal-turquoise {
+  background: #7fb29d !important;
+}

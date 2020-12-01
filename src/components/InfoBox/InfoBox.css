@@ -17,12 +17,14 @@
   font-size: 34px;
   font-weight: bold;
   width: 340px;
-  height: 70px;
-  top: 28%;
-  left: 30%;
+  height: 100px;
+  max-height: 100px;
+  top: 29%;
+  left: 32%;
   text-align: left;
   display: flex;
   align-items: center;
+  text-transform: uppercase;
 }
 
 #infobox-title-reverse {
@@ -30,12 +32,14 @@
   font-size: 34px;
   font-weight: bold;
   width: 340px;
-  height: 70px;
-  bottom: 28%;
-  right: 30%;
+  height: 100px;
+  max-height: 100px;
+  bottom: 29%;
+  right: 32%;
   text-align: left;
   display: flex;
   align-items: center;
+  text-transform: uppercase;
 }
 
 .infobox-button {
@@ -58,8 +62,9 @@
   color: black;
   font-size: 18px;
   width: 400px;
-  height: 110px;
-  top: 57%;
+  max-height: 150px;
+  height: 150px;
+  top: 51%;
   left: 25%;
   text-align: left;
   display: flex;

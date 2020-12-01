@@ -39,7 +39,9 @@ const HomePage: React.FC = () => {
             </div>
           </div>
           <HomeFloatingMenu isOpen={isOpen} updateIsOpen={setIsOpen} />
-          <IonButton onClick={test}>click me</IonButton>
+          <IonButton disabled onClick={test}>
+            click me
+          </IonButton>
         </>
       </IonContent>
     </IonPage>

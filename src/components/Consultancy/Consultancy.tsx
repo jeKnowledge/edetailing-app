@@ -1,7 +1,15 @@
 import { IonContent, IonPage } from "@ionic/react";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { consultancyData } from "../../data/data";
 import ConsultancyFloatingMenu from "../ConsultancyFloatingMenu";
 import InfoBox, { InfoBoxProps } from "../InfoBox/InfoBox";
+import LampModal from "../LampModal/LampModal";
 import MaskedImage from "../MaskedImage/MaskedImage";
 import "./Consultancy.css";
 
@@ -26,12 +34,23 @@ const Consultancy = ({
   centerInfoBox,
   photos,
 }: ConsultancyProps) => {
-  console.log(photos);
-
   const [currentTopImg, setCurrentTopImg] = useState<number>(0);
   const [currentBottomImg, setCurrentBottomImg] = useState<number>(
     photos.length - 1
   );
+  const [showModal, setShowModal] = useState(false);
+
+  const thisConsultancyData = useMemo(() => consultancyData[consultancyId], [
+    consultancyId,
+  ]);
+
+  const openModal = useCallback(() => {
+    setShowModal(true);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setShowModal(false);
+  }, []);
 
   const currentTopImgRef = useRef(currentTopImg);
   const currentBottomImgRef = useRef(currentBottomImg);
@@ -76,6 +95,7 @@ const Consultancy = ({
             <>
               <div id="infobox-left">
                 <InfoBox
+                  text={leftInfoBox?.text as string[]}
                   title={leftInfoBox?.title as string}
                   to={"/services/" + leftInfoBox?.to}
                   consultancyID={leftInfoBox?.consultancyID as string}
@@ -83,6 +103,7 @@ const Consultancy = ({
               </div>
               <div id="infobox-right">
                 <InfoBox
+                  text={rightInfoBox?.text as string[]}
                   title={rightInfoBox?.title as string}
                   to={"/services/" + rightInfoBox?.to}
                   consultancyID={rightInfoBox?.consultancyID as string}
@@ -93,13 +114,29 @@ const Consultancy = ({
           ) : (
             <div id="infobox-central">
               <InfoBox
+                expands={false}
+                text={centerInfoBox?.text as string[]}
                 title={centerInfoBox?.title as string}
                 to={"/services/" + centerInfoBox?.to}
                 consultancyID={centerInfoBox?.consultancyID as string}
               />
             </div>
           )}
+          <span id="lamp" onClick={openModal}>
+            <img
+              src={`/assets/consultorias/${consultancyId}/lamp-${
+                showModal ? "on" : "off"
+              }.svg`}
+              alt="lamp"
+            />
+          </span>
         </div>
+        <LampModal
+          open={showModal}
+          onClose={closeModal}
+          theme={thisConsultancyData.color}
+          lampData={thisConsultancyData.lampData}
+        />
       </IonContent>
     </IonPage>
   );
