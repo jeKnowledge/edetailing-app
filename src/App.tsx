@@ -3,6 +3,7 @@ import { IonReactRouter } from "@ionic/react-router";
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import ConsultancyWrapper from "./components/ConsultancyWrapper";
+import PaulaPrada from "./components/PaulaPrada";
 import Service from "./components/Service";
 import { colorToConsultancy, ConsultancyID, serviceToColor } from "./data/data";
 import HomePage from "./pages/HomePage";
@@ -36,6 +37,10 @@ const App: React.FC = () => (
             <Service key={service} serviceID={service} />
           </Route>
         ))}
+
+        <Route path="/paulaprada" exact={true}>
+          <PaulaPrada />
+        </Route>
 
         <Route exact path="/" render={() => <Redirect to="/home" />} />
       </IonRouterOutlet>

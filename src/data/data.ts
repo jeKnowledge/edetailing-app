@@ -453,3 +453,22 @@ export const consultancyData: {
     },
   },
 };
+
+export const paulaprada: {
+  textPaulaPrada: string[];
+  text: string[];
+} = {
+  textPaulaPrada: [
+    "O meu nome é Paula Prada e sou Consultora de Imagem e Maquilhadora Profissional.",
+    "Após 20 anos ligada à indústria farmacêutica decidi que era a hora de deixar uma pegada positiva no mundo.",
+    "Criei então o conceito de Consultoria de Imagem Terapêutica, pois no meu trabalho inédito, inovo utilizando a imagem dos meus clientes de acordo com os seus objectivos, numa perspectiva de atingir o melhor plano de identidade visual para cada pessoa, fazendo emergir a melhor versão de cada um.",
+  ],
+  text: [
+    "missão",
+    "Inspirar os outros para a ideia que não basta fazer, é preciso fazer diferente. E fazer diferente passa por uma imagem pessoal ou corporativa consciente.",
+    "visão",
+    "Empenho para me tornar a consultora de comunicação e imagem em Portugal mais especializada na área terapêutica.",
+    "valores",
+    "Compromisso. Ética. Consciência.",
+  ],
+};
