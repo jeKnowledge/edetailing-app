@@ -18,56 +18,50 @@ const PaulaPrada: React.FC = () => {
         <ConsultancyFloatingMenu />
         <IonSlides>
           <IonSlide>
-            <div id="page">
-              <div className="content-forma">
-                <IonLabel className="title-paula-prada">quem sou?</IonLabel>
-                <IonImg
-                  className="forma_paula_prada"
-                  src="/assets/paula_prada_page/forma_paula_prada.svg"
-                  alt=""
-                />
-                <div className="content-text-paula-prada">
-                  <IonLabel className="text-paula-prada">
-                    {paulaprada.textPaulaPrada?.map((t) => (
-                      <p key={t}>{t}</p>
-                    ))}
-                  </IonLabel>
-                </div>
-                <IonImg
-                  className="forma_esq"
-                  src="/assets/paula_prada_page/forma_esq.svg"
-                  alt=""
-                />
-              </div>
+            <IonLabel className="title-quem-sou title-paula-prada">
+              quem sou?
+            </IonLabel>
+            <IonImg
+              className="forma_paula_prada"
+              src="/assets/paula_prada_page/forma_paula_prada.svg"
+            />
+            <div className="content-text-paula-prada">
+              <IonLabel className="text text-paula-prada">
+                {paulaprada.textPaulaPrada?.map((t) => (
+                  <p key={t}>{t}</p>
+                ))}
+              </IonLabel>
             </div>
+            <IonImg
+              className="forma_esq"
+              src="/assets/paula_prada_page/forma_esq.svg"
+            />
           </IonSlide>
           <IonSlide className="ion-slide-left">
-            <div id="page1">
-              <div className="content-forma">
-                <IonImg
-                  className=""
-                  src="/assets/paula_prada_page/forma_dir.svg"
-                  alt=""
-                />
-                <div className="content-esq content-missao">
-                  <IonLabel className="title-esq">
-                    {paulaprada.text[0]}
-                  </IonLabel>
-                  <IonLabel className="text-esq">{paulaprada.text[1]}</IonLabel>
-                </div>
-                <div className="content-esq content-visao">
-                  <IonLabel className="title-esq">
-                    {paulaprada.text[2]}
-                  </IonLabel>
-                  <IonLabel className="text-esq">{paulaprada.text[3]}</IonLabel>
-                </div>
-                <div className="content-esq content-valores">
-                  <IonLabel className="title-esq">
-                    {paulaprada.text[4]}
-                  </IonLabel>
-                  <IonLabel className="text-esq">{paulaprada.text[5]}</IonLabel>
-                </div>
-              </div>
+            <IonImg src="/assets/paula_prada_page/forma_dir.svg" />
+            <div className="content-dir content-missao">
+              <IonLabel className="title-quem-sou title-quem-sou-dir">
+                {paulaprada.text[0].title}
+              </IonLabel>
+              <IonLabel className="text text-dir">
+                {paulaprada.text[0].text}
+              </IonLabel>
+            </div>
+            <div className="content-dir content-visao">
+              <IonLabel className="title-quem-sou title-quem-sou-dir">
+                {paulaprada.text[1].title}
+              </IonLabel>
+              <IonLabel className="text text-dir">
+                {paulaprada.text[1].text}
+              </IonLabel>
+            </div>
+            <div className="content-dir content-valores">
+              <IonLabel className="title-quem-sou title-quem-sou-dir">
+                {paulaprada.text[2].title}
+              </IonLabel>
+              <IonLabel className="text text-dir">
+                {paulaprada.text[2].text}
+              </IonLabel>
             </div>
           </IonSlide>
         </IonSlides>
