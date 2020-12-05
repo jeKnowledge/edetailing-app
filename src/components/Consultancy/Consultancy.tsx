@@ -11,6 +11,7 @@ import ConsultancyFloatingMenu from "../ConsultancyFloatingMenu";
 import InfoBox, { InfoBoxProps } from "../InfoBox/InfoBox";
 import LampModal from "../LampModal/LampModal";
 import MaskedImage from "../MaskedImage/MaskedImage";
+import MaskedVideo from "../MaskedVideo/MaskedVideo";
 import "./Consultancy.css";
 
 interface ConsultancyProps {
@@ -78,11 +79,19 @@ const Consultancy = ({
         <div id="page">
           <ConsultancyFloatingMenu />
           <div id="top-right-stack">
-            <MaskedImage
-              mask={`/assets/consultorias/${consultancyId}/top-mask.svg`}
-              image={photos[currentTopImg]}
-              variant="top"
-            />
+            {thisConsultancyData.topCornerVideo ? (
+              <MaskedVideo
+                mask={`/assets/consultorias/${consultancyId}/top-mask.svg`}
+                url={thisConsultancyData.topCornerVideo.url}
+                variant="top"
+              />
+            ) : (
+              <MaskedImage
+                mask={`/assets/consultorias/${consultancyId}/top-mask.svg`}
+                image={photos[currentTopImg]}
+                variant="top"
+              />
+            )}
           </div>
           <div id="bottom-left-stack">
             <MaskedImage

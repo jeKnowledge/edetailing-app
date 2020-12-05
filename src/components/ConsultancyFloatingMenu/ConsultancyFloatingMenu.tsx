@@ -62,7 +62,7 @@ const ConsultancyFloatingMenu = ({
           onClick={home}
         />
         <ChildButton
-          icon={<img src="/assets/menu-icon.svg" alt="home" />}
+          icon={<img src="/assets/menu-back.svg" alt="back" />}
           background="transparent"
           size={80}
           onClick={back}

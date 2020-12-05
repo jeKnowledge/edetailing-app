@@ -276,6 +276,12 @@ export const serviceData: {
 export interface ConsultancyData {
   color: string;
   variant: "double" | "single";
+  topCornerVideo?: {
+    url: string;
+  };
+  bottomCornerVideo?: {
+    url: string;
+  };
   leftInfoBox?: InfoBoxProps;
   rightInfoBox?: InfoBoxProps;
   centerInfoBox?: InfoBoxProps;
@@ -291,6 +297,9 @@ export const consultancyData: {
   "ce-it": {
     color: "blue",
     variant: "double",
+    topCornerVideo: {
+      url: "/assets/sample.mp4",
+    },
     leftInfoBox: {
       title: "Consultoria de Estilo",
       to: "ce",
@@ -321,7 +330,8 @@ export const consultancyData: {
       to: "cp",
       consultancyID: "cp",
       text: [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam malesuada bibendum arcu vitae.",
+        "Já lhe aconteceu estar perfeitamente bem e alguém lhe perguntar se estava doente? Sabia que provavelmente seria porque estava a usar cores junto ao seu rosto que não favoreciam? Cores? Como assim?",
+        "Pode ser cor de cabelo, maquilhagem, óculos, acessórios até a roupa junto ao rosto.Sabe que cores favorecem mais o seu rosto? Descubra através de uma sessão de coloração pessoal!",
       ],
     },
     lampData: {
@@ -338,7 +348,7 @@ export const consultancyData: {
       to: "af",
       consultancyID: "af",
       text: [
-        "Qual o peso do rosto na nossa imagem?Quando ouvimos o nome ou nos lembramos de uma pessoa qual é a primeira imagem que nos vem à cabeça? É a imagem do rosto. Porquê? Porque o rosto carrega em si a identidade do indivíduo.",
+        "Qual o peso do rosto na nossa imagem? Quando ouvimos o nome ou nos lembramos de uma pessoa qual é a primeira imagem que nos vem à cabeça? É a imagem do rosto. Porquê? Porque o rosto carrega em si a identidade do indivíduo.",
         "O rosto é a parte do corpo que carrega um maior número de elementos expressivos na identificação de uma pessoa e é a parte do corpo que mais se relaciona com o mundo e com os outros. É através do nosso rosto de nos expressamos e que criamos a empatia com os nossos interlocutores.",
       ],
     },
@@ -407,8 +417,8 @@ export const consultancyData: {
       to: "ceo",
       consultancyID: "ceo",
       text: [
-        "O rosto é o elemento mais importante de toda a identidade visual. E os óculos são acessórios para auxiliar a visão mas também são elementos poderosíssimos para informar sobre estilo e personalidade de cada um.\n A depender dos elementos de design que o compõem (linhas, formas, cores, texturas e volumes parênteses eles influenciam o contacto visual e afetivo do interlocutor.",
-        "Os óculos também influenciam de maneira positiva ou negativa no equilíbrio das proporções faciais e corporais.\n Na minha consultoria de óculos todos esses pontos são analisados individualmente. Invista em si e na sua imagem.",
+        "Identificar os seus traços faciais, a sua paleta cromática e a mensagem que pretende passar são três passos muito importantes para que a sua vida fique mais fácil e intuitiva. Quando falamos em armações de óculos, por vezes temos dificuldade em saber quais as que nos favorecem mais e que cores nos ficam melhor.",
+        "Quando falamos de uma peça tão importante que estará sempre presente no nosso rosto, não acha que devemos reduzir a nossa margem de erro? Na minha consultoria de óculos todos esses pontos são analisados individualmente. Invista em si e na sua imagem.",
       ],
     },
     lampData: {
