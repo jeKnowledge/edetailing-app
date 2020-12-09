@@ -153,7 +153,7 @@ const Service = ({ serviceID }: ServiceProps) => {
               </div>
               <IonImg
                 className="forma-branca forma-branca-esq"
-                src="/assets/formas_geral/forma_branca_esq.svg"
+                src="/assets/formas_geral/forma_branca_esq.png"
                 alt="forma branca esquerda"
               />
               <div className="description">
@@ -181,7 +181,7 @@ const Service = ({ serviceID }: ServiceProps) => {
             <div className="slide-content">
               <IonImg
                 className="forma-branca forma-branca-dir"
-                src="/assets/formas_geral/forma_branca_dir.svg"
+                src="/assets/formas_geral/forma_branca_dir.png"
                 alt="forma branca direita"
               />
               <IonImg

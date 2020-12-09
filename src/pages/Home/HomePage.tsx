@@ -1,14 +1,12 @@
 import { IonButton, IonContent, IonImg, IonPage } from "@ionic/react";
 import axios from "axios";
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import { useHistory } from "react-router";
-import Chameleon from "../components/Chameleon/Chameleon";
-import HomeFloatingMenu from "../components/HomeFloatingMenu";
+import Chameleon from "../../components/Chameleon/Chameleon";
+import HomeFloatingMenu from "../../components/HomeFloatingMenu";
 import "./HomePage.css";
 
 const HomePage: React.FC = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
   const history = useHistory();
   const redirect = useCallback(() => {
     return history.push("/paulaprada");
@@ -43,7 +41,7 @@ const HomePage: React.FC = () => {
               onClick={() => redirect()}
             />
           </div>
-          <HomeFloatingMenu isOpen={isOpen} updateIsOpen={setIsOpen} />
+          <HomeFloatingMenu />
           <IonButton disabled onClick={test}>
             click me
           </IonButton>

@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { consultancyData, ConsultancyID, serviceData } from "../../data/data";
 import { getServiceData } from "../../hooks/getServiceData";
-import HomePage from "../../pages/HomePage";
+import HomePage from "../../pages/Home/HomePage";
 import Consultancy from "../Consultancy";
 
 interface ConsultancyWrapperProps {

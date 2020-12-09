@@ -493,3 +493,31 @@ export const paulaprada: {
     },
   ],
 };
+
+export const prices: {
+  [service: string]: {
+    prices: string[];
+  };
+} = {
+  "Consultoria de Imagem Inteligente": { prices: ["150€"] },
+  "Consultoria de Imagem Inteligente Total": {
+    prices: [
+      "600€ ( análise facial básica)",
+      "680€ ( análise facial detalhada)",
+    ],
+  },
+  "Consultoria de Análise Facial Detalhada": { prices: ["200€"] },
+  "Coloração pessoal": { prices: ["80€"] },
+  "Closet Detox": { prices: ["150€ mínimo"] },
+  "Personal Shopping": { prices: ["150€ mínimo"] },
+  "Consultoria de Noivos": {
+    prices: [
+      "500€ ( com maquilhagem no dia do casamento)",
+      "400€( sem maquilhagem)",
+      "250€ ( só maquilhagem sem consultoria de imagem)",
+    ],
+  },
+  "Consultoria Escolha de Óculos": { prices: ["100€"] },
+  "Maquilhagem profissional": { prices: ["30€"] },
+  "Formação e palestras": { prices: ["125€/h"] },
+};

@@ -39,12 +39,30 @@
   height: 80%;
 }
 
-.modal-fullscreen {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  --width: 100vw;
-  --height: 100vh;
+.video-modal {
+  --width: 1000px;
+  --heightb: 700px;
+  background: #000000e6;
+  border: none;
+}
+
+.video-modal > ion-backdrop {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.video-modal > div {
+  border: none !important;
+  height: 550px !important;
+  border-radius: 0 !important;
+}
+
+.video-modal-base {
+  border: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
 }

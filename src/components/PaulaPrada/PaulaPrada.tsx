@@ -23,7 +23,7 @@ const PaulaPrada: React.FC = () => {
             </IonLabel>
             <IonImg
               className="forma_paula_prada"
-              src="/assets/paula_prada_page/forma_paula_prada.svg"
+              src="/assets/paula_prada_page/forma_paula_prada.png"
             />
             <div className="content-text-paula-prada">
               <IonLabel className="text text-paula-prada">

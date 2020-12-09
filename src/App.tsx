@@ -6,7 +6,8 @@ import ConsultancyWrapper from "./components/ConsultancyWrapper";
 import PaulaPrada from "./components/PaulaPrada";
 import Service from "./components/Service";
 import { colorToConsultancy, ConsultancyID, serviceToColor } from "./data/data";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/Home/HomePage";
+import Prices from "./pages/Prices/Prices";
 
 const App: React.FC = () => (
   <IonApp>
@@ -40,6 +41,10 @@ const App: React.FC = () => (
 
         <Route path="/paulaprada" exact={true}>
           <PaulaPrada />
+        </Route>
+
+        <Route path="/prices" exact={true}>
+          <Prices />
         </Route>
 
         <Route exact path="/" render={() => <Redirect to="/home" />} />

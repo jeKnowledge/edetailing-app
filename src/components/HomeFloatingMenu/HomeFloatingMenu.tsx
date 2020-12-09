@@ -1,18 +1,23 @@
-import React, { SetStateAction } from "react";
+import React, { useCallback, useState } from "react";
 import {
   ChildButton,
   Directions,
   FloatingMenu,
   MainButton,
 } from "react-floating-button-menu";
+import { useHistory } from "react-router";
 import "./../ConsultancyFloatingMenu/ConsultancyFloatingMenu.css";
 
-interface HomeFloatingMenuProps {
-  isOpen: boolean;
-  updateIsOpen: (v: SetStateAction<boolean>) => void;
-}
+const HomeFloatingMenu = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const history = useHistory();
+  const redirect = useCallback(
+    (path: string) => {
+      return history.push("" + path);
+    },
+    [history]
+  );
 
-const HomeFloatingMenu = ({ isOpen, updateIsOpen }: HomeFloatingMenuProps) => {
   return (
     <span id="floating-button">
       <FloatingMenu
@@ -31,14 +36,14 @@ const HomeFloatingMenu = ({ isOpen, updateIsOpen }: HomeFloatingMenuProps) => {
             />
           }
           background="transparent"
-          onClick={() => updateIsOpen((prev) => !prev)}
+          onClick={() => setIsOpen((prev) => !prev)}
           size={80}
         />
         <ChildButton
           icon={<img src="/assets/menu-icon.svg" alt="home" />}
           background="transparent"
           size={80}
-          onClick={() => void 0}
+          onClick={() => redirect("/prices")}
         />
         <ChildButton
           icon={<img src="/assets/menu-icon.svg" alt="home" />}
