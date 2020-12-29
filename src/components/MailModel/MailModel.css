@@ -1,0 +1,42 @@
+.mail-model {
+  background: transparent;
+}
+
+.mail-model > div[role="dialog"] {
+  border-radius: 40px !important;
+  --height: 70% !important;
+  --width: 80% !important;
+}
+
+.mail-modal-grey {
+  padding: 30px;
+  height: 100%;
+  background: #f5f5f5 !important;
+}
+
+.mail-modal-title {
+  font-style: normal;
+  font-size: 21px;
+  line-height: 40px;
+  color: #894343;
+  padding-bottom: 20px;
+}
+
+.mail-modal-color {
+  color: #000000;
+  font-size: 31px;
+}
+
+.mail-modal-item {
+  --background: transparent;
+  color: #121212;
+  --border-style: none !important;
+}
+
+.mail-modal-check-box {
+  --background: #d5d5d5 !important;
+  --background-checked: #d5d5d5 !important;
+  --border-color: #d5d5d5 !important;
+  --border-color-checked: #d5d5d5 !important;
+  --checkmark-color: #000000;
+}

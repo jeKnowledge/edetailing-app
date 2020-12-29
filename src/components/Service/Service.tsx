@@ -15,6 +15,7 @@ import React, {
 } from "react";
 import { serviceData, serviceToColor } from "../../data/data";
 import ConsultancyFloatingMenu from "../ConsultancyFloatingMenu";
+import MailModal from "../MailModel/MailModel";
 import "./Service.css";
 
 const mod = (n: number, m: number): number => {
@@ -35,20 +36,82 @@ const Service = ({ serviceID }: ServiceProps) => {
   const [currentImg, setcurrentImg] = useState<number>(0);
   const currentLabelRef = useRef(currentLabel);
   const currentImgRef = useRef(currentImg);
+
+  const [isExpanded, setIsExpanded] = React.useState(true);
+
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = useCallback(() => {
+    setShowModal(true);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setShowModal(false);
+  }, []);
+
   currentLabelRef.current = currentLabel;
   currentImgRef.current = currentImg;
 
+  const slideText: string[][] = useMemo(() => {
+    let j,
+      k = 0,
+      i = 0;
+
+    const array: string[][] = [];
+    if (mod(thisServiceData.slideText.length, 3) !== 1) {
+      console.log("ntrei");
+      for (i; i < Math.round(thisServiceData.slideText.length / 3); i++) {
+        j = 0;
+        array.push([]);
+        for (k; k < thisServiceData.slideText.length; k++) {
+          array[i].push(thisServiceData.slideText[k]);
+          console.log(thisServiceData.slideText[k]);
+          j++;
+          if (j === 3) {
+            k = k + 1;
+            break;
+          }
+        }
+      }
+    } else {
+      for (i; i < Math.round(thisServiceData.slideText.length / 3) - 1; i++) {
+        j = 0;
+        array.push([]);
+        for (k; k < thisServiceData.slideText.length; k++) {
+          array[i].push(thisServiceData.slideText[k]);
+          console.log(thisServiceData.slideText[k]);
+          j++;
+          if (j === 3) {
+            k = k + 1;
+            break;
+          }
+        }
+      }
+
+      for (i; i < Math.round(thisServiceData.slideText.length / 3) + 1; i++) {
+        j = 0;
+        array.push([]);
+        for (k; k < thisServiceData.slideText.length; k++) {
+          array[i].push(thisServiceData.slideText[k]);
+          console.log(thisServiceData.slideText[k]);
+          j++;
+          if (j === 2) {
+            k = k + 1;
+            break;
+          }
+        }
+      }
+    }
+    return array;
+  }, [thisServiceData.slideText]);
+
   const forwardCurrentTextSlide = useCallback(() => {
-    setCurrentTextSlide(
-      mod(currentTextSlide + 1, thisServiceData.slideText.length)
-    );
-  }, [currentTextSlide, thisServiceData.slideText.length]);
+    setCurrentTextSlide(mod(currentTextSlide + 1, slideText.length));
+  }, [currentTextSlide, slideText.length]);
 
   const backwardCurrentTextSlide = useCallback(() => {
-    setCurrentTextSlide(
-      mod(currentTextSlide - 1, thisServiceData.slideText.length)
-    );
-  }, [currentTextSlide, thisServiceData.slideText.length]);
+    setCurrentTextSlide(mod(currentTextSlide - 1, slideText.length));
+  }, [currentTextSlide, slideText.length]);
 
   const updateSlideImage = useCallback(() => {
     setcurrentLabel(
@@ -69,11 +132,6 @@ const Service = ({ serviceID }: ServiceProps) => {
       clearTimeout(timer);
     };
   }, [updateSlideImage, updateSlideImg]);
-
-  // DEBUG
-  useEffect(() => {
-    console.log(thisServiceData.slideText, currentTextSlide);
-  }, [currentTextSlide, thisServiceData.slideText]);
 
   let title;
   if (thisServiceData.boasMasEscolhas) {
@@ -157,7 +215,7 @@ const Service = ({ serviceID }: ServiceProps) => {
                 alt="forma branca esquerda"
               />
               <div className="description">
-                {thisServiceData.slideText[currentTextSlide]?.map((t) => (
+                {slideText[currentTextSlide]?.map((t) => (
                   <p className="description-text" key={t}>
                     {t}
                   </p>
@@ -203,7 +261,13 @@ const Service = ({ serviceID }: ServiceProps) => {
                   {title}
                 </div>
               </div>
+              <IonImg
+                className="mailIcon"
+                src="/assets/mailIcon.svg"
+                onClick={openModal}
+              />
             </div>
+            <MailModal open={showModal} onClose={closeModal} />
           </IonSlide>
           {slide}
         </IonSlides>
