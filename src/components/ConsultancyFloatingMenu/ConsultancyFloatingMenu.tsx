@@ -25,13 +25,15 @@ const ConsultancyFloatingMenu = ({
     else {
       history.replace("/home");
       // TODO: maybe there is another way to reset history stack?
-      window.location.reload();
+      // window.location.reload();
     }
+    setMenuIsOpen(false);
   }, [history, homeButtonAction]);
 
   const back = useCallback(() => {
     if (backButtonAction) backButtonAction();
     else history.goBack();
+    setMenuIsOpen(false);
   }, [backButtonAction, history]);
 
   return (

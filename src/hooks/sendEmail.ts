@@ -1,7 +1,7 @@
 import "@capacitor-community/http";
 import { Capacitor, Plugins } from "@capacitor/core";
 import sgMail, { MailDataRequired } from "@sendgrid/mail";
-import { API_KEY } from "../secrets";
+import { SENDGRID_API } from "../secrets";
 
 export const sendEmail = ({
   to,
@@ -52,7 +52,7 @@ export const sendEmail = ({
       },
     });
   } else {
-    sgMail.setApiKey(API_KEY);
+    sgMail.setApiKey(SENDGRID_API);
     const msg: MailDataRequired = {
       to: to,
       from: "paula.prada@jeknowledge.com",

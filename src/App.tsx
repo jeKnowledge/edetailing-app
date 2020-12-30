@@ -8,10 +8,10 @@ import Service from "./components/Service";
 import { colorToConsultancy, ConsultancyID, serviceToColor } from "./data/data";
 import HomePage from "./pages/Home/HomePage";
 import Prices from "./pages/Prices/Prices";
+import DropboxTest from "./tests/DropboxTest";
 
 const App: React.FC = () => (
   <IonApp>
-    {/* TODO: Extract this to component */}
     <IonReactRouter>
       <IonRouterOutlet>
         <Route path="/home" exact={true}>
@@ -45,6 +45,10 @@ const App: React.FC = () => (
 
         <Route path="/prices" exact={true}>
           <Prices />
+        </Route>
+
+        <Route path="/dropbox" exact={true}>
+          <DropboxTest />
         </Route>
 
         <Route exact path="/" render={() => <Redirect to="/home" />} />

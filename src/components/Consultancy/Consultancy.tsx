@@ -40,6 +40,8 @@ const Consultancy = ({
     photos.length - 1
   );
   const [showModal, setShowModal] = useState(false);
+  // TODO: THIS
+  const [loading, setLoading] = useState(true);
 
   const thisConsultancyData = useMemo(() => consultancyData[consultancyId], [
     consultancyId,
@@ -121,7 +123,7 @@ const Consultancy = ({
               </div>
             </>
           ) : (
-            <div id="infobox-central">
+            <div id="infobox-central" onLoad={() => console.log("...")}>
               <InfoBox
                 expands={false}
                 text={centerInfoBox?.text as string[]}

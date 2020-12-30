@@ -38,7 +38,7 @@ const PaulaPrada: React.FC = () => {
             />
           </IonSlide>
           <IonSlide className="ion-slide-left">
-            <IonImg src="/assets/paula_prada_page/forma_dir.svg" />
+            <IonImg src="/assets/paula_prada_page/forma_dir.png" />
             <div className="content-dir content-missao">
               <IonLabel className="title-quem-sou title-quem-sou-dir">
                 {paulaprada.text[0].title}

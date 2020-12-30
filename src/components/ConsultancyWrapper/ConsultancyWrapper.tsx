@@ -48,14 +48,14 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
   }, [consultancyId]);
 
   switch (consultancyId) {
-    case "ce-it":
+    case "ip":
       return (
         <Consultancy
-          consultancyId="ce-it"
-          variant={consultancyData["ce-it"].variant as "double"}
+          consultancyId="ip"
+          variant={consultancyData["ip"].variant as "double"}
           photos={generatePhotosUrl()}
-          rightInfoBox={consultancyData["ce-it"].rightInfoBox}
-          leftInfoBox={consultancyData["ce-it"].leftInfoBox}
+          rightInfoBox={consultancyData["ip"].rightInfoBox}
+          leftInfoBox={consultancyData["ip"].leftInfoBox}
         />
       );
     case "cp":

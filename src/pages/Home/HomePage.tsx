@@ -1,5 +1,4 @@
 import { IonButton, IonContent, IonImg, IonPage } from "@ionic/react";
-import axios from "axios";
 import React, { useCallback } from "react";
 import { useHistory } from "react-router";
 import Chameleon from "../../components/Chameleon/Chameleon";
@@ -8,18 +7,12 @@ import "./HomePage.css";
 
 const HomePage: React.FC = () => {
   const history = useHistory();
-  const redirect = useCallback(() => {
-    return history.push("/paulaprada");
-  }, [history]);
-
-  const test = useCallback(async () => {
-    axios.defaults.headers.common["Authorization"] =
-      "Bearer M0m_VAkl-IIAAAAAAAAAAfEX_iD7hwQEiUTLi0EZcdT2toZIm9TB_DViOzVWpuos";
-    axios.defaults.headers.common["Dropbox-API-Arg"] =
-      '{"path": "/DOCS/citing.md"}';
-
-    await axios.post("http://content.dropboxapi.com/2/files/download");
-  }, []);
+  const redirect = useCallback(
+    (path: string) => {
+      return history.push(path);
+    },
+    [history]
+  );
 
   return (
     <IonPage style={{ overflow: "hidden", position: "fixed" }}>
@@ -38,12 +31,12 @@ const HomePage: React.FC = () => {
               id="signature"
               src="/assets/paula_prada/signature_paula.svg"
               alt="signature"
-              onClick={() => redirect()}
+              onClick={() => redirect("/paulaprada")}
             />
           </div>
           <HomeFloatingMenu />
-          <IonButton disabled onClick={test}>
-            click me
+          <IonButton onClick={() => redirect("/dropbox")}>
+            go to dropbox test
           </IonButton>
         </>
       </IonContent>

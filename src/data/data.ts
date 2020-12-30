@@ -1,7 +1,7 @@
 import { InfoBoxProps } from "../components/InfoBox/InfoBox";
 // consultarias
 export const colorToConsultancy: Record<string, string> = {
-  blue: "ce-it",
+  blue: "ip",
   red: "cp",
   green: "af",
   orange: "ps",
@@ -14,7 +14,7 @@ export const colorToConsultancy: Record<string, string> = {
 
 // consultorias
 export const consultancyToColor: Record<string, string> = {
-  "ce-it": "blue",
+  ip: "blue",
   cp: "red",
   af: "green",
   ps: "orange",
@@ -27,8 +27,8 @@ export const consultancyToColor: Record<string, string> = {
 
 // serviços
 export const serviceToColor: Record<string, string> = {
-  ce: "blue",
-  it: "blue",
+  cii: "blue",
+  iit: "blue",
   cp: "red",
   af: "green",
   ps: "orange",
@@ -40,7 +40,7 @@ export const serviceToColor: Record<string, string> = {
 };
 
 export type ConsultancyID =
-  | "ce-it"
+  | "ip"
   | "cp"
   | "af"
   | "ps"
@@ -49,6 +49,31 @@ export type ConsultancyID =
   | "ceo"
   | "fp"
   | "mp";
+
+export const serviceDropboxName: Record<string, string> = {
+  af: "Analise Facial",
+  cp: "Coloracao Pessoal",
+  cd: "Closet Detox",
+  cn: "Consultoria de Noivos",
+  ceo: "Consultoria Escolha de Oculos",
+  fp: "Formacoes e Palestras",
+  cii: "Consultoria de Imagem Inteligente",
+  iit: "Consultoria Imagem Inteligente Total",
+  mp: "Maquilhagem Profissional",
+  ps: "Personal Shopping",
+};
+
+export const consultancyDropboxName: Record<string, string> = {
+  af: "Analise Facial",
+  cp: "Coloracao Pessoal",
+  cd: "Closet Detox",
+  cn: "Consultoria de Noivos",
+  ceo: "Consultoria Escolha de Oculos",
+  fp: "Formacoes e Palestras",
+  ip: "Imagem Pessoal",
+  mp: "Maquilhagem Profissional",
+  ps: "Personal Shopping",
+};
 
 export const serviceData: {
   [key: string]: {
@@ -59,11 +84,10 @@ export const serviceData: {
     boasMasEscolhas: boolean;
     boasMasText: string[][];
     duration: number;
-    //TODO: smth about
   };
 } = {
-  ce: {
-    consultancyId: "ce-it",
+  cii: {
+    consultancyId: "ip",
     slideText: [
       "Identificar o seu estilo;",
       "Saber explorar os seus pontos fortes e camuflar os menos positivos;",
@@ -88,8 +112,8 @@ export const serviceData: {
     boasMasText: [[]],
     duration: 0,
   },
-  it: {
-    consultancyId: "ce-it",
+  iit: {
+    consultancyId: "ip",
     slideText: [
       "Serviço desenhado individualmente à medida das suas necessidades;",
       "Aumento da autoimagem e autoestima;",
@@ -266,24 +290,24 @@ export interface ConsultancyData {
 export const consultancyData: {
   [key: string]: ConsultancyData;
 } = {
-  "ce-it": {
+  ip: {
     color: "blue",
     variant: "double",
     topCornerVideo: {
       url: "/assets/sample.mp4",
     },
     leftInfoBox: {
-      title: "Consultoria de Estilo",
-      to: "ce",
-      consultancyID: "ce-it",
+      title: "Consultoria de Imagem Inteligente",
+      to: "cii",
+      consultancyID: "ip",
       text: [
         "E se pudesse ter um profissional a fazer-lhe um acompanhamento personalizado para ajudar a identificar e trabalhar o seu estilo? Faça esta viagem do seu interior para o seu exterior.",
       ],
     },
     rightInfoBox: {
-      title: "Imagem Total",
-      to: "it",
-      consultancyID: "ce-it",
+      title: "Consultoria de Imagem Total Inteligente",
+      to: "iit",
+      consultancyID: "ip",
       text: [
         "Gostaria de trabalhar a sua imagem de A a Z? Aqui encontra a consultoria mais completa e gratificante. Torne a sua imagem numa imagem inteligente.",
       ],

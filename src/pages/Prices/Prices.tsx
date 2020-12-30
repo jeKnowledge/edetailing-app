@@ -1,6 +1,6 @@
 import { IonContent, IonPage } from "@ionic/react";
 import React from "react";
-import HomeFloatingMenu from "../../components/HomeFloatingMenu/index";
+import OtherPagesFloatingMenu from "../../components/OtherPagesFloatingMenu";
 import PriceTable from "../../components/PriceTable/index";
 import "./Prices.css";
 
@@ -12,7 +12,7 @@ const Prices = () => {
           <div id="center">
             <PriceTable />
           </div>
-          <HomeFloatingMenu />
+          <OtherPagesFloatingMenu />
         </>
       </IonContent>
     </IonPage>

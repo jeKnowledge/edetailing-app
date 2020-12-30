@@ -14,13 +14,13 @@
 
 #infobox-title {
   position: absolute;
-  font-size: 34px;
+  font-size: xx-large;
   font-weight: bold;
   width: 340px;
   height: 100px;
   max-height: 100px;
-  top: 29%;
-  left: 32%;
+  top: 28%;
+  left: 30%;
   text-align: left;
   display: flex;
   align-items: center;
@@ -29,13 +29,13 @@
 
 #infobox-title-reverse {
   position: absolute;
-  font-size: 34px;
+  font-size: xx-large;
   font-weight: bold;
   width: 340px;
   height: 100px;
   max-height: 100px;
-  bottom: 29%;
-  right: 32%;
+  bottom: 26%;
+  right: 24%;
   text-align: left;
   display: flex;
   align-items: center;
