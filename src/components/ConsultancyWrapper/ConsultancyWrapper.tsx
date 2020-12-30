@@ -1,6 +1,5 @@
-import React, { useCallback } from "react";
-import { consultancyData, ConsultancyID, serviceData } from "../../data/data";
-import { getServiceData } from "../../hooks/getServiceData";
+import React from "react";
+import { consultancyData, ConsultancyID } from "../../data/data";
 import HomePage from "../../pages/Home/HomePage";
 import Consultancy from "../Consultancy";
 
@@ -9,51 +8,12 @@ interface ConsultancyWrapperProps {
 }
 
 const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
-  const generatePhotosUrl = useCallback(() => {
-    if (consultancyData[consultancyId].centerInfoBox) {
-      const service = consultancyData[consultancyId].centerInfoBox?.to;
-
-      const centerServiceData = getServiceData(service as string);
-
-      if (centerServiceData.type === "default")
-        return [...Array(serviceData[service as string].imgSlideSize)].map(
-          (_, index) =>
-            `/assets/consultorias/${consultancyId}/${service}/${service}${index}.jpeg`
-        );
-      else return [];
-    } else {
-      const leftService = consultancyData[consultancyId].leftInfoBox?.to;
-      const rightService = consultancyData[consultancyId].rightInfoBox?.to;
-
-      const leftServiceData = getServiceData(leftService as string);
-      const rightServiceData = getServiceData(rightService as string);
-
-      const leftServiceImages =
-        leftServiceData.type === "default"
-          ? [...Array(serviceData[leftService as string].imgSlideSize)].map(
-              (_, index) =>
-                `/assets/consultorias/${consultancyId}/${leftService}/${leftService}${index}.jpeg`
-            )
-          : [];
-      const rightServiceImages =
-        rightServiceData.type === "default"
-          ? [...Array(serviceData[rightService as string].imgSlideSize)].map(
-              (_, index) =>
-                `/assets/consultorias/${consultancyId}/${rightService}/${rightService}${index}.jpeg`
-            )
-          : [];
-
-      return [...leftServiceImages, ...rightServiceImages];
-    }
-  }, [consultancyId]);
-
   switch (consultancyId) {
     case "ip":
       return (
         <Consultancy
           consultancyId="ip"
           variant={consultancyData["ip"].variant as "double"}
-          photos={generatePhotosUrl()}
           rightInfoBox={consultancyData["ip"].rightInfoBox}
           leftInfoBox={consultancyData["ip"].leftInfoBox}
         />
@@ -63,7 +23,6 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
         <Consultancy
           consultancyId="cp"
           variant={consultancyData["cp"].variant}
-          photos={generatePhotosUrl()}
           centerInfoBox={consultancyData["cp"].centerInfoBox}
         />
       );
@@ -72,7 +31,6 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
         <Consultancy
           consultancyId="af"
           variant={consultancyData["af"].variant}
-          photos={generatePhotosUrl()}
           centerInfoBox={consultancyData["af"].centerInfoBox}
         />
       );
@@ -81,7 +39,6 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
         <Consultancy
           consultancyId="ps"
           variant={consultancyData["ps"].variant}
-          photos={generatePhotosUrl()}
           centerInfoBox={consultancyData["ps"].centerInfoBox}
         />
       );
@@ -90,7 +47,6 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
         <Consultancy
           consultancyId="cd"
           variant={consultancyData["cd"].variant}
-          photos={generatePhotosUrl()}
           centerInfoBox={consultancyData["cd"].centerInfoBox}
         />
       );
@@ -99,7 +55,6 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
         <Consultancy
           consultancyId="cn"
           variant={consultancyData["cn"].variant}
-          photos={generatePhotosUrl()}
           centerInfoBox={consultancyData["cn"].centerInfoBox}
         />
       );
@@ -108,7 +63,6 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
         <Consultancy
           consultancyId="ceo"
           variant={consultancyData["ceo"].variant}
-          photos={generatePhotosUrl()}
           centerInfoBox={consultancyData["ceo"].centerInfoBox}
         />
       );
@@ -117,7 +71,6 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
         <Consultancy
           consultancyId="fp"
           variant={consultancyData["fp"].variant}
-          photos={generatePhotosUrl()}
           centerInfoBox={consultancyData["fp"].centerInfoBox}
         />
       );
@@ -126,7 +79,6 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
         <Consultancy
           consultancyId="mp"
           variant={consultancyData["mp"].variant}
-          photos={generatePhotosUrl()}
           centerInfoBox={consultancyData["mp"].centerInfoBox}
         />
       );
