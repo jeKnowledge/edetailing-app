@@ -1,5 +1,5 @@
 import { IonCheckbox, IonItem, IonLabel, IonModal } from "@ionic/react";
-import React, { useState } from "react";
+import React, { useCallback } from "react";
 import "./MailModel.css";
 
 interface MailModalProps {
@@ -21,7 +21,34 @@ const checkboxList = [
 
 //estavas a faazer a Lamp modal e a ver como é que funciona o css daquilo
 const MailModal = ({ onClose, open }: MailModalProps) => {
-  const [checked, setChecked] = useState(false);
+  const emailsChecked = useCallback(
+    (event) => {
+      if (event.currentTarget.checked === false) {
+        for (let i = 0; i < checkboxList.length; i++) {
+          if (checkboxList[i].val == event.currentTarget.value) {
+            checkboxList[i].isChecked = event.currentTarget.checked;
+          }
+        }
+      }
+      let numberChecked = 0;
+      for (let i = 0; i < checkboxList.length; i++) {
+        if (checkboxList[i].isChecked == true) {
+          numberChecked = numberChecked + 1;
+        }
+      }
+
+      if (numberChecked === 3) {
+        event.currentTarget.checked = false;
+      } else {
+        for (let i = 0; i < checkboxList.length; i++) {
+          if (checkboxList[i].val == event.currentTarget.value) {
+            checkboxList[i].isChecked = event.currentTarget.checked;
+          }
+        }
+      }
+    },
+    [checkboxList]
+  );
 
   return (
     <IonModal
@@ -43,6 +70,12 @@ const MailModal = ({ onClose, open }: MailModalProps) => {
               value={val}
               checked={isChecked}
               mode="md"
+              onClick={emailsChecked}
+              key={i}
+              //onClick={() => {emailsChecked(item.id)}
+
+              //onClick={() => setChecked(true)}
+              //checked={checked}
             />
             <IonLabel>{val}</IonLabel>
           </IonItem>
