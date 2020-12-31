@@ -9,6 +9,8 @@ import React, {
 import { consultancyData } from "../../data/data";
 import { getConsultancyData } from "../../hooks/getConsultancyData";
 import { useStaticAssets } from "../../hooks/useStaticAssets";
+import { isImage } from "../../utils/isImage";
+import { IsVideo } from "../../utils/isVideo";
 import ConsultancyFloatingMenu from "../ConsultancyFloatingMenu";
 import InfoBox, { InfoBoxProps } from "../InfoBox/InfoBox";
 import LampModal from "../LampModal/LampModal";
@@ -36,18 +38,22 @@ const Consultancy = ({
   centerInfoBox,
 }: ConsultancyProps) => {
   const staticAssests = useStaticAssets(consultancyId);
+  const thisConsultancyData = useMemo(() => consultancyData[consultancyId], [
+    consultancyId,
+  ]);
+
   const [photos, setPhotos] = useState<string[]>(staticAssests);
-  const [videos, setVideos] = useState<string[]>([]);
+  const [videos, setVideos] = useState<string[]>(
+    thisConsultancyData?.topCornerVideo
+      ? [thisConsultancyData.topCornerVideo.url]
+      : []
+  );
   const [currentTopImg, setCurrentTopImg] = useState<number>(0);
   const [currentBottomImg, setCurrentBottomImg] = useState<number>(
     photos.length - 1
   );
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
-
-  const thisConsultancyData = useMemo(() => consultancyData[consultancyId], [
-    consultancyId,
-  ]);
 
   const openModal = useCallback(() => {
     setShowModal(true);
@@ -77,11 +83,29 @@ const Consultancy = ({
   const getConsultancyMedia = useCallback(() => {
     getConsultancyData(consultancyId).then((res) => {
       console.log(res);
-      setPhotos(res);
-      currentTopImgRef.current = 0;
-      currentBottomImgRef.current = res.length - 1;
-      setCurrentTopImg(0);
-      setCurrentBottomImg(res.length - 1);
+      if (res !== undefined) {
+        const photosFs: string[] = res
+          .filter((file) => isImage(file.filename))
+          .map((pair) => pair.data);
+        const videosFs: string[] = res
+          .filter((file) => IsVideo(file.filename))
+          .map((pair) => pair.data);
+        console.log(photosFs);
+
+        // update photos here
+        if (photosFs.length > 0) {
+          setPhotos(photosFs);
+          currentTopImgRef.current = 0;
+          currentBottomImgRef.current = photosFs.length - 1;
+          setCurrentTopImg(0);
+          setCurrentBottomImg(photosFs.length - 1);
+        }
+
+        // update videos here
+        if (videosFs.length > 0) {
+          setVideos(videosFs);
+        }
+      }
       setLoading(false);
     });
   }, [consultancyId]);
@@ -99,6 +123,14 @@ const Consultancy = ({
     getConsultancyMedia();
   }, [getConsultancyMedia]);
 
+  useEffect(() => {
+    console.log("photos", photos);
+  }, [photos]);
+
+  useEffect(() => {
+    console.log("videos", videos);
+  }, [videos]);
+
   return (
     <IonPage>
       {loading ? (
@@ -108,10 +140,10 @@ const Consultancy = ({
           <div id="page">
             <ConsultancyFloatingMenu />
             <div id="top-right-stack">
-              {thisConsultancyData.topCornerVideo ? (
+              {videos.length > 0 ? (
                 <MaskedVideo
                   mask={`/assets/consultorias/${consultancyId}/top-mask.svg`}
-                  url={thisConsultancyData.topCornerVideo.url}
+                  url={videos[0]}
                   variant="top"
                 />
               ) : (

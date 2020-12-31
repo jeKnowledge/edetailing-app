@@ -3,12 +3,10 @@ import { IonButton, IonContent, IonPage } from "@ionic/react";
 import { Dropbox } from "dropbox";
 import React, { useCallback, useEffect, useState } from "react";
 import {
-  consultancyData,
   consultancyDropboxName,
   serviceData,
   serviceDropboxName,
 } from "../data/data";
-import { getMediaFromDirectory } from "../hooks/getMediaFromDirectory";
 import { DROPBOX_API } from "../secrets";
 const { Filesystem } = Plugins;
 
@@ -21,23 +19,6 @@ const DropboxTest = () => {
     Object.keys(serviceDropboxName).map((serviceId) => ({
       id: serviceId,
       status: "downloading",
-    }))
-  );
-
-  const [serviceMedia, setServiceMedia] = useState<
-    { id: string; images: string[] | undefined }[]
-  >(
-    Object.keys(serviceDropboxName).map((serviceId) => ({
-      id: serviceId,
-      images: undefined,
-    }))
-  );
-  const [consultancyMedia, setConsultancyMedia] = useState<
-    { id: string; images: string[] | undefined }[]
-  >(
-    Object.keys(consultancyDropboxName).map((consultancyId) => ({
-      id: consultancyId,
-      images: undefined,
     }))
   );
 
@@ -78,7 +59,7 @@ const DropboxTest = () => {
     const dbx = new Dropbox({
       accessToken: DROPBOX_API,
     });
-    Object.keys(serviceDropboxName).map((serviceId) => {
+    Object.keys(serviceDropboxName).forEach((serviceId) => {
       const serviceDbxName = serviceDropboxName[serviceId];
       const consultancyDbxName =
         consultancyDropboxName[serviceData[serviceId].consultancyId];
@@ -109,7 +90,7 @@ const DropboxTest = () => {
           } catch (error) {
             console.warn("error in mkdir", error);
           }
-          filesInFolder.result.entries.map(async (f) => {
+          filesInFolder.result.entries.forEach(async (f) => {
             if (f.path_display) {
               // we have a valid path to the file
               dbx
@@ -155,58 +136,13 @@ const DropboxTest = () => {
     });
   }, [startDownload]);
 
-  const listConsultancyFiles = useCallback(() => {
-    Object.keys(consultancyData).forEach(async (consultancyId) => {
-      const consultancyDbxName = consultancyDropboxName[consultancyId];
-      const path = `${consultancyDbxName}/`;
-      const images = await getMediaFromDirectory(path, true);
-      setConsultancyMedia((prevCm) => [
-        ...prevCm.filter((sm) => sm.id !== consultancyId),
-        { id: consultancyId, images: images },
-      ]);
-    });
-  }, []);
-
-  const listServiceFiles = useCallback(() => {
-    Object.keys(serviceData).forEach(async (serviceId) => {
-      const consultancyDbxName =
-        consultancyDropboxName[serviceData[serviceId].consultancyId];
-      const serviceDbxName = serviceDropboxName[serviceId];
-      const path = `${consultancyDbxName}/${serviceDbxName}/`;
-      const images = await getMediaFromDirectory(path);
-      setServiceMedia((prevSm) => [
-        ...prevSm.filter((sm) => sm.id !== serviceId),
-        { id: serviceId, images: images },
-      ]);
-    });
-  }, []);
-
-  useEffect(() => {
-    if (serviceMedia.some((sm) => !sm.images)) console.warn("NOT READY");
-    else {
-      console.warn("serviceMedia", serviceMedia);
-    }
-  }, [serviceMedia]);
-
-  useEffect(() => {
-    if (consultancyMedia.some((cm) => !cm.images)) console.warn("NOT READY");
-    else {
-      console.warn("consultancyMedia", consultancyMedia);
-    }
-  }, [consultancyMedia]);
-
   return (
     <IonPage>
       <IonContent>
         <IonButton onClick={clickToDownload} disabled={isDownloading}>
           Download Direct Dropbox
         </IonButton>
-        <IonButton onClick={listConsultancyFiles} disabled={isDownloading}>
-          List Consultancy Files
-        </IonButton>
-        <IonButton onClick={listServiceFiles} disabled={isDownloading}>
-          List Service Files
-        </IonButton>
+
         {downloadStarted && (
           <div
             style={{

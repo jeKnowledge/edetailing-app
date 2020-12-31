@@ -1,21 +1,16 @@
-// import { Plugins } from "@capacitor/core";
 import { consultancyDropboxName } from "../data/data";
-import { getMediaFromDirectory } from "./getMediaFromDirectory";
-import { useStaticAssets } from "./useStaticAssets";
-// const { Filesystem } = Plugins;
+import { getMediaFromDirectory, Media } from "./getMediaFromDirectory";
 
 export const getConsultancyData = async (
   consultancyId: string
-): Promise<string[]> => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const staticAssetPhotos = useStaticAssets(consultancyId);
+): Promise<Media[] | undefined> => {
   const consultancyDbxName = consultancyDropboxName[consultancyId];
   const path = `${consultancyDbxName}/`;
   try {
     const images = await getMediaFromDirectory(path, true);
-    return images ?? staticAssetPhotos;
+    return images === undefined ? undefined : images;
   } catch (error) {
     console.error(error);
-    return staticAssetPhotos;
+    return undefined;
   }
 };
