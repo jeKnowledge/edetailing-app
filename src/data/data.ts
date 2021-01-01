@@ -75,8 +75,9 @@ export const consultancyDropboxName: Record<string, string> = {
   ps: "Personal Shopping",
 };
 
-export const serviceData: {
-  [key: string]: {
+export const serviceData: Record<
+  string,
+  {
     consultancyId: string;
     slideText: string[];
     labelsSlide: string[];
@@ -84,8 +85,8 @@ export const serviceData: {
     boasMasEscolhas: boolean;
     boasMasText: string[][];
     duration: number;
-  };
-} = {
+  }
+> = {
   cii: {
     consultancyId: "ip",
     slideText: [
@@ -287,9 +288,7 @@ export interface ConsultancyData {
   };
 }
 
-export const consultancyData: {
-  [key: string]: ConsultancyData;
-} = {
+export const consultancyData: Record<string, ConsultancyData> = {
   ip: {
     color: "blue",
     variant: "double",
@@ -490,30 +489,42 @@ export const paulaprada: {
   ],
 };
 
-export const prices: {
-  [service: string]: {
-    prices: string[];
-  };
-} = {
-  "Consultoria de Imagem Inteligente": { prices: ["150€"] },
+export type Prices = Record<
+  string,
+  {
+    prices: { price: string; description: string }[];
+  }
+>;
+
+export const prices: Prices = {
+  "Consultoria de Imagem Inteligente": {
+    prices: [{ price: "150€", description: "" }],
+  },
   "Consultoria de Imagem Inteligente Total": {
     prices: [
-      "600€ ( análise facial básica)",
-      "680€ ( análise facial detalhada)",
+      { price: "600€", description: "análise facial básica" },
+      { price: "680€", description: "análise facial detalhada" },
     ],
   },
-  "Consultoria de Análise Facial Detalhada": { prices: ["200€"] },
-  "Coloração pessoal": { prices: ["80€"] },
-  "Closet Detox": { prices: ["150€ mínimo"] },
-  "Personal Shopping": { prices: ["150€ mínimo"] },
+  "Consultoria de Análise Facial Detalhada": {
+    prices: [{ price: "200€", description: "" }],
+  },
+  "Coloração Pessoal": { prices: [{ price: "80€", description: "" }] },
+  "Closet Detox": { prices: [{ price: "150€", description: "mínimo" }] },
+  "Personal Shopping": { prices: [{ price: "150€", description: "mínimo" }] },
   "Consultoria de Noivos": {
     prices: [
-      "500€ ( com maquilhagem no dia do casamento)",
-      "400€( sem maquilhagem)",
-      "250€ ( só maquilhagem sem consultoria de imagem)",
+      { price: "500€", description: "com maquilhagem no dia do casamento" },
+      { price: "400€", description: "sem maquilhagem" },
+      {
+        price: "250€",
+        description: "só maquilhagem sem consultoria de imagem",
+      },
     ],
   },
-  "Consultoria Escolha de Óculos": { prices: ["100€"] },
-  "Maquilhagem profissional": { prices: ["30€"] },
-  "Formação e palestras": { prices: ["125€/h"] },
+  "Consultoria Escolha de Óculos": {
+    prices: [{ price: "100€", description: "" }],
+  },
+  "Maquilhagem profissional": { prices: [{ price: "30€", description: "" }] },
+  "Formação e palestras": { prices: [{ price: "125€/h", description: "" }] },
 };

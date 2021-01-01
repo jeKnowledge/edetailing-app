@@ -1,4 +1,4 @@
-import { IonContent, IonLoading, IonPage } from "@ionic/react";
+import { IonContent, IonPage } from "@ionic/react";
 import React, {
   useCallback,
   useEffect,
@@ -14,6 +14,7 @@ import { IsVideo } from "../../utils/isVideo";
 import ConsultancyFloatingMenu from "../ConsultancyFloatingMenu";
 import InfoBox, { InfoBoxProps } from "../InfoBox/InfoBox";
 import LampModal from "../LampModal/LampModal";
+import Loader from "../Loader";
 import MaskedImage from "../MaskedImage/MaskedImage";
 import MaskedVideo from "../MaskedVideo/MaskedVideo";
 import "./Consultancy.css";
@@ -81,33 +82,38 @@ const Consultancy = ({
   }, [photos]);
 
   const getConsultancyMedia = useCallback(() => {
-    getConsultancyData(consultancyId).then((res) => {
-      console.log(res);
-      if (res !== undefined) {
-        const photosFs: string[] = res
-          .filter((file) => isImage(file.filename))
-          .map((pair) => pair.data);
-        const videosFs: string[] = res
-          .filter((file) => IsVideo(file.filename))
-          .map((pair) => pair.data);
-        console.log(photosFs);
+    getConsultancyData(consultancyId)
+      .then((res) => {
+        console.log(res);
+        if (res !== undefined) {
+          const photosFs: string[] = res
+            .filter((file) => isImage(file.filename))
+            .map((pair) => pair.data);
+          const videosFs: string[] = res
+            .filter((file) => IsVideo(file.filename))
+            .map((pair) => pair.data);
+          console.log(photosFs);
 
-        // update photos here
-        if (photosFs.length > 0) {
-          setPhotos(photosFs);
-          currentTopImgRef.current = 0;
-          currentBottomImgRef.current = photosFs.length - 1;
-          setCurrentTopImg(0);
-          setCurrentBottomImg(photosFs.length - 1);
-        }
+          // update photos here
+          if (photosFs.length > 0) {
+            setPhotos(photosFs);
+            currentTopImgRef.current = 0;
+            currentBottomImgRef.current = photosFs.length - 1;
+            setCurrentTopImg(0);
+            setCurrentBottomImg(photosFs.length - 1);
+          }
 
-        // update videos here
-        if (videosFs.length > 0) {
-          setVideos(videosFs);
+          // update videos here
+          if (videosFs.length > 0) {
+            setVideos(videosFs);
+          }
         }
-      }
-      setLoading(false);
-    });
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
+      });
   }, [consultancyId]);
 
   useEffect(() => {
@@ -134,7 +140,7 @@ const Consultancy = ({
   return (
     <IonPage>
       {loading ? (
-        <IonLoading isOpen={true} />
+        <Loader />
       ) : (
         <IonContent forceOverscroll={false} scrollY={false}>
           <div id="page">

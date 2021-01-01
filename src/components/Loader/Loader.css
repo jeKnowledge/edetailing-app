@@ -1,0 +1,21 @@
+#loader-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#loader-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#loader-container > div > svg {
+  position: unset;
+  left: unset;
+  right: unset;
+}
