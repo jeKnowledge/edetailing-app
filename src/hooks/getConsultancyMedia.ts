@@ -1,7 +1,7 @@
 import { consultancyDropboxName } from "../data/data";
 import { getMediaFromDirectory, Media } from "./getMediaFromDirectory";
 
-export const getConsultancyData = async (
+export const getConsultancyMedia = async (
   consultancyId: string
 ): Promise<Media[] | undefined> => {
   const consultancyDbxName = consultancyDropboxName[consultancyId];

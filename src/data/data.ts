@@ -75,18 +75,19 @@ export const consultancyDropboxName: Record<string, string> = {
   ps: "Personal Shopping",
 };
 
-export const serviceData: Record<
-  string,
-  {
-    consultancyId: string;
-    slideText: string[];
-    labelsSlide: string[];
-    imgSlideSize: number;
-    boasMasEscolhas: boolean;
-    boasMasText: string[][];
-    duration: number;
-  }
-> = {
+export interface ServiceData {
+  consultancyId: string;
+  slideText: string[];
+  labelsSlide: string[];
+  imgSlideSize: number;
+  boasMasEscolhas: boolean;
+  boasMasText: string[][];
+  duration: number;
+  mailImage: string;
+  websiteLink: string;
+}
+
+export const serviceData: Record<string, ServiceData> = {
   cii: {
     consultancyId: "ip",
     slideText: [
@@ -112,6 +113,8 @@ export const serviceData: Record<
     boasMasEscolhas: false,
     boasMasText: [[]],
     duration: 0,
+    mailImage: "",
+    websiteLink: "",
   },
   iit: {
     consultancyId: "ip",
@@ -137,6 +140,8 @@ export const serviceData: Record<
     boasMasEscolhas: false,
     boasMasText: [[]],
     duration: 0,
+    mailImage: "",
+    websiteLink: "",
   },
   cp: {
     consultancyId: "cp",
@@ -174,6 +179,8 @@ export const serviceData: Record<
       ],
     ],
     duration: 0,
+    mailImage: "",
+    websiteLink: "",
   },
   af: {
     consultancyId: "af",
@@ -195,6 +202,8 @@ export const serviceData: Record<
     boasMasEscolhas: false,
     boasMasText: [[]],
     duration: 0,
+    mailImage: "",
+    websiteLink: "",
   },
   ps: {
     consultancyId: "ps",
@@ -213,6 +222,8 @@ export const serviceData: Record<
     boasMasEscolhas: false,
     boasMasText: [[]],
     duration: 2,
+    mailImage: "",
+    websiteLink: "",
   },
   cd: {
     consultancyId: "cd",
@@ -224,13 +235,15 @@ export const serviceData: Record<
     labelsSlide: [
       "deslocação a casa da cliente para uma triagem do guarda-roupa",
       "organização de vários looks fotografados para colocar no armário (profissional, lazer, eventos)",
-      "organização por peças e por tons ",
+      "organização por peças e por tons",
       "elaboração de uma lista de compras com os possíveis itens em falta no guarda-roupa",
     ],
     imgSlideSize: 1,
     boasMasEscolhas: false,
     boasMasText: [[]],
     duration: 3,
+    mailImage: "",
+    websiteLink: "",
   },
   cn: {
     consultancyId: "cn",
@@ -240,6 +253,8 @@ export const serviceData: Record<
     boasMasEscolhas: false,
     boasMasText: [[]],
     duration: 0,
+    mailImage: "",
+    websiteLink: "",
   },
   ceo: {
     consultancyId: "ceo",
@@ -249,6 +264,8 @@ export const serviceData: Record<
     boasMasEscolhas: false,
     boasMasText: [[]],
     duration: 0,
+    mailImage: "",
+    websiteLink: "",
   },
   fp: {
     consultancyId: "fp",
@@ -258,6 +275,8 @@ export const serviceData: Record<
     boasMasEscolhas: false,
     boasMasText: [[]],
     duration: 0,
+    mailImage: "",
+    websiteLink: "",
   },
   mp: {
     consultancyId: "mp",
@@ -267,6 +286,8 @@ export const serviceData: Record<
     boasMasEscolhas: false,
     boasMasText: [[]],
     duration: 0,
+    mailImage: "",
+    websiteLink: "",
   },
 };
 
@@ -399,9 +420,9 @@ export const consultancyData: Record<string, ConsultancyData> = {
       ],
     },
     lampData: {
-      title: "azul",
+      title: "amarelo",
       text:
-        "Sabia que o azul diminui a circulação sanguínea, reduza a temperatura corporal e baixa pressão arterial? ",
+        "Sabia que o amarelo estimula o intelecto e o sistema nervoso central, podendo contribuir para elevar a criatividade e melhorar o humor?",
     },
   },
   ceo: {

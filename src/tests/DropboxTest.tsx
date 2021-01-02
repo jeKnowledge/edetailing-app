@@ -14,11 +14,15 @@ type DownloadStatus = "done" | "downloading";
 
 const downloadsInitStatus: { id: string; status: DownloadStatus }[] = [
   ...Object.keys(serviceDropboxName).map((serviceId) => ({
-    id: serviceId,
+    id: serviceDropboxName[serviceId],
     status: "downloading" as DownloadStatus,
   })),
   {
     id: "Preçário",
+    status: "downloading" as DownloadStatus,
+  },
+  {
+    id: "Configuração dos Serviços",
     status: "downloading" as DownloadStatus,
   },
 ];
@@ -33,23 +37,13 @@ const DropboxTest = () => {
   const setStartValues = useCallback(() => {
     setDownloadStarted(false);
     setIsDownloading(false);
-    setDownloadStatus(
-      Object.keys(serviceDropboxName).map((serviceId) => ({
-        id: serviceId,
-        status: "downloading",
-      }))
-    );
+    setDownloadStatus(downloadsInitStatus);
   }, []);
 
   const startDownload = useCallback(() => {
     setDownloadStarted(true);
     setIsDownloading(true);
-    setDownloadStatus(
-      Object.keys(serviceDropboxName).map((serviceId) => ({
-        id: serviceId,
-        status: "downloading",
-      }))
-    );
+    setDownloadStatus(downloadsInitStatus);
   }, []);
 
   useEffect(() => {
@@ -83,8 +77,10 @@ const DropboxTest = () => {
           let filesDownloaded = 0;
           if (nFiles === 0)
             setDownloadStatus((prevStatus) => [
-              ...prevStatus.filter((s) => s.id !== serviceId),
-              { id: serviceId, status: "done" },
+              ...prevStatus.filter(
+                (s) => s.id !== serviceDropboxName[serviceId]
+              ),
+              { id: serviceDropboxName[serviceId], status: "done" },
             ]);
           // Foreach entry download its file
           const fileFolder = `${consultancyDbxName}/${serviceDbxName}/`;
@@ -124,8 +120,13 @@ const DropboxTest = () => {
                             filesDownloaded++;
                             if (filesDownloaded === nFiles)
                               setDownloadStatus((prevStatus) => [
-                                ...prevStatus.filter((s) => s.id !== serviceId),
-                                { id: serviceId, status: "done" },
+                                ...prevStatus.filter(
+                                  (s) => s.id !== serviceDropboxName[serviceId]
+                                ),
+                                {
+                                  id: serviceDropboxName[serviceId],
+                                  status: "done",
+                                },
                               ]);
                           },
                           (error) => console.error("error writing file", error)
@@ -142,6 +143,43 @@ const DropboxTest = () => {
         })
         .catch((err) => console.error(err));
     });
+
+    // Services information
+    const serviceDataFile = "/consultorias/serviços.csv";
+    dbx
+      .filesDownload({
+        path: serviceDataFile,
+      })
+      .then((file) => {
+        const fileBlob = (file.result as any).fileBlob;
+        // the blob is valid but we need to convert it to a base64 string to be saved
+        if (fileBlob) {
+          const reader = new FileReader();
+          reader.readAsDataURL(fileBlob);
+          reader.onloadend = () => {
+            const base64data = reader.result;
+            if (typeof base64data === "string") {
+              Filesystem.writeFile({
+                data: base64data,
+                path: "serviços.csv",
+                directory: FilesystemDirectory.External,
+                recursive: true,
+              }).then(
+                (_) => {
+                  setDownloadStatus((prevStatus) => [
+                    ...prevStatus.filter(
+                      (s) => s.id !== "Configuração dos Serviços"
+                    ),
+                    { id: "Configuração dos Serviços", status: "done" },
+                  ]);
+                },
+                (error) => console.error("error writing file", error)
+              );
+            }
+          };
+        }
+      })
+      .catch((error) => console.error("error downloading file", error));
 
     // Prices
     const pricesFile = "preçario.csv";

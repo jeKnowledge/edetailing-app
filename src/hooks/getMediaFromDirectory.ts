@@ -60,7 +60,7 @@ export const getMediaFromDirectory = async (
         const f = result.files[i];
         try {
           const file = await Filesystem.readFile({
-            path: `${path}/${f}`,
+            path: `${path}${f}`,
             directory: FilesystemDirectory.External,
           });
           const mediaType = getMediaType(f);

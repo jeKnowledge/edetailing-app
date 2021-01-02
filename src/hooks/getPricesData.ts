@@ -1,43 +1,13 @@
 import { FilesystemDirectory, Plugins } from "@capacitor/core";
+import csv from "csvtojson";
 import { Prices } from "../data/data";
 const { Filesystem } = Plugins;
 
-const parsePricesCSV = (text: string): Prices | undefined => {
-  const delimiters = [",", ";", "\t"];
-  const lines = text.split("\n");
-  console.log(lines);
-  const result: Prices = {};
-  const header = lines.shift();
-
-  // find delimiter
-  let delIndex = 0;
-  while (header?.split(delimiters[delIndex]).length !== 3) {
-    delIndex++;
-    if (delIndex === delimiters.length) return undefined;
-  }
-
-  lines.forEach((l: string) => {
-    if (l) {
-      const content = l.split(delimiters[delIndex]);
-      if (result[content[0]]) {
-        result[content[0]].prices.push({
-          price: content[1],
-          description: content[2],
-        });
-      } else {
-        result[content[0]] = {
-          prices: [
-            {
-              price: content[1],
-              description: content[2],
-            },
-          ],
-        };
-      }
-    }
-  });
-  return result;
-};
+type CsvParserResult = {
+  Serviço: string;
+  Descrição: string;
+  Preço: string;
+}[];
 
 export const getPricesData = async (): Promise<Prices | undefined> => {
   const filename = "preçario.csv";
@@ -48,10 +18,30 @@ export const getPricesData = async (): Promise<Prices | undefined> => {
     });
     // base64 to text
     const stringData = new Buffer(file.data, "base64").toString("utf-8");
-    console.log(stringData);
-    const fileContent = parsePricesCSV(stringData);
-    console.log(fileContent);
-    return fileContent;
+    const records: CsvParserResult = await csv().fromString(stringData);
+    if (records) {
+      const result: Prices = {};
+      records.forEach((r) => {
+        if (r) {
+          if (result[r["Serviço"]]) {
+            result[r["Serviço"]].prices.push({
+              price: r["Preço"],
+              description: r["Descrição"],
+            });
+          } else {
+            result[r["Serviço"]] = {
+              prices: [
+                {
+                  price: r["Preço"],
+                  description: r["Descrição"],
+                },
+              ],
+            };
+          }
+        }
+      });
+      return result;
+    } else return undefined;
   } catch (error) {
     console.error(error);
     return undefined;

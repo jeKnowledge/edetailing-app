@@ -21,34 +21,31 @@ const checkboxList = [
 
 //estavas a faazer a Lamp modal e a ver como é que funciona o css daquilo
 const MailModal = ({ onClose, open }: MailModalProps) => {
-  const emailsChecked = useCallback(
-    (event) => {
-      if (event.currentTarget.checked === false) {
-        for (let i = 0; i < checkboxList.length; i++) {
-          if (checkboxList[i].val == event.currentTarget.value) {
-            checkboxList[i].isChecked = event.currentTarget.checked;
-          }
-        }
-      }
-      let numberChecked = 0;
+  const emailsChecked = useCallback((event) => {
+    if (event.currentTarget.checked === false) {
       for (let i = 0; i < checkboxList.length; i++) {
-        if (checkboxList[i].isChecked == true) {
-          numberChecked = numberChecked + 1;
+        if (checkboxList[i].val === event.currentTarget.value) {
+          checkboxList[i].isChecked = event.currentTarget.checked;
         }
       }
+    }
+    let numberChecked = 0;
+    for (let i = 0; i < checkboxList.length; i++) {
+      if (checkboxList[i].isChecked === true) {
+        numberChecked = numberChecked + 1;
+      }
+    }
 
-      if (numberChecked === 3) {
-        event.currentTarget.checked = false;
-      } else {
-        for (let i = 0; i < checkboxList.length; i++) {
-          if (checkboxList[i].val == event.currentTarget.value) {
-            checkboxList[i].isChecked = event.currentTarget.checked;
-          }
+    if (numberChecked === 3) {
+      event.currentTarget.checked = false;
+    } else {
+      for (let i = 0; i < checkboxList.length; i++) {
+        if (checkboxList[i].val === event.currentTarget.value) {
+          checkboxList[i].isChecked = event.currentTarget.checked;
         }
       }
-    },
-    [checkboxList]
-  );
+    }
+  }, []);
 
   return (
     <IonModal

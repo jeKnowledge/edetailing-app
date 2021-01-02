@@ -7,8 +7,8 @@ import React, {
   useState,
 } from "react";
 import { consultancyData } from "../../data/data";
-import { getConsultancyData } from "../../hooks/getConsultancyData";
-import { useStaticAssets } from "../../hooks/useStaticAssets";
+import { getConsultancyMedia } from "../../hooks/getConsultancyMedia";
+import { useConsultancyStaticAssets } from "../../hooks/useConsultancyStaticAssets";
 import { isImage } from "../../utils/isImage";
 import { IsVideo } from "../../utils/isVideo";
 import ConsultancyFloatingMenu from "../ConsultancyFloatingMenu";
@@ -38,7 +38,7 @@ const Consultancy = ({
   rightInfoBox,
   centerInfoBox,
 }: ConsultancyProps) => {
-  const staticAssests = useStaticAssets(consultancyId);
+  const staticAssests = useConsultancyStaticAssets(consultancyId);
   const thisConsultancyData = useMemo(() => consultancyData[consultancyId], [
     consultancyId,
   ]);
@@ -81,10 +81,9 @@ const Consultancy = ({
     setCurrentBottomImg(bottomIndex);
   }, [photos]);
 
-  const getConsultancyMedia = useCallback(() => {
-    getConsultancyData(consultancyId)
+  const getConsultancyMediaWrapper = useCallback(() => {
+    getConsultancyMedia(consultancyId)
       .then((res) => {
-        console.log(res);
         if (res !== undefined) {
           const photosFs: string[] = res
             .filter((file) => isImage(file.filename))
@@ -92,7 +91,6 @@ const Consultancy = ({
           const videosFs: string[] = res
             .filter((file) => IsVideo(file.filename))
             .map((pair) => pair.data);
-          console.log(photosFs);
 
           // update photos here
           if (photosFs.length > 0) {
@@ -126,16 +124,8 @@ const Consultancy = ({
   }, [currentBottomImg, photos, updateSlideImg]);
 
   useEffect(() => {
-    getConsultancyMedia();
-  }, [getConsultancyMedia]);
-
-  useEffect(() => {
-    console.log("photos", photos);
-  }, [photos]);
-
-  useEffect(() => {
-    console.log("videos", videos);
-  }, [videos]);
+    getConsultancyMediaWrapper();
+  }, [getConsultancyMediaWrapper]);
 
   return (
     <IonPage>

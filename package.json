@@ -21,6 +21,7 @@
     "@sendgrid/mail": "^7.2.6",
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
+    "csvtojson": "^2.0.10",
     "dropbox": "^8.0.0",
     "file-type": "^16.1.0",
     "ionicons": "^5.0.0",
