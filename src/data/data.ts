@@ -480,13 +480,25 @@ export const consultancyData: Record<string, ConsultancyData> = {
   },
 };
 
-export const paulaprada: {
+export interface PaulaPradaData {
   textPaulaPrada: string[];
-  text: {
-    title: string;
-    text: string;
-  }[];
-} = {
+  text: [
+    {
+      title: "missão";
+      text: string;
+    },
+    {
+      title: "visão";
+      text: string;
+    },
+    {
+      title: "valores";
+      text: string;
+    }
+  ];
+}
+
+export const paulaprada: PaulaPradaData = {
   textPaulaPrada: [
     "O meu nome é Paula Prada e sou Consultora de Imagem e Maquilhadora Profissional.",
     "Após 20 anos ligada à indústria farmacêutica decidi que era a hora de deixar uma pegada positiva no mundo.",

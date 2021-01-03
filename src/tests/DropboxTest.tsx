@@ -25,6 +25,10 @@ const downloadsInitStatus: { id: string; status: DownloadStatus }[] = [
     id: "Configuração dos Serviços",
     status: "downloading" as DownloadStatus,
   },
+  {
+    id: "Paula Prada",
+    status: "downloading" as DownloadStatus,
+  },
 ];
 
 const DropboxTest = () => {
@@ -206,6 +210,41 @@ const DropboxTest = () => {
                   setDownloadStatus((prevStatus) => [
                     ...prevStatus.filter((s) => s.id !== "Preçário"),
                     { id: "Preçário", status: "done" },
+                  ]);
+                },
+                (error) => console.error("error writing file", error)
+              );
+            }
+          };
+        }
+      })
+      .catch((error) => console.error("error downloading file", error));
+
+    // Paula Prada
+    const paulaPrada = "paula_prada.csv";
+    dbx
+      .filesDownload({
+        path: "/" + paulaPrada,
+      })
+      .then((file) => {
+        const fileBlob = (file.result as any).fileBlob;
+        // the blob is valid but we need to convert it to a base64 string to be saved
+        if (fileBlob) {
+          const reader = new FileReader();
+          reader.readAsDataURL(fileBlob);
+          reader.onloadend = () => {
+            const base64data = reader.result;
+            if (typeof base64data === "string") {
+              Filesystem.writeFile({
+                data: base64data,
+                path: paulaPrada,
+                directory: FilesystemDirectory.External,
+                recursive: true,
+              }).then(
+                (_) => {
+                  setDownloadStatus((prevStatus) => [
+                    ...prevStatus.filter((s) => s.id !== "Paula Prada"),
+                    { id: "Paula Prada", status: "done" },
                   ]);
                 },
                 (error) => console.error("error writing file", error)
