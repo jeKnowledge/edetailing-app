@@ -1,0 +1,41 @@
+body {
+  display: flex;
+}
+
+@media screen and (max-width: 1051px) {
+  body {
+    display: block;
+  }
+}
+
+.table {
+  width: 100%;
+  padding-left: 50px;
+  padding-right: 50px;
+  position: relative;
+}
+
+.img {
+  width: 100%;
+}
+
+.text {
+  font-family: Inter;
+  font-style: normal;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 40px;
+  text-transform: uppercase;
+  padding-top: 70px;
+  padding-bottom: 20px;
+}
+
+.description {
+  padding-top: 30px;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+}
