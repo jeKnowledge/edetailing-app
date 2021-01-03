@@ -35,6 +35,7 @@ export const getServiceData = async (
       const labels = (result?.["O que inclui"] ?? "").split("\n");
       return result
         ? {
+            name: serviceData[serviceId].name,
             boasMasEscolhas:
               !!result["Boas Escolhas"] && !!result["Mas Escolhas"],
             boasMasText: [

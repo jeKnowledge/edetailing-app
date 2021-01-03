@@ -325,7 +325,11 @@ const Service = ({ serviceID }: ServiceProps) => {
                   onClick={openModal}
                 />
               </div>
-              <MailModal open={showModal} onClose={closeModal} />
+              <MailModal
+                open={showModal}
+                onClose={closeModal}
+                serviceId={serviceID}
+              />
             </IonSlide>
             {slide}
           </IonSlides>

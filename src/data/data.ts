@@ -76,6 +76,7 @@ export const consultancyDropboxName: Record<string, string> = {
 };
 
 export interface ServiceData {
+  name: string;
   consultancyId: string;
   slideText: string[];
   labelsSlide: string[];
@@ -89,6 +90,7 @@ export interface ServiceData {
 
 export const serviceData: Record<string, ServiceData> = {
   cii: {
+    name: "Consultoria de Imagem Inteligente",
     consultancyId: "ip",
     slideText: [
       "Identificar o seu estilo;",
@@ -117,6 +119,7 @@ export const serviceData: Record<string, ServiceData> = {
     websiteLink: "",
   },
   iit: {
+    name: "Consultoria de Imagem Total Inteligente",
     consultancyId: "ip",
     slideText: [
       "Serviço desenhado individualmente à medida das suas necessidades;",
@@ -144,6 +147,7 @@ export const serviceData: Record<string, ServiceData> = {
     websiteLink: "",
   },
   cp: {
+    name: "Coloração Pessoal",
     consultancyId: "cp",
     slideText: [
       "Acompanhamento personalizado até ao objectivo definido;",
@@ -183,6 +187,7 @@ export const serviceData: Record<string, ServiceData> = {
     websiteLink: "",
   },
   af: {
+    name: "Consultoria De Análise Facial Detalhada",
     consultancyId: "af",
     slideText: [
       "Protagonismo do rosto na imagem;",
@@ -206,6 +211,7 @@ export const serviceData: Record<string, ServiceData> = {
     websiteLink: "",
   },
   ps: {
+    name: "Personal Shopping",
     consultancyId: "ps",
     slideText: [
       "Compras mais inteligentes e conscientes, aprendendo a investir nas peças certas e deixando de fazer compras por impulso desperdiçando dinheiro em peças inúteis ou que não o favoreçam;",
@@ -226,6 +232,7 @@ export const serviceData: Record<string, ServiceData> = {
     websiteLink: "",
   },
   cd: {
+    name: "Closet Detox",
     consultancyId: "cd",
     slideText: [
       'Organizar e limpar o seu armário de toda a "poluição" visual, para que o mesmo possa ser coerente, prático e faça sentido de modo a maximizar o seu potencial;',
@@ -246,6 +253,7 @@ export const serviceData: Record<string, ServiceData> = {
     websiteLink: "",
   },
   cn: {
+    name: "Consultoria de Noivos",
     consultancyId: "cn",
     slideText: [],
     labelsSlide: [],
@@ -257,6 +265,7 @@ export const serviceData: Record<string, ServiceData> = {
     websiteLink: "",
   },
   ceo: {
+    name: "Consultoria Escolha de Óculos",
     consultancyId: "ceo",
     slideText: [],
     labelsSlide: [],
@@ -268,6 +277,7 @@ export const serviceData: Record<string, ServiceData> = {
     websiteLink: "",
   },
   fp: {
+    name: "Formações e Palestras",
     consultancyId: "fp",
     slideText: [],
     labelsSlide: [],
@@ -279,6 +289,7 @@ export const serviceData: Record<string, ServiceData> = {
     websiteLink: "",
   },
   mp: {
+    name: "Maquilhagem Profissional",
     consultancyId: "mp",
     slideText: [],
     labelsSlide: [],

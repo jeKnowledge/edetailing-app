@@ -43,3 +43,13 @@
   --border-color-checked: #d5d5d5 !important;
   --checkmark-color: #000000;
 }
+
+#send-button {
+  background-color: #c4c4c4;
+  color: #363636;
+  font-size: 25px;
+  font-weight: 500;
+  border-radius: 20px;
+  width: 100%;
+  height: 50px;
+}
