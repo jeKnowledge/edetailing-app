@@ -1,0 +1,30 @@
+.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#logo {
+  width: 650px;
+  height: 460px;
+}
+
+#main-chameleon {
+  transform: scale(1.8, 1.5);
+  margin-top: 100px;
+  height: 100%;
+}
+
+#signature {
+  width: 500px;
+  z-index: 1;
+}
+
+#homepage {
+  --background: linear-gradient(
+    322.72deg,
+    #c4c4c4 -53.55%,
+    rgb(60, 60, 60) -53.54%,
+    rgb(196, 196, 196) 87.22%
+  ) !important;
+}

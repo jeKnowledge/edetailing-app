@@ -1,0 +1,68 @@
+.video-stack {
+  position: relative;
+  width: 400px;
+  height: 280px;
+}
+
+.video-stack > :first-child {
+  position: absolute;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+.video-stack > :first-child > div > video {
+  position: absolute;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+.video-stack > :last-child {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#top-video {
+  top: 0;
+  right: 0;
+  border-bottom: 2px solid var(--white);
+  border-left: 2px solid var(--white);
+}
+
+#bottom-video {
+  bottom: 0;
+  left: 0;
+  width: 80%;
+  height: 80%;
+}
+
+.video-modal {
+  --width: 1000px;
+  --heightb: 700px;
+  background: #000000e6;
+  border: none;
+}
+
+.video-modal > ion-backdrop {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.video-modal > div {
+  border: none !important;
+  height: 550px !important;
+  border-radius: 0 !important;
+}
+
+.video-modal-base {
+  border: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}

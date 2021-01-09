@@ -1,64 +1,58 @@
+import { IonApp, IonRouterOutlet } from "@ionic/react";
+import { IonReactRouter } from "@ionic/react-router";
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
-import {
-  IonApp,
-  IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
-  IonIcon,
-  IonLabel,
-} from "@ionic/react";
-import { IonReactRouter } from "@ionic/react-router";
-import {
-  home as homeIcon,
-  hourglass as hourglassIcon,
-  mail as mailIcon,
-} from "ionicons/icons";
-import HomePage from "./pages/HomePage";
-import HourglassAnimation from "./pages/tests/HourglassAnimation";
-import PredefinedEmails from "./pages/tests/PredefinedEmails";
-import Consultoria from "./pages/tests/Consultoria";
+import ConsultancyWrapper from "./components/ConsultancyWrapper";
+import PaulaPrada from "./components/PaulaPrada";
+import Service from "./components/Service";
+import { colorToConsultancy, ConsultancyID, serviceToColor } from "./data/data";
+import HomePage from "./pages/Home/HomePage";
+import Prices from "./pages/Prices/Prices";
+import DropboxTest from "./tests/DropboxTest";
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route path="/home" exact={true}>
-            <HomePage />
-          </Route>
-          <Route path="/tests/hourglass" exact={true}>
-            <HourglassAnimation />
-          </Route>
-          <Route path="/tests/emails" exact={true}>
-            <PredefinedEmails />
-          </Route>
-          <Route path="/tests/consultoria" exact={true}>
-            <Consultoria />
-          </Route>
-          <Route exact path="/" render={() => <Redirect to="/home" />} />
-        </IonRouterOutlet>
+      <IonRouterOutlet>
+        <Route path="/home" exact={true}>
+          <HomePage />
+        </Route>
 
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="home" href="/home">
-            <IonIcon icon={homeIcon} />
-            <IonLabel>HomePage</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tests-hourglass" href="/tests/hourglass">
-            <IonIcon icon={hourglassIcon} />
-            <IonLabel>Hourglass Animation</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tests-emails" href="/tests/emails">
-            <IonIcon icon={mailIcon} />
-            <IonLabel>Predefined Emails</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tests-consultoria" href="/tests/consultoria">
-            <IonIcon icon={homeIcon} />
-            <IonLabel>Consultoria</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
+        {/* Consultancies */}
+        {Object.keys(colorToConsultancy).map((color) => (
+          <Route
+            key={colorToConsultancy[color]}
+            path={`/consultancy/${colorToConsultancy[color]}`}
+            exact={true}
+          >
+            <ConsultancyWrapper
+              key={colorToConsultancy[color]}
+              consultancyId={colorToConsultancy[color] as ConsultancyID}
+            />
+          </Route>
+        ))}
+
+        {/* Services */}
+        {Object.keys(serviceToColor).map((service) => (
+          <Route key={service} path={`/services/${service}`} exact={true}>
+            <Service key={service} serviceID={service} />
+          </Route>
+        ))}
+
+        <Route path="/paulaprada" exact={true}>
+          <PaulaPrada />
+        </Route>
+
+        <Route path="/prices" exact={true}>
+          <Prices />
+        </Route>
+
+        <Route path="/dropbox" exact={true}>
+          <DropboxTest />
+        </Route>
+
+        <Route exact path="/" render={() => <Redirect to="/home" />} />
+      </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
 );

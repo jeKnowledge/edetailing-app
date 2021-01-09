@@ -3,6 +3,17 @@ http://ionicframework.com/docs/theming/ */
 
 /** Ionic CSS Variables **/
 :root {
+  --white: #f8f8f8;
+  --yellow: #fcd9a4;
+  --purple: #a184a5;
+  --orange: #eda48a;
+  --blue: #8cb8ba;
+  --red: #a05d63;
+  --green: #98a881;
+  --pink: #d376b4;
+  --brown: #ad8679;
+  --turquoise: #7fb29d;
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
@@ -183,7 +194,6 @@ http://ionicframework.com/docs/theming/ */
 
     --ion-item-background: #000000;
   }
-
 
   /*
    * Material Design Dark Theme

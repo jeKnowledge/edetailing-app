@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+/.vscode
 
 # testing
 /coverage
@@ -25,3 +26,7 @@ yarn-error.log*
 package-lock.json
 yarn.lock
 secrets.ts
+sendgrid.env
+
+/android
+/ios

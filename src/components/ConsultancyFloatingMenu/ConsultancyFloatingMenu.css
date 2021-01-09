@@ -1,0 +1,19 @@
+#floating-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 9999;
+}
+
+#floating-button > ul > a {
+  box-shadow: none;
+}
+
+#floating-button > ul > li {
+  box-shadow: none;
+}
