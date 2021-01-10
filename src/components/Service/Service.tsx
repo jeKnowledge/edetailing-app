@@ -243,15 +243,25 @@ const Service = ({ serviceID }: ServiceProps) => {
     );
   }
 
-  const isLoading = useMemo(() => loading.data || loading.media, [
+  const [isLoading, setIsLoading] = useState(true);
+
+  const isLoadingData = useMemo(() => loading.data || loading.media, [
     loading.data,
     loading.media,
   ]);
 
+  useEffect(() => {
+    let timer1 = setTimeout(() => setIsLoading(false), 1000);
+
+    return () => {
+      clearTimeout(timer1);
+    };
+  }, [setIsLoading]);
+
   return (
     <IonPage>
-      {isLoading ? (
-        <Loader />
+      {isLoading || isLoadingData ? (
+        <Loader id={serviceID} />
       ) : (
         <IonContent fullscreen className={`ion-padding ion-content-${theme}`}>
           <ConsultancyFloatingMenu />

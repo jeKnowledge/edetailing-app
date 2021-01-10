@@ -1,4 +1,21 @@
 import { InfoBoxProps } from "../components/InfoBox/InfoBox";
+
+// temas
+export const colors: Record<string, string> = {
+  paulaprada: "#7b7b7b",
+  cii: "#8cb8ba",
+  iit: "#8cb8ba",
+  cp: "#a05d63",
+  af: "#98a881",
+  ps: "#eda48a",
+  cd: "#d376b4",
+  cn: "#fcd9a4",
+  ceo: "#a184a5",
+  fp: "#ad8679",
+  mp: "#7fb29d",
+  ip: "#8cb8ba",
+};
+
 // consultarias
 export const colorToConsultancy: Record<string, string> = {
   blue: "ip",

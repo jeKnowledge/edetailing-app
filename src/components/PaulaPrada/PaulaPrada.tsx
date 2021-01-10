@@ -16,10 +16,21 @@ import "./PaulaPrada.css";
 const PaulaPrada: React.FC = () => {
   const staticPaulaPradaData = useMemo(() => paulaprada, []);
 
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [isLoadingData, setIsLoadingData] = useState(true);
+
   const [paulaPradaData, setPaulaPradaData] = useState<PaulaPradaData>(
     staticPaulaPradaData
   );
+
+  useEffect(() => {
+    let timer1 = setTimeout(() => setIsLoading(false), 1000);
+
+    return () => {
+      clearTimeout(timer1);
+    };
+  }, [isLoading]);
 
   const getPaulaPradaDataWrapper = useCallback(
     () =>
@@ -28,7 +39,7 @@ const PaulaPrada: React.FC = () => {
           if (res) setPaulaPradaData(res);
         })
         .catch((error) => console.error(error))
-        .finally(() => setLoading(false)),
+        .finally(() => setIsLoadingData(false)),
     []
   );
 
@@ -38,8 +49,8 @@ const PaulaPrada: React.FC = () => {
 
   return (
     <IonPage style={{ overflow: "hidden", position: "fixed" }}>
-      {loading ? (
-        <Loader />
+      {isLoading || isLoadingData ? (
+        <Loader id={"paulaprada"} />
       ) : (
         <IonContent forceOverscroll={false} scrollY={false}>
           <ConsultancyFloatingMenu />

@@ -1,15 +1,24 @@
 import { IonContent } from "@ionic/react";
-import React from "react";
+import React, { useMemo } from "react";
 import ReactLoading from "react-loading";
+import { colors } from "../../data/data";
 import "./Loader.css";
 
-const Loader = () => {
+export interface Theme {
+  id: string;
+}
+
+export interface Theme {}
+
+const Loader = ({ id }: Theme) => {
+  const theme = useMemo(() => colors[id], [id]);
+
   return (
     <IonContent fullscreen id="loader-content">
       <div id="loader-container">
         <ReactLoading
           type="bubbles"
-          color={"red"}
+          color={theme}
           height={"70%"}
           width={"50%"}
         />

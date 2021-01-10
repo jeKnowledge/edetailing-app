@@ -54,7 +54,8 @@ const Consultancy = ({
     photos.length - 1
   );
   const [showModal, setShowModal] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [isLoadingData, setIsLoadingData] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const openModal = useCallback(() => {
     setShowModal(true);
@@ -106,11 +107,11 @@ const Consultancy = ({
             setVideos(videosFs);
           }
         }
-        setLoading(false);
+        setIsLoadingData(false);
       })
       .catch((error) => {
         console.error(error);
-        setLoading(false);
+        setIsLoadingData(false);
       });
   }, [consultancyId]);
 
@@ -127,10 +128,18 @@ const Consultancy = ({
     getConsultancyMediaWrapper();
   }, [getConsultancyMediaWrapper]);
 
+  useEffect(() => {
+    let timer1 = setTimeout(() => setIsLoading(false), 1000);
+
+    return () => {
+      clearTimeout(timer1);
+    };
+  }, [setIsLoading]);
+
   return (
     <IonPage>
-      {loading ? (
-        <Loader />
+      {isLoading || isLoadingData ? (
+        <Loader id={consultancyId} />
       ) : (
         <IonContent forceOverscroll={false} scrollY={false}>
           <div id="page">
