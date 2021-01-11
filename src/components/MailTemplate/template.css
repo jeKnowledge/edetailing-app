@@ -2,9 +2,15 @@ body {
   display: flex;
 }
 
-@media screen and (max-width: 1051px) {
+@media only screen and (min-width: 1051px) {
   body {
-    display: block;
+    display: flex !important;
+  }
+}
+
+@media only screen and (max-width: 1052px) {
+  body {
+    display: block !important;
   }
 }
 

@@ -3,6 +3,8 @@ import React, { useCallback } from "react";
 import { useHistory } from "react-router";
 import Chameleon from "../../components/Chameleon/Chameleon";
 import HomeFloatingMenu from "../../components/HomeFloatingMenu";
+import { getEmailsForLater } from "../../hooks/getEmailsForLater";
+import { saveEmailForLater } from "../../hooks/saveEmailForLater";
 import "./HomePage.css";
 
 const HomePage: React.FC = () => {
@@ -35,8 +37,26 @@ const HomePage: React.FC = () => {
             />
           </div>
           <HomeFloatingMenu />
-          <IonButton onClick={() => redirect("/dropbox")}>
-            go to dropbox test
+          <IonButton
+            onClick={() => {
+              saveEmailForLater({
+                to: "goncalomrpereira@gmail.com",
+                services: ["af", "ceo", "mp"],
+              });
+              // sendEmail({
+              //   to: "goncalo_services@protonmail.com",
+              //   services: ["", "2", "3"],
+              // });
+            }}
+          >
+            save Email
+          </IonButton>
+          <IonButton
+            onClick={() => {
+              getEmailsForLater();
+            }}
+          >
+            view Emails
           </IonButton>
         </>
       </IonContent>

@@ -86,6 +86,7 @@ export interface ServiceData {
   duration: number;
   mailImage: string;
   websiteLink: string;
+  mailDescription: string;
 }
 
 export const serviceData: Record<string, ServiceData> = {
@@ -117,6 +118,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: 0,
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
   iit: {
     name: "Consultoria de Imagem Total Inteligente",
@@ -145,6 +147,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: 0,
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
   cp: {
     name: "Coloração Pessoal",
@@ -185,6 +188,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: 0,
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
   af: {
     name: "Consultoria De Análise Facial Detalhada",
@@ -209,6 +213,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: 0,
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
   ps: {
     name: "Personal Shopping",
@@ -230,6 +235,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: 2,
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
   cd: {
     name: "Closet Detox",
@@ -251,6 +257,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: 3,
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
   cn: {
     name: "Consultoria de Noivos",
@@ -263,6 +270,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: 0,
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
   ceo: {
     name: "Consultoria Escolha de Óculos",
@@ -275,6 +283,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: 0,
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
   fp: {
     name: "Formações e Palestras",
@@ -287,6 +296,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: 0,
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
   mp: {
     name: "Maquilhagem Profissional",
@@ -299,6 +309,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: 0,
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
 };
 

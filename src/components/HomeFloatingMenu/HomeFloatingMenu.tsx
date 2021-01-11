@@ -1,5 +1,3 @@
-import { IonIcon } from "@ionic/react";
-import { pricetag } from "ionicons/icons/";
 import React, { useCallback, useState } from "react";
 import {
   ChildButton,
@@ -42,15 +40,20 @@ const HomeFloatingMenu = () => {
           size={80}
         />
         <ChildButton
-          icon={
-            <span style={{ backgroundColor: "grey" }}>
-              <IonIcon icon={pricetag} />
-            </span>
-          }
+          icon={<img src="/assets/menu-prices.svg" alt="prices-icon" />}
           background="transparent"
           size={80}
           onClick={() => {
             redirect("/prices");
+            setIsOpen(false);
+          }}
+        />
+        <ChildButton
+          icon={<img src="/assets/menu-dropbox.svg" alt="dropbox-icon" />}
+          background="transparent"
+          size={80}
+          onClick={() => {
+            redirect("/dropbox");
             setIsOpen(false);
           }}
         />

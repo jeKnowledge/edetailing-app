@@ -144,6 +144,23 @@ const DropboxTest = () => {
                 );
             }
           });
+          Filesystem.readdir({
+            path: fileFolder,
+            directory: FilesystemDirectory.External,
+          }).then((result) => {
+            result.files.forEach((fileInFolder) => {
+              if (
+                !filesInFolder.result.entries
+                  .map((entry) => entry.name)
+                  .includes(fileFolder)
+              ) {
+                Filesystem.deleteFile({
+                  path: fileFolder + fileInFolder,
+                  directory: FilesystemDirectory.External,
+                });
+              }
+            });
+          });
         })
         .catch((err) => console.error(err));
     });

@@ -14,6 +14,7 @@ type CsvParserResult = {
   Serviço: string;
   Link?: string;
   "Imagem Email"?: string;
+  "Descrição Email"?: string;
 }[];
 
 export const getServiceData = async (
@@ -49,6 +50,7 @@ export const getServiceData = async (
             slideText: result["Benefícios"].split("\n"),
             mailImage: result["Imagem Email"] ?? "",
             websiteLink: result["Link"] ?? "",
+            mailDescription: result["Descrição Email"] ?? "",
           }
         : undefined;
     } else return undefined;
