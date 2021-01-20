@@ -54,6 +54,15 @@ const HomeFloatingMenu = () => {
             setIsOpen(false);
           }}
         />
+        <ChildButton
+          icon={<img src="/assets/menu-dropbox.svg" alt="back" />}
+          background="transparent"
+          size={80}
+          onClick={() => {
+            redirect("/dropboxPage");
+            setIsOpen(false);
+          }}
+        />
       </FloatingMenu>
     </span>
   );

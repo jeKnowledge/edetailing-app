@@ -3,6 +3,7 @@ import { IonReactRouter } from "@ionic/react-router";
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import ConsultancyWrapper from "./components/ConsultancyWrapper";
+import DropboxPage from "./components/DropboxPage/index";
 import PaulaPrada from "./components/PaulaPrada";
 import Service from "./components/Service";
 import { colorToConsultancy, ConsultancyID, serviceToColor } from "./data/data";
@@ -49,6 +50,10 @@ const App: React.FC = () => (
 
         <Route path="/dropbox" exact={true}>
           <DropboxTest />
+        </Route>
+
+        <Route path="/dropboxPage" exact={true}>
+          <DropboxPage />
         </Route>
 
         <Route exact path="/" render={() => <Redirect to="/home" />} />
