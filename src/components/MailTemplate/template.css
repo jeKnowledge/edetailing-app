@@ -1,22 +1,33 @@
-body {
-  display: flex;
-}
-
 @media screen and (max-width: 1051px) {
-  body {
-    display: block;
+  .table {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .img {
+    width: 100%;
+    max-width: 1025px !important;
+    max-height: 684px !important;
+    min-width: 468px;
+    min-height: 312.61px;
   }
 }
 
 .table {
   width: 100%;
-  padding-left: 50px;
-  padding-right: 50px;
-  position: relative;
+  display: flex;
+}
+
+.table1 {
+  width: 100%;
 }
 
 .img {
   width: 100%;
+  max-width: 468px;
+  max-height: 312.61px;
+  min-width: 468px;
+  min-height: 312.61px;
 }
 
 .text {
@@ -25,12 +36,12 @@ body {
 }
 
 .title {
+  height: 150px;
+  max-height: 150px;
   font-weight: bold;
   font-size: 30px;
-  line-height: 40px;
   text-transform: uppercase;
   padding-top: 70px;
-  padding-bottom: 20px;
 }
 
 .description {
