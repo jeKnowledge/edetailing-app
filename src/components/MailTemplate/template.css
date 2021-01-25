@@ -5,11 +5,7 @@
   }
 
   .img {
-    width: 100%;
     max-width: 1025px !important;
-    max-height: 684px !important;
-    min-width: 468px;
-    min-height: 312.61px;
   }
 }
 
@@ -23,11 +19,13 @@
 }
 
 .img {
+  height: 100%;
   width: 100%;
   max-width: 468px;
   max-height: 312.61px;
   min-width: 468px;
   min-height: 312.61px;
+  object-fit: contain;
 }
 
 .text {

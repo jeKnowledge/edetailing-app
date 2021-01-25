@@ -72,7 +72,7 @@ const PaulaPrada: React.FC = () => {
               </div>
               <IonImg
                 className="forma_esq"
-                src="/assets/paula_prada_page/forma_esq.svg"
+                src="/assets/paula_prada_page/forma_esq.png"
               />
             </IonSlide>
             <IonSlide className="ion-slide-left">
