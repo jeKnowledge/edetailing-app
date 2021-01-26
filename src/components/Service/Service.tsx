@@ -3,6 +3,7 @@ import {
   IonImg,
   IonLabel,
   IonPage,
+  IonProgressBar,
   IonSlide,
   IonSlides,
 } from "@ionic/react";
@@ -47,6 +48,7 @@ const Service = ({ serviceID }: ServiceProps) => {
   const [currentLabel, setcurrentLabel] = useState<number>(0);
   const [currentTextSlide, setCurrentTextSlide] = useState<number>(0);
   const [currentImg, setcurrentImg] = useState<number>(0);
+  const [duration, setDuration] = useState<number>(0);
   const currentLabelRef = useRef(currentLabel);
   const currentImgRef = useRef(currentImg);
 
@@ -180,13 +182,18 @@ const Service = ({ serviceID }: ServiceProps) => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      updateSlideImage();
-      updateSlideImg();
-    }, 2000);
+      if (duration > 1) {
+        setDuration(0);
+      } else {
+        setDuration(duration + 0.2);
+      }
+    }, 400);
     return () => {
       clearTimeout(timer);
     };
-  }, [updateSlideImage, updateSlideImg]);
+  }, [duration, setDuration]);
+
+  useEffect(() => {}, [updateSlideImage, updateSlideImg]);
 
   let title;
   if (thisServiceData.boasMasEscolhas) {
@@ -335,11 +342,23 @@ const Service = ({ serviceID }: ServiceProps) => {
                   onClick={openModal}
                 />
               </div>
+              <div>
+                <IonLabel className="title text-time">
+                  {thisServiceData.duration}
+                </IonLabel>
+                <IonProgressBar
+                  className={`ion-progress-bar-${theme}`}
+                  color="primary"
+                  value={duration}
+                ></IonProgressBar>
+              </div>
+
               <MailModal
                 open={showModal}
                 onClose={closeModal}
                 serviceId={serviceID}
               />
+              <br />
             </IonSlide>
             {slide}
           </IonSlides>

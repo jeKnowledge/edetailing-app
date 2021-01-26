@@ -34,7 +34,7 @@ const Prices = () => {
   return (
     <IonPage style={{ overflow: "hidden", position: "fixed" }}>
       {loading ? (
-        <Loader />
+        <Loader id={"paulaprada"} />
       ) : (
         <IonContent id="price-page" forceOverscroll={false} scrollY={false}>
           <>

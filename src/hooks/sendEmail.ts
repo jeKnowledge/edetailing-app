@@ -29,7 +29,7 @@ export const sendEmail = ({
           {
             to: [
               {
-                email: "goncalo_services@protonmail.com",
+                email: "molimpiadias@gmail.com",
               },
             ],
           },

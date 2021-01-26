@@ -8,7 +8,7 @@ import {
   serviceDropboxName,
 } from "../../data/data";
 import { DROPBOX_API } from "../../secrets";
-import ConsultancyFloatingMenu from "../ConsultancyFloatingMenu";
+import OtherPagesFloatingMenu from "../OtherPagesFloatingMenu";
 import "./Dropbox.css";
 const { Filesystem } = Plugins;
 
@@ -17,19 +17,19 @@ type DownloadStatus = "done" | "downloading";
 const downloadsInitStatus: { id: string; status: DownloadStatus }[] = [
   ...Object.keys(serviceDropboxName).map((serviceId) => ({
     id: serviceDropboxName[serviceId],
-    status: "not download" as DownloadStatus,
+    status: "downloading" as DownloadStatus,
   })),
   {
     id: "Preçário",
-    status: "not download" as DownloadStatus,
+    status: "downloading" as DownloadStatus,
   },
   {
     id: "Configuração dos Serviços",
-    status: "not download" as DownloadStatus,
+    status: "downloading" as DownloadStatus,
   },
   {
     id: "Paula Prada",
-    status: "not download" as DownloadStatus,
+    status: "downloading" as DownloadStatus,
   },
 ];
 
@@ -261,29 +261,25 @@ const DropboxPage = () => {
   return (
     <IonPage>
       <IonContent>
-        <ConsultancyFloatingMenu />
+        <OtherPagesFloatingMenu />
         <div id="content">
           <div id="content-data">
-            {downloadsInitStatus.map((dI) => (
-              <div className="consultancy">
-                <div className="box">
-                  <IonLabel id="consultancy-style">{dI.id}</IonLabel>
+            {downloadStatus
+              .sort((a, b) => a.id.localeCompare(b.id))
+              .map((dI) => (
+                <div className="consultancy">
+                  <div className="box">
+                    <IonLabel id="consultancy-style">{dI.id}</IonLabel>
+                  </div>
+                  <div>
+                    <div className="box">
+                      <IonLabel id="consultancy-style">
+                        {downloadStarted ? dI.status : "not downloading"}
+                      </IonLabel>
+                    </div>
+                  </div>
                 </div>
-                {downloadStarted ? (
-                  <div>
-                    <div className="box">
-                      <IonLabel id="consultancy-style"></IonLabel>
-                    </div>
-                  </div>
-                ) : (
-                  <div>
-                    <div className="box">
-                      <IonLabel id="consultancy-style">{dI.status}</IonLabel>
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
+              ))}
             <div id="button-content">
               <IonButton
                 id="download-button"

@@ -9,8 +9,8 @@ import {
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { paulaprada, PaulaPradaData } from "../../data/data";
 import { getPaulaPradaData } from "../../hooks/getPaulaPradaData";
-import ConsultancyFloatingMenu from "../ConsultancyFloatingMenu";
 import Loader from "../Loader";
+import OtherPagesFloatingMenu from "../OtherPagesFloatingMenu";
 import "./PaulaPrada.css";
 
 const PaulaPrada: React.FC = () => {
@@ -53,7 +53,7 @@ const PaulaPrada: React.FC = () => {
         <Loader id={"paulaprada"} />
       ) : (
         <IonContent forceOverscroll={false} scrollY={false}>
-          <ConsultancyFloatingMenu />
+          <OtherPagesFloatingMenu />
           <IonSlides>
             <IonSlide>
               <IonLabel className="title-quem-sou title-paula-prada">

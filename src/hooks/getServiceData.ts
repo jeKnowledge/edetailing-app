@@ -43,7 +43,7 @@ export const getServiceData = async (
               result["Mas Escolhas"].split("\n"),
             ],
             consultancyId: serviceData[serviceId].consultancyId,
-            duration: +result["Duração"],
+            duration: result["Duração"],
             imgSlideSize: NaN,
             labelsSlide: labels,
             slideText: result["Benefícios"].split("\n"),

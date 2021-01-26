@@ -1,4 +1,4 @@
-@media screen and (max-width: 1051px) {
+@media screen and (max-width: 1420px) {
   .table {
     display: flex;
     flex-direction: column;
@@ -18,9 +18,14 @@
   width: 100%;
 }
 
+.image {
+  display: flex;
+  justify-content: center;
+}
+
 .img {
-  height: 100%;
-  width: 100%;
+  height: 468px;
+  width: 312.61px;
   max-width: 468px;
   max-height: 312.61px;
   min-width: 468px;

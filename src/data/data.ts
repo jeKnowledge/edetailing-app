@@ -100,7 +100,7 @@ export interface ServiceData {
   imgSlideSize: number;
   boasMasEscolhas: boolean;
   boasMasText: string[][];
-  duration: number;
+  duration: string;
   mailImage: string;
   websiteLink: string;
 }
@@ -131,7 +131,7 @@ export const serviceData: Record<string, ServiceData> = {
     imgSlideSize: 7,
     boasMasEscolhas: false,
     boasMasText: [[]],
-    duration: 0,
+    duration: "3h",
     mailImage: "",
     websiteLink: "",
   },
@@ -159,7 +159,7 @@ export const serviceData: Record<string, ServiceData> = {
     imgSlideSize: 1,
     boasMasEscolhas: false,
     boasMasText: [[]],
-    duration: 0,
+    duration: "12h",
     mailImage: "",
     websiteLink: "",
   },
@@ -199,7 +199,7 @@ export const serviceData: Record<string, ServiceData> = {
         "Denuncia sinais de cansaço;",
       ],
     ],
-    duration: 0,
+    duration: "2h",
     mailImage: "",
     websiteLink: "",
   },
@@ -223,7 +223,7 @@ export const serviceData: Record<string, ServiceData> = {
     imgSlideSize: 2,
     boasMasEscolhas: false,
     boasMasText: [[]],
-    duration: 0,
+    duration: "4h",
     mailImage: "",
     websiteLink: "",
   },
@@ -244,7 +244,7 @@ export const serviceData: Record<string, ServiceData> = {
     imgSlideSize: 7,
     boasMasEscolhas: false,
     boasMasText: [[]],
-    duration: 2,
+    duration: "min 2h",
     mailImage: "",
     websiteLink: "",
   },
@@ -265,7 +265,7 @@ export const serviceData: Record<string, ServiceData> = {
     imgSlideSize: 1,
     boasMasEscolhas: false,
     boasMasText: [[]],
-    duration: 3,
+    duration: "",
     mailImage: "",
     websiteLink: "",
   },
@@ -277,7 +277,7 @@ export const serviceData: Record<string, ServiceData> = {
     imgSlideSize: 14,
     boasMasEscolhas: false,
     boasMasText: [[]],
-    duration: 0,
+    duration: "noiva: 7h, noivo: 5h",
     mailImage: "",
     websiteLink: "",
   },
@@ -289,7 +289,7 @@ export const serviceData: Record<string, ServiceData> = {
     imgSlideSize: 4,
     boasMasEscolhas: false,
     boasMasText: [[]],
-    duration: 0,
+    duration: "2h",
     mailImage: "",
     websiteLink: "",
   },
@@ -301,7 +301,7 @@ export const serviceData: Record<string, ServiceData> = {
     imgSlideSize: 3,
     boasMasEscolhas: false,
     boasMasText: [[]],
-    duration: 0,
+    duration: "",
     mailImage: "",
     websiteLink: "",
   },
@@ -313,7 +313,7 @@ export const serviceData: Record<string, ServiceData> = {
     imgSlideSize: 4,
     boasMasEscolhas: false,
     boasMasText: [[]],
-    duration: 0,
+    duration: "2h",
     mailImage: "",
     websiteLink: "",
   },
