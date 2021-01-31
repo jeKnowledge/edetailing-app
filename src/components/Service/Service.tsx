@@ -182,6 +182,16 @@ const Service = ({ serviceID }: ServiceProps) => {
 
   useEffect(() => {
     const timer = setInterval(() => {
+      updateSlideImage();
+      updateSlideImg();
+    }, 2000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [updateSlideImage, updateSlideImg]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
       if (duration > 1) {
         setDuration(0);
       } else {
