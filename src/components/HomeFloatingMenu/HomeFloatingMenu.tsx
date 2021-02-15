@@ -40,7 +40,7 @@ const HomeFloatingMenu = () => {
           size={80}
         />
         <ChildButton
-          icon={<img src="/assets/menu-price.svg" alt="back" />}
+          icon={<img src="/assets/menu-prices.svg" alt="prices-icon" />}
           background="transparent"
           size={80}
           onClick={() => {
@@ -49,7 +49,7 @@ const HomeFloatingMenu = () => {
           }}
         />
         <ChildButton
-          icon={<img src="/assets/menu-dropbox.svg" alt="back" />}
+          icon={<img src="/assets/menu-dropbox.svg" alt="dropbox-icon" />}
           background="transparent"
           size={80}
           onClick={() => {

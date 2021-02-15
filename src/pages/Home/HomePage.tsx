@@ -3,6 +3,8 @@ import React, { useCallback } from "react";
 import { useHistory } from "react-router";
 import Chameleon from "../../components/Chameleon/Chameleon";
 import HomeFloatingMenu from "../../components/HomeFloatingMenu";
+import { getEmailsForLater } from "../../hooks/getEmailsForLater";
+import { sendEmail } from "../../hooks/sendEmail";
 import "./HomePage.css";
 
 const HomePage: React.FC = () => {
@@ -20,7 +22,7 @@ const HomePage: React.FC = () => {
         id="homepage"
         forceOverscroll={false}
         scrollY={false}
-        className="ion-padding "
+        className="ion-padding"
       >
         <>
           <div className="stack ">
@@ -35,8 +37,26 @@ const HomePage: React.FC = () => {
             />
           </div>
           <HomeFloatingMenu />
-          <IonButton onClick={() => redirect("/dropbox")}>
-            go to dropbox test
+          <IonButton
+            onClick={() => {
+              //saveEmailForLater({
+              // to: "molimpiadias@gmail.com",
+              //  services: ["af", "ceo", "mp"],
+              // });
+              sendEmail({
+                to: "mariadias_99@hotmail.com",
+                services: ["af", "ceo", "mp"],
+              });
+            }}
+          >
+            save Email
+          </IonButton>
+          <IonButton
+            onClick={() => {
+              getEmailsForLater();
+            }}
+          >
+            view Emails
           </IonButton>
         </>
       </IonContent>

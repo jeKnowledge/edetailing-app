@@ -1,67 +1,61 @@
-import "@capacitor-community/http";
-import { Capacitor, Plugins } from "@capacitor/core";
+import { FilesystemDirectory, Plugins } from "@capacitor/core";
 import sgMail, { MailDataRequired } from "@sendgrid/mail";
 import { SENDGRID_API } from "../secrets";
+import { saveEmailForLater } from "./saveEmailForLater";
+import { useEmail } from "./useEmail";
+const { Filesystem } = Plugins;
 
-export const sendEmail = ({
+const cleanString = (input: string): string => {
+  var output = "";
+  for (var i = 0; i < input.length; i++) {
+    if (input.charCodeAt(i) <= 127) {
+      output += input.charAt(i);
+    } else {
+      output += "&#" + input.charCodeAt(i) + ";";
+    }
+  }
+  return output;
+};
+
+export const sendEmail = async ({
   to,
-  mailTemplate,
+  services,
+  savedId = undefined,
 }: {
   to: string;
-  mailTemplate: number | string | undefined;
+  services: string[];
+  savedId?: string | undefined;
 }) => {
-  // use native http request handler
-  if (Capacitor.isNative) {
-    const { Http } = Plugins;
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const html = await useEmail(services);
+  sgMail.setApiKey(SENDGRID_API);
+  const msg: MailDataRequired = {
+    to: to,
+    from: "paula.prada@jeknowledge.com",
+    replyTo: "paulaprada@imageminteligente.com",
+    subject: "Paula Prada",
+    html: cleanString(html.normalize()),
+  };
 
-    return Http.request({
-      method: "POST",
-      url: "https://api.sendgrid.com/v3/mail/send",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "origin, x-request-with, content-type",
-        "Access-Control-Allow-Methods":
-          "PUT, GET, POST, DELETE, OPTIONS, PATCH",
-      },
-      data: {
-        personalizations: [
-          {
-            to: [
-              {
-                email: "molimpiadias@gmail.com",
-              },
-            ],
-          },
-        ],
-        from: {
-          email: "paula.prada@jeknowledge.com",
-        },
-        reply_to: {
-          email: "paulaprada@imageminteligente.com",
-        },
-        subject: "Lorem ipsum dolor sit amet consectetur, adipisicing",
-        content: [
-          {
-            type: "text/plain",
-            value:
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos praesentium enim quo, accusantium, obcaecati dolor dolorum corporis quia, ad adipisci error illo ipsa in voluptatum repellendus ex labore quod necessitatibus!" +
-              "\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa beatae dignissimos, repudiandae cum veritatis ex nostrum quidem voluptatem natus iure officia atque exercitationem eaque quasi voluptates! Enim, voluptas iste. Ea.",
-          },
-        ],
-      },
-    });
-  } else {
-    sgMail.setApiKey(SENDGRID_API);
-    const msg: MailDataRequired = {
-      to: to,
-      from: "paula.prada@jeknowledge.com",
-      // TODO: SUBJECT AS PARAM?
-      // TODO: change text and html for templateId
-      subject: "Sending with SendGrid is Fun",
-      text: "and easy to do anywhere, even with Node.js",
-      html: "<strong>and easy to do anywhere, even with Node.js</strong>",
-    };
-    return sgMail.send(msg);
-  }
+  sgMail.send(msg).then((result) => {
+    if (result["0"].statusCode !== 202) {
+      saveEmailForLater({
+        to,
+        services,
+      });
+    }
+    // success
+    else {
+      if (savedId) {
+        try {
+          Filesystem.deleteFile({
+            path: "emails/" + savedId,
+            directory: FilesystemDirectory.External,
+          });
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    }
+  });
 };

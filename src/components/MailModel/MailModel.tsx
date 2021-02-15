@@ -1,7 +1,20 @@
-import { IonCheckbox, IonItem, IonLabel, IonModal } from "@ionic/react";
-import React, { useCallback, useMemo } from "react";
+import { NetworkStatus, Plugins } from "@capacitor/core";
+import {
+  IonCheckbox,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonModal,
+  IonToast,
+} from "@ionic/react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import validator from "validator";
 import { serviceData } from "../../data/data";
+import { saveEmailForLater } from "../../hooks/saveEmailForLater";
+import { sendEmail } from "../../hooks/sendEmail";
 import "./MailModel.css";
+
+const { Network } = Plugins;
 
 interface MailModalProps {
   open: boolean;
@@ -11,10 +24,44 @@ interface MailModalProps {
 
 //estavas a faazer a Lamp modal e a ver como é que funciona o css daquilo
 const MailModal = ({ onClose, open, serviceId }: MailModalProps) => {
-  const checkboxList: { val: string; isChecked: boolean }[] = useMemo(
+  const [toEmail, setToEmail] = useState<string>("");
+  const [showError, setShowError] = useState(false);
+
+  const updateToEmail = useCallback((e) => setToEmail(e.detail.value), []);
+
+  const [netStatus, setNetStatus] = useState<NetworkStatus | undefined>(
+    undefined
+  );
+  const handler = Network.addListener("networkStatusChange", (status) => {
+    console.log("Network status changed", netStatus);
+    setNetStatus(status);
+  });
+
+  const getNetworkStatus = useCallback(() => {
+    Network.getStatus()
+      .then((s) => setNetStatus(s))
+      .catch((error) => console.error(error));
+  }, []);
+
+  useEffect(() => {
+    getNetworkStatus();
+  }, [getNetworkStatus]);
+
+  useEffect(() => {
+    return () => {
+      handler.remove();
+    };
+  }, [handler]);
+
+  const checkboxList: {
+    label: string;
+    value: string;
+    isChecked: boolean;
+  }[] = useMemo(
     () =>
       Object.keys(serviceData).map((s) => ({
-        val: serviceData[s].name,
+        label: serviceData[s].name,
+        value: s,
         isChecked: serviceId === s,
       })),
     [serviceId]
@@ -24,7 +71,7 @@ const MailModal = ({ onClose, open, serviceId }: MailModalProps) => {
     (event) => {
       if (event.currentTarget.checked === false) {
         for (let i = 0; i < checkboxList.length; i++) {
-          if (checkboxList[i].val === event.currentTarget.value) {
+          if (checkboxList[i].value === event.currentTarget.value) {
             checkboxList[i].isChecked = event.currentTarget.checked;
           }
         }
@@ -40,7 +87,7 @@ const MailModal = ({ onClose, open, serviceId }: MailModalProps) => {
         event.currentTarget.checked = false;
       } else {
         for (let i = 0; i < checkboxList.length; i++) {
-          if (checkboxList[i].val === event.currentTarget.value) {
+          if (checkboxList[i].value === event.currentTarget.value) {
             checkboxList[i].isChecked = event.currentTarget.checked;
           }
         }
@@ -48,6 +95,28 @@ const MailModal = ({ onClose, open, serviceId }: MailModalProps) => {
     },
     [checkboxList]
   );
+
+  const onSendClick = useCallback(() => {
+    if (!validator.isEmail(toEmail)) {
+      setShowError(true);
+      return;
+    }
+    if (netStatus?.connected) {
+      // send
+      sendEmail({
+        to: toEmail,
+        services: checkboxList.map((c) => c.value),
+      });
+    } else {
+      //queue
+      saveEmailForLater({
+        to: toEmail,
+        services: checkboxList.map((c) => c.value),
+      });
+    }
+    onClose();
+    setToEmail("");
+  }, [checkboxList, netStatus, onClose, toEmail]);
 
   return (
     <IonModal
@@ -57,33 +126,48 @@ const MailModal = ({ onClose, open, serviceId }: MailModalProps) => {
       cssClass="mail-model"
     >
       <div className="mail-modal-grey">
+        <IonInput
+          placeholder="Email"
+          value={toEmail}
+          type="email"
+          onIonChange={updateToEmail}
+        ></IonInput>
         <p className="mail-modal-title">
           <b className="mail-modal-color">SELECIONE A(S) CONSULTORIAS</b> (pode
           selecionar mais duas)
         </p>
         <div style={{ display: "flex" }}>
-          <div style={{ flex: 0.85 }}>
-            {checkboxList.map(({ val, isChecked }, i) => (
+          <div style={{ flex: 0.75 }}>
+            {checkboxList.map(({ value, label, isChecked }, i) => (
               <IonItem className="mail-modal-item" key={i}>
                 <IonCheckbox
                   className="mail-modal-check-box"
                   slot="start"
-                  value={val}
+                  value={value}
                   checked={isChecked}
-                  disabled={val === serviceData[serviceId].name}
+                  disabled={value === serviceId}
                   mode="md"
                   onClick={emailsChecked}
                   key={i}
                 />
-                <IonLabel>{val}</IonLabel>
+                <IonLabel>{label}</IonLabel>
               </IonItem>
             ))}
           </div>
-          <div style={{ flex: 0.15, alignSelf: "flex-end" }}>
-            <button id="send-button">Enviar</button>
+          <div style={{ flex: 0.25, alignSelf: "flex-end" }}>
+            <button id="send-button" onClick={onSendClick}>
+              {netStatus?.connected ? "Enviar" : "Enviar mais tarde"}
+            </button>
           </div>
         </div>
       </div>
+      <IonToast
+        isOpen={showError}
+        onDidDismiss={() => setShowError(false)}
+        duration={1000}
+        color="danger"
+        message="O email introduzido não é válido"
+      />
     </IonModal>
   );
 };

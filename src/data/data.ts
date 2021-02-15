@@ -103,6 +103,7 @@ export interface ServiceData {
   duration: string;
   mailImage: string;
   websiteLink: string;
+  mailDescription: string;
 }
 
 export const serviceData: Record<string, ServiceData> = {
@@ -134,6 +135,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: "3h",
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
   iit: {
     name: "Consultoria de Imagem Total Inteligente",
@@ -162,6 +164,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: "12h",
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
   cp: {
     name: "Coloração Pessoal",
@@ -202,6 +205,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: "2h",
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
   af: {
     name: "Consultoria De Análise Facial Detalhada",
@@ -226,6 +230,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: "4h",
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
   ps: {
     name: "Personal Shopping",
@@ -247,6 +252,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: "min 2h",
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
   cd: {
     name: "Closet Detox",
@@ -268,6 +274,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: "",
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
   cn: {
     name: "Consultoria de Noivos",
@@ -280,6 +287,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: "noiva: 7h, noivo: 5h",
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
   ceo: {
     name: "Consultoria Escolha de Óculos",
@@ -292,6 +300,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: "2h",
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
   fp: {
     name: "Formações e Palestras",
@@ -304,6 +313,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: "",
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
   mp: {
     name: "Maquilhagem Profissional",
@@ -316,6 +326,7 @@ export const serviceData: Record<string, ServiceData> = {
     duration: "2h",
     mailImage: "",
     websiteLink: "",
+    mailDescription: "",
   },
 };
 
