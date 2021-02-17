@@ -1,0 +1,108 @@
+.ion-page {
+  background-color: #ffffff;
+}
+
+ion-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#box {
+  position: absolute;
+  top: 100px;
+}
+
+.row {
+  height: 40px;
+  width: 650px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.first-row {
+  margin-bottom: 16px;
+  justify-content: flex-end;
+}
+
+.row :last-child {
+  width: 200px !important;
+  text-align: center;
+}
+
+.email-column {
+  width: 380px;
+}
+
+.box-emails {
+  height: 370px;
+  overflow: scroll;
+}
+
+.check-box {
+  width: 25px;
+  height: 25px;
+  --background: #dfdfdf !important;
+  --background-checked: #dfdfdf !important;
+  --border-color: #dfdfdf !important;
+  --border-radius: 5px !important;
+  --border-color-checked: #dfdfdf !important;
+  --checkmark-color: #000000;
+}
+
+.box {
+  height: 35px !important;
+  background: #f9f9f9 !important;
+  box-shadow: 0px 7px 4px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 15px !important;
+  margin: 5px;
+  color: #000000;
+  display: flex;
+  justify-content: center;
+}
+
+.box-email {
+  width: 370px !important;
+  justify-content: start !important;
+  padding: 0px 20px;
+}
+
+.style {
+  color: #363636;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 30px;
+  text-transform: uppercase;
+}
+
+.title {
+  color: #2d2a2a !important;
+  margin-bottom: 16px;
+  align-self: flex-start;
+}
+
+#download-button {
+  position: absolute;
+  top: 620px;
+  right: 130px;
+  width: 170px;
+  height: 58px;
+  --background: #dedede !important;
+  --background-activated: #dedede !important;
+  --box-shadow: 0px 7px 4px #f5f5f5 !important;
+  --border-radius: 30px !important;
+}
+
+#download-button-style {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 42px;
+  text-transform: uppercase;
+  color: #2d2a2a !important;
+}

@@ -5,6 +5,7 @@ import { Redirect, Route } from "react-router-dom";
 import ConsultancyWrapper from "./components/ConsultancyWrapper";
 import DropboxPage from "./components/DropboxPage/index";
 import PaulaPrada from "./components/PaulaPrada";
+import PendingEmails from "./components/PendingEmails/index";
 import Service from "./components/Service";
 import { colorToConsultancy, ConsultancyID, serviceToColor } from "./data/data";
 import HomePage from "./pages/Home/HomePage";
@@ -54,6 +55,10 @@ const App: React.FC = () => (
 
         <Route path="/dropboxPage" exact={true}>
           <DropboxPage />
+        </Route>
+
+        <Route path="/pendingEmails" exact={true}>
+          <PendingEmails />
         </Route>
 
         <Route exact path="/" render={() => <Redirect to="/home" />} />
