@@ -39,5 +39,7 @@ export const getEmailsForLater = async (): Promise<Email[] | undefined> => {
       services: content[2].split(","),
     });
   }
+
   console.log(emails);
+  return emails;
 };

@@ -57,6 +57,15 @@ const HomeFloatingMenu = () => {
             setIsOpen(false);
           }}
         />
+        <ChildButton
+          icon={<img src="/assets/menu-emails.svg" alt="email-icon" />}
+          background="transparent"
+          size={80}
+          onClick={() => {
+            redirect("/pendingEmails");
+            setIsOpen(false);
+          }}
+        />
       </FloatingMenu>
     </span>
   );

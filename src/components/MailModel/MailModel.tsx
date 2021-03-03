@@ -101,17 +101,24 @@ const MailModal = ({ onClose, open, serviceId }: MailModalProps) => {
       setShowError(true);
       return;
     }
+
+    const servicesList: {
+      label: string;
+      value: string;
+      isChecked: boolean;
+    }[] = checkboxList.filter((c) => c.isChecked === true);
+
     if (netStatus?.connected) {
       // send
       sendEmail({
         to: toEmail,
-        services: checkboxList.map((c) => c.value),
+        services: servicesList.map((c) => c.value),
       });
     } else {
       //queue
       saveEmailForLater({
         to: toEmail,
-        services: checkboxList.map((c) => c.value),
+        services: servicesList.map((c) => c.value),
       });
     }
     onClose();
@@ -131,6 +138,7 @@ const MailModal = ({ onClose, open, serviceId }: MailModalProps) => {
           value={toEmail}
           type="email"
           onIonChange={updateToEmail}
+          className="mail-modal-input"
         ></IonInput>
         <p className="mail-modal-title">
           <b className="mail-modal-color">SELECIONE A(S) CONSULTORIAS</b> (pode

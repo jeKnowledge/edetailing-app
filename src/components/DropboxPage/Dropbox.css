@@ -33,7 +33,7 @@
   justify-content: center;
 }
 
-#download-button {
+#download-button-dropbox {
   width: 297px;
   height: 58px;
   --background: #ebebeb !important;

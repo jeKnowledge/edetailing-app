@@ -71,9 +71,10 @@ ion-content {
   width: 370px !important;
   justify-content: start !important;
   padding: 0px 20px;
+  overflow: scroll;
 }
 
-.style {
+.style-emails {
   color: #363636;
   font-weight: 600;
   font-size: 25px;
@@ -81,7 +82,7 @@ ion-content {
   text-transform: uppercase;
 }
 
-.title {
+.title-emails {
   color: #2d2a2a !important;
   margin-bottom: 16px;
   align-self: flex-start;
@@ -91,7 +92,7 @@ ion-content {
   position: absolute;
   top: 620px;
   right: 130px;
-  width: 170px;
+  width: fit-content;
   height: 58px;
   --background: #dedede !important;
   --background-activated: #dedede !important;
@@ -100,8 +101,8 @@ ion-content {
 }
 
 #download-button-style {
-  font-weight: 600;
-  font-size: 30px;
+  font-size: 22px;
+  font-weight: 500;
   line-height: 42px;
   text-transform: uppercase;
   color: #2d2a2a !important;

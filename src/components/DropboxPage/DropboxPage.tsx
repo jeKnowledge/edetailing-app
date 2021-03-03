@@ -282,7 +282,7 @@ const DropboxPage = () => {
               ))}
             <div id="button-content">
               <IonButton
-                id="download-button"
+                id="download-button-dropbox"
                 onClick={clickToDownload}
                 disabled={isDownloading}
               >

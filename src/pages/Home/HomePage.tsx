@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import Chameleon from "../../components/Chameleon/Chameleon";
 import HomeFloatingMenu from "../../components/HomeFloatingMenu";
 import { getEmailsForLater } from "../../hooks/getEmailsForLater";
-import { sendEmail } from "../../hooks/sendEmail";
+import { saveEmailForLater } from "../../hooks/saveEmailForLater";
 import "./HomePage.css";
 
 const HomePage: React.FC = () => {
@@ -39,14 +39,14 @@ const HomePage: React.FC = () => {
           <HomeFloatingMenu />
           <IonButton
             onClick={() => {
-              //saveEmailForLater({
-              // to: "molimpiadias@gmail.com",
-              //  services: ["af", "ceo", "mp"],
-              // });
-              sendEmail({
-                to: "mariadias_99@hotmail.com",
+              saveEmailForLater({
+                to: "molimpiadias@gmail.com",
                 services: ["af", "ceo", "mp"],
               });
+              //sendEmail({
+              //  to: "mariadias_99@hotmail.com",
+              //  services: ["af", "ceo", "mp"],
+              //});
             }}
           >
             save Email

@@ -37,6 +37,10 @@ export const sendEmail = async ({
     html: cleanString(html.normalize()),
   };
 
+  services.forEach((element) => {
+    console.log(element);
+  });
+
   sgMail.send(msg).then((result) => {
     if (result["0"].statusCode !== 202) {
       saveEmailForLater({

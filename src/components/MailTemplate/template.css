@@ -1,9 +1,8 @@
-@media screen and (max-width: 1420px) {
-  .table {
-    display: flex;
-    flex-direction: column;
-  }
+* {
+  margin: 0px;
+}
 
+@media screen and (max-width: 1420px) {
   .img {
     max-width: 1025px !important;
   }
@@ -11,16 +10,6 @@
 
 .table {
   width: 100%;
-  display: flex;
-}
-
-.table1 {
-  width: 100%;
-}
-
-.image {
-  display: flex;
-  justify-content: center;
 }
 
 .img {
@@ -52,4 +41,40 @@
   font-weight: normal;
   font-size: 16px;
   line-height: 22px;
+  width: calc(100% / 3);
+}
+
+td {
+  padding: 0px 20px;
+}
+
+.footer {
+  margin-top: 100px;
+  width: 100%;
+  background-color: #4c4c4c;
+  padding-bottom: 50px;
+}
+
+.footer-row {
+  padding: 10px 0px 10px 30px;
+}
+
+.botao1 {
+  width: 215px;
+}
+
+.saber-mais {
+  height: 150px;
+}
+
+.botao {
+  margin: 20px 0px;
+  padding: 15px 50px;
+  background-color: #c4c4c4;
+  border-radius: 30px;
+  text-align: center;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #363636;
+  text-decoration: none;
 }
