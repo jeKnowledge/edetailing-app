@@ -103,7 +103,6 @@ const Service = ({ serviceID }: ServiceProps) => {
         array.push([]);
         for (k; k < thisServiceData.slideText.length; k++) {
           array[i].push(thisServiceData.slideText[k]);
-          console.log(thisServiceData.slideText[k]);
           j++;
           if (j === 2) {
             k = k + 1;

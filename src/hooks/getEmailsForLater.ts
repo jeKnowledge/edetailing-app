@@ -40,6 +40,5 @@ export const getEmailsForLater = async (): Promise<Email[] | undefined> => {
     });
   }
 
-  console.log(emails);
   return emails;
 };

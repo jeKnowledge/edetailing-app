@@ -1,10 +1,8 @@
-import { IonButton, IonContent, IonImg, IonPage } from "@ionic/react";
+import { IonContent, IonImg, IonPage } from "@ionic/react";
 import React, { useCallback } from "react";
 import { useHistory } from "react-router";
 import Chameleon from "../../components/Chameleon/Chameleon";
 import HomeFloatingMenu from "../../components/HomeFloatingMenu";
-import { getEmailsForLater } from "../../hooks/getEmailsForLater";
-import { saveEmailForLater } from "../../hooks/saveEmailForLater";
 import "./HomePage.css";
 
 const HomePage: React.FC = () => {
@@ -37,7 +35,9 @@ const HomePage: React.FC = () => {
             />
           </div>
           <HomeFloatingMenu />
+          {/*
           <IonButton
+         
             onClick={() => {
               saveEmailForLater({
                 to: "molimpiadias@gmail.com",
@@ -58,6 +58,7 @@ const HomePage: React.FC = () => {
           >
             view Emails
           </IonButton>
+          */}
         </>
       </IonContent>
     </IonPage>

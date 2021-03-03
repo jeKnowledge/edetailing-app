@@ -70,7 +70,7 @@ const PendingEmails = () => {
 
   useEffect(() => {
     getEmails();
-  }, []);
+  }, [getEmails]);
 
   useEffect(() => {
     let timer1 = setTimeout(() => setLoading(false), 1000);
@@ -103,7 +103,6 @@ const PendingEmails = () => {
   //Envia todos os que estejam na lista
   const onSendClick = useCallback(() => {
     if (netStatus?.connected) {
-      const emails1 = emails;
       sendEmails.forEach((email) => {
         sendEmail({
           to: email.to,
@@ -115,7 +114,7 @@ const PendingEmails = () => {
         prevEmails.filter((e) => !sendEmails.find((se) => se.id === e.id))
       );
     }
-  }, [netStatus, sendEmails, emails, setEmails]);
+  }, [netStatus, sendEmails, setEmails]);
 
   return (
     <IonPage>

@@ -37,7 +37,6 @@ export const useEmail = async (services: string[]) => {
       id: serviceId,
       data: thisServiceData ?? serviceData[serviceId],
     });
-    console.log(selectedServicesData);
   }
 
   const fallbackImage =
