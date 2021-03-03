@@ -174,6 +174,7 @@ const Consultancy = ({
                     title={leftInfoBox?.title as string}
                     to={"/services/" + leftInfoBox?.to}
                     consultancyID={leftInfoBox?.consultancyID as string}
+                    websiteLink={leftInfoBox?.websiteLink as string}
                   />
                 </div>
                 <div id="infobox-right">
@@ -182,6 +183,7 @@ const Consultancy = ({
                     title={rightInfoBox?.title as string}
                     to={"/services/" + rightInfoBox?.to}
                     consultancyID={rightInfoBox?.consultancyID as string}
+                    websiteLink={leftInfoBox?.websiteLink as string}
                     variant="reverse"
                   />
                 </div>
@@ -194,6 +196,7 @@ const Consultancy = ({
                   title={centerInfoBox?.title as string}
                   to={"/services/" + centerInfoBox?.to}
                   consultancyID={centerInfoBox?.consultancyID as string}
+                  websiteLink={leftInfoBox?.websiteLink as string}
                 />
               </div>
             )}

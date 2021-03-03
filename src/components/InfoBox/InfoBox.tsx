@@ -9,6 +9,7 @@ export interface InfoBoxProps {
   consultancyID: string;
   variant?: "default" | "reverse";
   expands?: boolean;
+  websiteLink: string;
 }
 
 /**

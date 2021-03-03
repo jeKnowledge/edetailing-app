@@ -16,6 +16,18 @@ const serviceDescription = (
   }
 };
 
+const serviceWebsite = (serviceId: string, consultancyId: string): string => {
+  const consultancy = consultancyData[consultancyId];
+
+  if (consultancy?.centerInfoBox?.to === serviceId) {
+    return consultancy?.centerInfoBox?.websiteLink ?? "";
+  } else if (consultancy?.leftInfoBox?.to === serviceId) {
+    return consultancy?.leftInfoBox?.websiteLink ?? "";
+  } else {
+    return consultancy?.rightInfoBox?.websiteLink ?? "";
+  }
+};
+
 export const useEmail = async (services: string[]) => {
   const selectedServicesData: { id: string; data: ServiceData }[] = [];
   for (let i = 0; i < services.length; i++) {
@@ -209,7 +221,11 @@ export const useEmail = async (services: string[]) => {
                 .map(
                   (sd) => /*html*/ `
                   <td style="padding: 0px 20px;">
-                    <a href="https://imageminteligente.com/" class="button-link" style="padding: 15px 50px; background-color: #c4c4c4; border-radius: 30px; font-family: sans-serif; font-size: 16px; text-transform: uppercase; color: #363636; text-decoration: none;">saber mais</a> 
+                    <a href="${
+                      sd.data.websiteLink
+                        ? sd.data.websiteLink
+                        : serviceWebsite(sd.id, sd.data.consultancyId)
+                    }" class="button-link" style="padding: 15px 50px; background-color: #c4c4c4; border-radius: 30px; font-family: sans-serif; font-size: 16px; text-transform: uppercase; color: #363636; text-decoration: none;">saber mais</a> 
                   </td>`
                 )
                 .join("")}
@@ -253,7 +269,11 @@ export const useEmail = async (services: string[]) => {
             </tr>
             <tr align="center" class="row-button" style="height: 150px;">
               <td>
-                <a href="https://imageminteligente.com/" class="button-link" style="padding: 15px 50px; background-color: #c4c4c4; border-radius: 30px; font-family: sans-serif; font-size: 16px; text-transform: uppercase; color: #363636; text-decoration: none;">saber mais</a> 
+                <a href="${
+                  sd.data.websiteLink
+                    ? sd.data.websiteLink
+                    : serviceWebsite(sd.id, sd.data.consultancyId)
+                }" class="button-link" style="padding: 15px 50px; background-color: #c4c4c4; border-radius: 30px; font-family: sans-serif; font-size: 16px; text-transform: uppercase; color: #363636; text-decoration: none;">saber mais</a> 
               </td>
             </tr>
         </table>`

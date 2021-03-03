@@ -362,6 +362,7 @@ export const consultancyData: Record<string, ConsultancyData> = {
       text: [
         "E se pudesse ter um profissional a fazer-lhe um acompanhamento personalizado para ajudar a identificar e trabalhar o seu estilo? Faça esta viagem do seu interior para o seu exterior.",
       ],
+      websiteLink: "https://imageminteligente.com/consultoria-de-imagem/",
     },
     rightInfoBox: {
       title: "Consultoria de Imagem Total Inteligente",
@@ -370,6 +371,7 @@ export const consultancyData: Record<string, ConsultancyData> = {
       text: [
         "Gostaria de trabalhar a sua imagem de A a Z? Aqui encontra a consultoria mais completa e gratificante. Torne a sua imagem numa imagem inteligente.",
       ],
+      websiteLink: "https://imageminteligente.com/consultoria-de-imagem/",
     },
     lampData: {
       title: "azul",
@@ -388,6 +390,7 @@ export const consultancyData: Record<string, ConsultancyData> = {
         "Já lhe aconteceu estar perfeitamente bem e alguém lhe perguntar se estava doente? Sabia que provavelmente seria porque estava a usar cores junto ao seu rosto que não favoreciam? Cores? Como assim?",
         "Pode ser cor de cabelo, maquilhagem, óculos, acessórios até a roupa junto ao rosto.Sabe que cores favorecem mais o seu rosto? Descubra através de uma sessão de coloração pessoal!",
       ],
+      websiteLink: "https://imageminteligente.com/consultoria-de-imagem/",
     },
     lampData: {
       title: "vermelho",
@@ -406,6 +409,7 @@ export const consultancyData: Record<string, ConsultancyData> = {
         "Qual o peso do rosto na nossa imagem? Quando ouvimos o nome ou nos lembramos de uma pessoa qual é a primeira imagem que nos vem à cabeça? É a imagem do rosto. Porquê? Porque o rosto carrega em si a identidade do indivíduo.",
         "O rosto é a parte do corpo que carrega um maior número de elementos expressivos na identificação de uma pessoa e é a parte do corpo que mais se relaciona com o mundo e com os outros. É através do nosso rosto de nos expressamos e que criamos a empatia com os nossos interlocutores.",
       ],
+      websiteLink: "https://imageminteligente.com/consultoria-de-imagem/",
     },
     lampData: {
       title: "verde",
@@ -423,6 +427,7 @@ export const consultancyData: Record<string, ConsultancyData> = {
       text: [
         "Ajudamos na ida às compras para escolher os melhores cortes, cores e padrões para si. Tornamos as compras num momento consciente e prazeroso.",
       ],
+      websiteLink: "https://imageminteligente.com/consultoria-de-imagem/",
     },
     lampData: {
       title: "laranja",
@@ -440,6 +445,7 @@ export const consultancyData: Record<string, ConsultancyData> = {
       text: [
         'E quando abrimos o nosso guarda-roupa que se encontra repleto e dizemos "não tenho nada para vestir!"?! Ajudamos a organizar o seu guarda-roupa de forma consciente e inteligente.',
       ],
+      websiteLink: "https://imageminteligente.com/consultoria-de-imagem/",
     },
     lampData: {
       title: "rosa",
@@ -457,6 +463,7 @@ export const consultancyData: Record<string, ConsultancyData> = {
       text: [
         '"Só quero que o dia do meu casamento seja o mais feliz de sempre." Somos os parceiros certos. Ajudamos no processo de escolha do vestido ou fato em função do seu tipo de corpo. Também não esquecemos maquilhagem, acessórios e o ramo para lançar às suas amigas.',
       ],
+      websiteLink: "https://imageminteligente.com/consultoria-de-imagem/",
     },
     lampData: {
       title: "amarelo",
@@ -475,6 +482,7 @@ export const consultancyData: Record<string, ConsultancyData> = {
         "Identificar os seus traços faciais, a sua paleta cromática e a mensagem que pretende passar são três passos muito importantes para que a sua vida fique mais fácil e intuitiva. Quando falamos em armações de óculos, por vezes temos dificuldade em saber quais as que nos favorecem mais e que cores nos ficam melhor.",
         "Quando falamos de uma peça tão importante que estará sempre presente no nosso rosto, não acha que devemos reduzir a nossa margem de erro? Na minha consultoria de óculos todos esses pontos são analisados individualmente. Invista em si e na sua imagem.",
       ],
+      websiteLink: "https://imageminteligente.com/consultoria-de-imagem/",
     },
     lampData: {
       title: "lilas",
@@ -492,6 +500,7 @@ export const consultancyData: Record<string, ConsultancyData> = {
       text: [
         'Se tem uma destas perguntas, esta consultoria é para si! "Tenho uma empresa, como posso melhorar a sua imagem?", "será que a imagem que passo no meu local de trabalho é profissional?".',
       ],
+      websiteLink: "https://imageminteligente.com/formacao/",
     },
     lampData: {
       title: "castanho",
@@ -510,6 +519,7 @@ export const consultancyData: Record<string, ConsultancyData> = {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam malesuada bibendum arcu vitae. Habitasse platea dictumst quisque sagittis purus sit amet volutpat consequat.",
         "Orci a scelerisque purus semper eget. Hac habitasse platea dictumst quisque sagittis purus. Ac odio tempor orci dapibus. Eget arcu dictum varius duis. Tellus integer feugiat scelerisque varius morbi enim nunc. Elit pellentesque habitant morbi tristique.",
       ],
+      websiteLink: "https://imageminteligente.com/maquilhagem/",
     },
     lampData: {
       title: "verde",
