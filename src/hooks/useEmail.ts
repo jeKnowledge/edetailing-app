@@ -54,13 +54,12 @@ export const useEmail = async (services: string[]) => {
     
     .table {
       width: 100%;
-      display: flex;
-    }
-
-    .table1 {
-      width: 100%;
     }
     
+    td {
+      padding: 0px 20px;
+    }
+
     .img {
       height: 468px;
       width: 312.61px;
@@ -91,9 +90,12 @@ export const useEmail = async (services: string[]) => {
       font-weight: normal;
       font-size: 16px;
       line-height: 22px;
+      vertical-align: top;
+      width: calc(100% / ${selectedServicesData.length});
     }    
 
     .footer {
+      display: block;
       width: 100%;
       background-color: #4c4c4c;
       color: #fff;
@@ -122,7 +124,7 @@ export const useEmail = async (services: string[]) => {
       height: 150px;
     } 
 
-    .botao {
+    .button-link {
       padding: 15px 50px; 
       background-color: #c4c4c4; 
       border-radius: 30px; 
@@ -148,58 +150,74 @@ export const useEmail = async (services: string[]) => {
         }
       </style>
       <div class="desktop-view">
-      <table>
-        <tr class="table content" style="width: 100%; display: flex;">
-          ${selectedServicesData
-            .map(
-              (sd) => /*html*/ `<td class="table1" style="width: 100%";>
-              <table>
-                <thead>
-                    <tr>
-                      <td class="text title" style="font-family: sans-serif; font-style: normal; height: 150px; max-height: 150px; font-weight: bold; font-size: 30px; text-transform: uppercase; padding-top: 70px; color: #000000;">${
-                        sd.data.name
-                      }</td>
-                    </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th align="center">
-                      <img
-                        style="height: 468px;
-                        width: 312.61px;
-                        max-width: 468px;
-                        max-height: 312.61px;
-                        min-width: 468px;
-                        min-height: 312.61px;
-                        object-fit: contain;"
-                        alt="Imagem do serviço"
-                        src="${
-                          sd.data.mailImage ? sd.data.mailImage : fallbackImage
-                        }"
-                      />
-                    </th>
-                  </tr>
-                  <tr>
-                      <td class="text description" style="font-family: sans-serif; font-style: normal; padding-top: 30px; font-weight: normal; font-size: 16px; line-height: 22px; color: #000000;"> ${
-                        sd.data.mailDescription
-                          ? sd.data.mailDescription
-                          : serviceDescription(sd.id, sd.data.consultancyId)
-                      }</td>
-                  </tr>
-                  <tr align="center" class="row-button" style="height: 150px;">
-                    <td>
-                      <a href=" ${
-                        sd.data.websiteLink
-                      }" class="botao" style="padding: 15px 50px; background-color: #c4c4c4; border-radius: 30px; font-family: sans-serif; font-size: 16px; text-transform: uppercase; color: #363636; text-decoration: none;">saber mais</a> 
-                    </td>
-                  </tr>
-                </tbody>
-            </table>`
-            )
-            .join("")}
-          </tr>
+        <table srtyle="width: 100%;">
+          <thead>
+              <tr>
+                ${selectedServicesData
+                  .map(
+                    (sd) => /*html*/ `
+                    <td class="text title" style="padding: 0px 20px; font-family: sans-serif; font-style: normal; font-weight: bold; font-size: 30px; text-transform: uppercase; padding-top: 70px; color: #000000;">
+                      ${sd.data.name}
+                    </td>`
+                  )
+                  .join("")}
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+            ${selectedServicesData
+              .map(
+                (sd) => /*html*/ `
+                <th align="center" style="padding: 0px 20px;">
+                  <img
+                  class="img"
+                  src="${sd.data.mailImage ? sd.data.mailImage : fallbackImage}"
+                  width="468px" 
+                  height="312.61px" 
+                  style="height: 468px;
+                  width: 312.61px;
+                  max-width: 468px;
+                  max-height: 312.61px;
+                  min-width: 468px;
+                  min-height: 312.61px;
+                  object-fit: contain;"
+                  alt="Imagem do serviço" 
+                />
+              </th>`
+              )
+              .join("")}
+              
+            </tr>
+            <tr>
+              ${selectedServicesData
+                .map(
+                  (sd) => /*html*/ `
+                  <td class="text description" style="width: calc(100% / ${
+                    selectedServicesData.length
+                  }); vertical-align: top; padding: 0px 20px; font-family: sans-serif; font-style: normal; padding-top: 30px; font-weight: normal; font-size: 16px; line-height: 22px; color: #000000;"> 
+                    ${
+                      sd.data.mailDescription
+                        ? sd.data.mailDescription
+                        : serviceDescription(sd.id, sd.data.consultancyId)
+                    }
+                </td>`
+                )
+                .join("")}
+            </tr>
+            <tr align="center" class="row-button" style="height: 150px;">
+              ${selectedServicesData
+                .map(
+                  (sd) => /*html*/ `
+                  <td style="padding: 0px 20px;">
+                    <a href="https://imageminteligente.com/" class="button-link" style="padding: 15px 50px; background-color: #c4c4c4; border-radius: 30px; font-family: sans-serif; font-size: 16px; text-transform: uppercase; color: #363636; text-decoration: none;">saber mais</a> 
+                  </td>`
+                )
+                .join("")}
+            </tr>
+          </tbody>
         </table>
       </div>
+
       <div class="mobile-view" style="display: none;">
       ${selectedServicesData
         .map(
@@ -225,7 +243,7 @@ export const useEmail = async (services: string[]) => {
               </th>
             </tr>
             <tr>
-              <td class="text description" style="font-family: sans-serif; font-style: normal;padding-top: 30px;font-weight: normal;font-size: 16px;line-height: 22px; color: #000000;"> 
+              <td class="text description" style="vertical-align: top; font-family: sans-serif; font-style: normal; padding-top: 30px;font-weight: normal;font-size: 16px;line-height: 22px; color: #000000;"> 
                 ${
                   sd.data.mailDescription
                     ? sd.data.mailDescription
@@ -235,16 +253,14 @@ export const useEmail = async (services: string[]) => {
             </tr>
             <tr align="center" class="row-button" style="height: 150px;">
               <td>
-                <a href="${
-                  sd.data.websiteLink
-                }" class="botao" style="padding: 15px 50px; background-color: #c4c4c4; border-radius: 30px; font-family: sans-serif; font-size: 16px; text-transform: uppercase; color: #363636; text-decoration: none;">saber mais</a> 
+                <a href="https://imageminteligente.com/" class="button-link" style="padding: 15px 50px; background-color: #c4c4c4; border-radius: 30px; font-family: sans-serif; font-size: 16px; text-transform: uppercase; color: #363636; text-decoration: none;">saber mais</a> 
               </td>
             </tr>
         </table>`
         )
         .join("")}
       </div>
-      <div class="footer" style="width: 100%; background-color: #4c4c4c; margin-top: 100px; padding-bottom: 50px;">
+      <div class="footer" style="display: block; width: 100%; background-color: #4c4c4c; margin-top: 100px; padding-bottom: 50px;">
         <table>
           <tr>
             <td class="icon" style="class="icon" padding-right: 5px;"> 
@@ -285,7 +301,7 @@ export const useEmail = async (services: string[]) => {
               <a class="footer-email" href="mailto:paulaprada@imageminteligente.com" target="_blank" style="color: #E5E5E5;">paulaprada@imageminteligente.<wbr>com</a>
             </td>
           </tr>
-      </table>
+        </table>
       </div>
     </body>
   </html>`;
