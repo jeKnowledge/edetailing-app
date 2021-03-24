@@ -123,7 +123,6 @@ export const useEmail = async (services: string[]) => {
     }
     
     .icon {
-      width: 73px;
       padding-right: 5px;
     }
 
@@ -134,6 +133,10 @@ export const useEmail = async (services: string[]) => {
     .row-button{
       height: 150px;
     } 
+
+    .icons-row {
+      height: 80px;
+    }
 
     .button-link {
       padding: 15px 50px; 
@@ -281,31 +284,31 @@ export const useEmail = async (services: string[]) => {
       </div>
       <div class="footer" style="display: block; width: 100%; background-color: #4c4c4c; margin-top: 100px; padding-bottom: 50px;">
         <table>
-          <tr>
-            <td class="icon" style="class="icon" padding-right: 5px;"> 
+          <tr class="icons-row" style="height: 80px;">
+            <td class="icon" style="padding-right: 5px;"> 
               <a href="https://www.facebook.com/paulaprada.imageminteligente">
                 <img
-                src="https://i.imgur.com/7VPx7VY.png"
-                width="73px" 
-                height="70px" 
+                src="https://www.dropbox.com/s/u86ip84kfqe493i/facebook.png?raw=1"
+                width="40px" 
+                height="40px" 
                 />
               </a> 
             </td>
-            <td class="icon" style="class="icon" padding-right: 5px;"> 
+            <td class="icon" style="padding-right: 5px;"> 
               <a href="https://www.instagram.com/paulaprada_imageminteligente/">
                 <img
-                src="https://i.imgur.com/y62DPOb.png"
-                width="73px" 
-                height="70px" 
+                src="https://www.dropbox.com/s/h3puphkmsmym93d/intagram.png?raw=1"
+                width="40px" 
+                height="40px" 
                 />
               </a> 
             </td>
             <td> 
               <a href="https://www.linkedin.com/in/paula-prada-pires/">
                 <img
-                src="https://i.imgur.com/akjd39c.png"
-                width="73px" 
-                height="70px" 
+                src="https://www.dropbox.com/s/6nc3ohvnq6o7i5v/linkedin.png?raw=1"
+                width="40px" 
+                height="40px" 
                 />
               </a>
             </td>
