@@ -48,6 +48,7 @@ ion-slide {
   height: 200px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   position: absolute;
 }
 

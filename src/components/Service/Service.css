@@ -57,7 +57,7 @@ p {
 
 .text-content {
   position: absolute;
-  height: -webkit-fill-available;
+  height: 100%;
 }
 .text-content-esq {
   left: 25px;
@@ -68,7 +68,7 @@ p {
 }
 
 .title-content {
-  height: -webkit-fill-available;
+  height: 100%;
   width: 300px;
   display: flex;
   flex-direction: column;
