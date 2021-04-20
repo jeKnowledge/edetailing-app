@@ -28,5 +28,4 @@ yarn.lock
 secrets.ts
 sendgrid.env
 
-/android
 /ios
