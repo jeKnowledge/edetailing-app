@@ -1,9 +1,10 @@
+import { HttpPlugin } from "@capacitor-community/http";
 import { FilesystemDirectory, Plugins } from "@capacitor/core";
-import sgMail, { MailDataRequired } from "@sendgrid/mail";
 import { SENDGRID_API } from "../secrets";
 import { saveEmailForLater } from "./saveEmailForLater";
 import { useEmail } from "./useEmail";
-const { Filesystem } = Plugins;
+
+const { Filesystem, Http } = Plugins;
 
 const cleanString = (input: string): string => {
   var output = "";
@@ -28,34 +29,101 @@ export const sendEmail = async ({
 }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const html = await useEmail(services);
-  sgMail.setApiKey(SENDGRID_API);
-  const msg: MailDataRequired = {
-    to: to,
-    from: "paula.prada@jeknowledge.com",
-    replyTo: "paulaprada@imageminteligente.com",
-    subject: "Paula Prada",
-    html: cleanString(html.normalize()),
-  };
+  // sgMail.setApiKey(SENDGRID_API);
+  // const msg: MailDataRequired = {
+  //   to: to,
+  //   from: "paula.prada@jeknowledge.com",
+  //   replyTo: "paulaprada@imageminteligente.com",
+  //   subject: "Paula Prada",
+  //   html: cleanString(html.normalize()),
+  // };
 
-  sgMail.send(msg).then((result) => {
-    if (result["0"].statusCode !== 202) {
+  // sgMail
+  //   .send(msg)
+  //   .then((result) => {
+  //     if (result["0"].statusCode !== 202) {
+  //       saveEmailForLater({
+  //         to,
+  //         services,
+  //       });
+  //     }
+  //     // success
+  //     else {
+  //       if (savedId) {
+  //         try {
+  //           Filesystem.deleteFile({
+  //             path: "emails/" + savedId,
+  //             directory: FilesystemDirectory.External,
+  //           });
+  //         } catch (error) {
+  //           console.error(error);
+  //         }
+  //       }
+  //     }
+  //   })
+  //   .catch(() =>
+  //     saveEmailForLater({
+  //       to,
+  //       services,
+  //     })
+  //   );
+
+  // native call
+  (Http as HttpPlugin)
+    .request({
+      method: "POST",
+      url: "https://api.sendgrid.com/v3/mail/send",
+      headers: {
+        Authorization: `Bearer ${SENDGRID_API}`,
+        "Content-Type": "application/json",
+      },
+      data: {
+        to: [
+          {
+            email: to,
+          },
+        ],
+        from: {
+          email: "paula.prada@jeknowledge.com",
+        },
+        reply_to: {
+          email: "paulaprada@imageminteligente.com",
+        },
+        subject: "Paula Prada",
+        content: [
+          {
+            type: "text/html",
+            value: cleanString(html.normalize()),
+          },
+        ],
+      },
+    })
+    .then((result) => {
+      console.log(result);
+      if (result.status !== 202) {
+        saveEmailForLater({
+          to,
+          services,
+        });
+      }
+      // success
+      else {
+        if (savedId) {
+          try {
+            Filesystem.deleteFile({
+              path: "emails/" + savedId,
+              directory: FilesystemDirectory.External,
+            });
+          } catch (error) {
+            console.error(error);
+          }
+        }
+      }
+    })
+    .catch(() =>
       saveEmailForLater({
         to,
         services,
-      });
-    }
-    // success
-    else {
-      if (savedId) {
-        try {
-          Filesystem.deleteFile({
-            path: "emails/" + savedId,
-            directory: FilesystemDirectory.External,
-          });
-        } catch (error) {
-          console.error(error);
-        }
-      }
-    }
-  });
+      })
+    );
 };
