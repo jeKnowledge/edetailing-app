@@ -5,14 +5,14 @@ import {
   IonPage,
   IonProgressBar,
   IonSlide,
-  IonSlides,
+  IonSlides
 } from "@ionic/react";
 import React, {
   useCallback,
   useEffect,
   useMemo,
   useRef,
-  useState,
+  useState
 } from "react";
 import { serviceData, ServiceData, serviceToColor } from "../../data/data";
 import { getServiceData } from "../../hooks/getServiceData";
@@ -357,7 +357,6 @@ const Service = ({ serviceID }: ServiceProps) => {
                 </IonLabel>
                 <IonProgressBar
                   className={`ion-progress-bar-${theme}`}
-                  color="primary"
                   value={duration}
                 ></IonProgressBar>
               </div>

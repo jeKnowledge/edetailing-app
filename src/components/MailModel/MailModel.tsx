@@ -5,7 +5,7 @@ import {
   IonItem,
   IonLabel,
   IonModal,
-  IonToast,
+  IonToast
 } from "@ionic/react";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import validator from "validator";
@@ -145,6 +145,11 @@ const MailModal = ({ onClose, open, serviceId }: MailModalProps) => {
           selecionar mais duas)
         </p>
         <div style={{ display: "flex" }}>
+        <div style={{ flex: 0.25, alignSelf: "flex-start" }}>
+            <button id="send-button" onClick={onSendClick}>
+              {netStatus?.connected ? "Enviar" : "Enviar mais tarde"}
+            </button>
+          </div>
           <div style={{ flex: 0.75 }}>
             {checkboxList.map(({ value, label, isChecked }, i) => (
               <IonItem className="mail-modal-item" key={i}>
@@ -162,11 +167,7 @@ const MailModal = ({ onClose, open, serviceId }: MailModalProps) => {
               </IonItem>
             ))}
           </div>
-          <div style={{ flex: 0.25, alignSelf: "flex-end" }}>
-            <button id="send-button" onClick={onSendClick}>
-              {netStatus?.connected ? "Enviar" : "Enviar mais tarde"}
-            </button>
-          </div>
+          
         </div>
       </div>
       <IonToast
