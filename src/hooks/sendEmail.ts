@@ -78,9 +78,13 @@ export const sendEmail = async ({
         "Content-Type": "application/json",
       },
       data: {
-        to: [
+        personalizations: [
           {
-            email: to,
+            to: [
+              {
+                email: to,
+              },
+            ],
           },
         ],
         from: {
@@ -99,7 +103,6 @@ export const sendEmail = async ({
       },
     })
     .then((result) => {
-      console.log(result);
       if (result.status !== 202) {
         saveEmailForLater({
           to,
