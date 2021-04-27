@@ -279,8 +279,15 @@ export const serviceData: Record<string, ServiceData> = {
   cn: {
     name: "Consultoria de Noivos",
     consultancyId: "cn",
-    slideText: [],
-    labelsSlide: [],
+    slideText: [
+      "Auxiliamos na escolha, compra e criação de um visual inesquecível para um único dia na vida dos noivos;",  
+      "Para além da coerência entre o estilo de casamento e a imagem dos seus protagonistas, tenha também um aconselhamento profissional de maquilhagem, vestuário, acessórios, penteado e o tipo de ramo, tudo de acordo com a silhueta, tipo de rosto e características dos noivos.",
+    ],
+    labelsSlide: [
+      "plano de identidade visual + coloração pessoal",
+      "personal shopping",
+      "prova de maquilhagem e maquilhagem no dia de casamento",
+    ],
     imgSlideSize: 14,
     boasMasEscolhas: false,
     boasMasText: [[]],
@@ -292,8 +299,20 @@ export const serviceData: Record<string, ServiceData> = {
   ceo: {
     name: "Consultoria Escolha de Óculos",
     consultancyId: "ceo",
-    slideText: [],
-    labelsSlide: [],
+    slideText: [
+      "Serviço desenhado individualmente à medida das suas necessidades;",    
+      "Acompanhamento personalizado até ao objetivo definido;", 
+      "Aumento de auto-imagem e auto-estima;",   
+      "Saber que para o seu tipo de rosto existem armações que irão favorecer e outras que não beneficiam;",  
+      "Fazer dos óculos, sejam eles graduados ou de sol uma peça-chave no seu look;", 
+      "Fazer compras conscientes e não por impulso;", 
+      "Ficar a saber quais são as cores que mais harmonizam consigo em cor de cabelo, maquilhagem, acessórios e roupa junto ao rosto.",
+    ],
+    labelsSlide: [
+      "plano de identidade visual", 
+      "coloração pessoal", 
+      "desconto na aquisição dos óculos",
+    ],
     imgSlideSize: 4,
     boasMasEscolhas: false,
     boasMasText: [[]],
@@ -306,7 +325,10 @@ export const serviceData: Record<string, ServiceData> = {
     name: "Formações e Palestras",
     consultancyId: "fp",
     slideText: [],
-    labelsSlide: [],
+    labelsSlide: [
+      "plano de identidade corporativa", 
+      "formação e role-play",
+    ],
     imgSlideSize: 4,
     boasMasEscolhas: false,
     boasMasText: [[]],
