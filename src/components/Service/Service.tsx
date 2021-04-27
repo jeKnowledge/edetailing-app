@@ -305,18 +305,24 @@ const Service = ({ serviceID }: ServiceProps) => {
                     </p>
                   ))}
                 </div>
-                <div className="setas">
-                  <IonImg
-                    onClick={backwardCurrentTextSlide}
-                    className="setas-esq"
-                    src={`/assets/consultorias/${thisServiceData.consultancyId}/seta_esq.svg`}
-                  />
-                  <IonImg
-                    onClick={forwardCurrentTextSlide}
-                    className="setas-dir"
-                    src={`/assets/consultorias/${thisServiceData.consultancyId}/seta_dir.svg`}
-                  />
-                </div>
+                
+                { thisServiceData.slideText.length > 3 ? 
+                (
+                  <div className="setas">
+                    <IonImg
+                      onClick={backwardCurrentTextSlide}
+                      className="setas-esq"
+                      src={`/assets/consultorias/${thisServiceData.consultancyId}/seta_esq.svg`}
+                    />
+                    <IonImg
+                      onClick={forwardCurrentTextSlide}
+                      className="setas-dir"
+                      src={`/assets/consultorias/${thisServiceData.consultancyId}/seta_dir.svg`}
+                    />
+                  </div>
+                ) : ""
+                }
+                
               </div>
             </IonSlide>
             <IonSlide>
