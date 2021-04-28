@@ -768,25 +768,25 @@ const Chameleon: React.FC<ChameleonParameters> = ({
         />
         {/* Part 9 */}
         <polygon
-          onClick={() => redirect(colorToConsultancy.green)}
+          onClick={() => redirect(colorToConsultancy.turquoise)}
           className="cls-1"
           fill="#028a61"
           points="476.41 395.31 498.03 422.28 495.57 381.18 476.41 395.31"
         />
         <polygon
-          onClick={() => redirect(colorToConsultancy.green)}
+          onClick={() => redirect(colorToConsultancy.turquoise)}
           className="cls-2"
           fill="#00ae7e"
           points="476.41 395.31 492.36 361.91 495.57 381.18 476.41 395.31"
         />
         <polygon
-          onClick={() => redirect(colorToConsultancy.green)}
+          onClick={() => redirect(colorToConsultancy.turquoise)}
           className="cls-3"
           fill="#079e70"
           points="521.58 365.12 492.36 361.91 495.57 381.18 521.58 365.12"
         />
         <polygon
-          onClick={() => redirect(colorToConsultancy.green)}
+          onClick={() => redirect(colorToConsultancy.turquoise)}
           className="cls-4"
           fill="#037152"
           points="521.58 365.12 498.03 422.28 495.57 381.18 521.58 365.12"
@@ -856,13 +856,13 @@ const Chameleon: React.FC<ChameleonParameters> = ({
         />
         {/* Part 14 */}
         <polygon
-          onClick={() => redirect(colorToConsultancy.turquoise)}
+          onClick={() => redirect(colorToConsultancy.green)}
           className="cls-1"
           fill="#8dc63f"
           points="378.79 284.84 397.2 257.23 406.46 279.46 378.79 284.84"
         />
         <polygon
-          onClick={() => redirect(colorToConsultancy.turquoise)}
+          onClick={() => redirect(colorToConsultancy.green)}
           className="cls-2"
           fill="#547836"
           points="434.88 273.93 397.2 257.23 406.46 279.46 434.88 273.93"
