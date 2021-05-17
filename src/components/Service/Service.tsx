@@ -3,7 +3,7 @@ import {
   IonImg,
   IonLabel,
   IonPage,
-  IonProgressBar,
+
   IonSlide,
   IonSlides
 } from "@ionic/react";
@@ -21,7 +21,7 @@ import { useServiceStaticAssets } from "../../hooks/useServiceStaticAssets";
 import { isImage } from "../../utils/isImage";
 import ConsultancyFloatingMenu from "../ConsultancyFloatingMenu";
 import Loader from "../Loader";
-import MailModal from "../MailModel/MailModel";
+import Navbar from "../Navbar";
 import "./Service.css";
 
 const mod = (n: number, m: number): number => {
@@ -48,19 +48,9 @@ const Service = ({ serviceID }: ServiceProps) => {
   const [currentLabel, setcurrentLabel] = useState<number>(0);
   const [currentTextSlide, setCurrentTextSlide] = useState<number>(0);
   const [currentImg, setcurrentImg] = useState<number>(0);
-  const [duration, setDuration] = useState<number>(0);
   const currentLabelRef = useRef(currentLabel);
   const currentImgRef = useRef(currentImg);
 
-  const [showModal, setShowModal] = useState(false);
-
-  const openModal = useCallback(() => {
-    setShowModal(true);
-  }, []);
-
-  const closeModal = useCallback(() => {
-    setShowModal(false);
-  }, []);
 
   currentLabelRef.current = currentLabel;
   currentImgRef.current = currentImg;
@@ -189,19 +179,6 @@ const Service = ({ serviceID }: ServiceProps) => {
     };
   }, [updateSlideImage, updateSlideImg]);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (duration > 1) {
-        setDuration(0);
-      } else {
-        setDuration(duration + 0.2);
-      }
-    }, 400);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [duration, setDuration]);
-
   useEffect(() => {}, [updateSlideImage, updateSlideImg]);
 
   let title;
@@ -219,12 +196,20 @@ const Service = ({ serviceID }: ServiceProps) => {
       <IonSlide>
         <div className="text-content text-content-esq">
           <div className="title-content title-content-esq">
-            <IonLabel className={`title title-non-select-${theme}`}>
-              benefícios
-            </IonLabel>
+            {thisServiceData.slideText[0] !== "" ? (  
+              <IonLabel className={`title title-non-select-${theme}`}>
+                benefícios
+              </IonLabel>
+            ) :
+            ""
+            }
+            {thisServiceData.labelsSlide[0] !== "" ? (  
             <IonLabel className={`title title-non-select-${theme}`}>
               o que inclui?
             </IonLabel>
+            ) :
+            ""
+            }
             <IonLabel className="title">boa/má escolha</IonLabel>
           </div>
         </div>
@@ -255,6 +240,10 @@ const Service = ({ serviceID }: ServiceProps) => {
             </div>
           </div>
         </div>
+        <Navbar
+          serviceID={serviceID}
+          consultancyID={"undefined"}
+        />
       </IonSlide>
     );
   }
@@ -282,49 +271,68 @@ const Service = ({ serviceID }: ServiceProps) => {
         <IonContent fullscreen className={`ion-padding ion-content-${theme}`}>
           <ConsultancyFloatingMenu />
           <IonSlides>
-            <IonSlide>
-              <div className="slide-content">
-                <div className="text-content text-content-esq">
-                  <div className="title-content title-content-esq">
-                    <IonLabel className="title">benefícios</IonLabel>
-                    <IonLabel className={`title title-non-select-${theme}`}>
-                      o que inclui?
-                    </IonLabel>
-                    {title}
-                  </div>
-                </div>
-                <IonImg
-                  className="forma-branca forma-branca-esq"
-                  src="/assets/formas_geral/forma_branca_esq.png"
-                  alt="forma branca esquerda"
-                />
-                <div className="description">
-                  {slideText[currentTextSlide]?.map((t) => (
-                    <p className="description-text" key={t}>
-                      {t}
-                    </p>
-                  ))}
-                </div>
+            {thisServiceData.slideText[0] === "" && thisServiceData.labelsSlide[0] === "" && thisServiceData.boasMasEscolhas === false ? (  
+              <IonSlide>
+                  <Navbar
+                      serviceID={serviceID}
+                      consultancyID={"undefined"}
+                  />
                 
-                { thisServiceData.slideText.length > 3 ? 
-                (
-                  <div className="setas">
-                    <IonImg
-                      onClick={backwardCurrentTextSlide}
-                      className="setas-esq"
-                      src={`/assets/consultorias/${thisServiceData.consultancyId}/seta_esq.svg`}
-                    />
-                    <IonImg
-                      onClick={forwardCurrentTextSlide}
-                      className="setas-dir"
-                      src={`/assets/consultorias/${thisServiceData.consultancyId}/seta_dir.svg`}
-                    />
+              </IonSlide>
+            ) : "" }
+            {thisServiceData.slideText[0] !== "" ? (    
+              <IonSlide>
+                <div className="slide-content">
+                  <div className="text-content text-content-esq">
+                    <div className="title-content title-content-esq">
+                      <IonLabel className="title">benefícios</IonLabel>
+                      {thisServiceData.labelsSlide[0] !== "" ? (  
+                        <IonLabel className={`title title-non-select-${theme}`}>
+                          o que inclui?
+                        </IonLabel>
+                      ) : "" }
+                      {title}
+                    </div>
                   </div>
-                ) : ""
-                }
-                
-              </div>
-            </IonSlide>
+                  <IonImg
+                    className="forma-branca forma-branca-esq"
+                    src="/assets/formas_geral/forma_branca_esq.png"
+                    alt="forma branca esquerda"
+                  />
+                  <div className="description">
+                    {slideText[currentTextSlide]?.map((t) => (
+                      <p className="description-text" key={t}>
+                        {t}
+                      </p>
+                    ))}
+                  </div>
+                  {thisServiceData.slideText.length > 3 ? (
+                    <div className="setas">
+                      <IonImg
+                        onClick={backwardCurrentTextSlide}
+                        className="setas-esq"
+                        src={`/assets/consultorias/${thisServiceData.consultancyId}/seta_esq.svg`}
+                      />
+                      <IonImg
+                        onClick={forwardCurrentTextSlide}
+                        className="setas-dir"
+                        src={`/assets/consultorias/${thisServiceData.consultancyId}/seta_dir.svg`}
+                      />
+                    </div>
+                    ) : ""
+                  }
+                  {thisServiceData.labelsSlide[0] === "" && thisServiceData.boasMasEscolhas === false ? (   
+                    <Navbar
+                        serviceID={serviceID}
+                        consultancyID={"undefined"}
+                    />
+                    ) : ""
+                  } 
+                </div>
+              </IonSlide>
+              ) : ""
+            } 
+            {thisServiceData.labelsSlide[0] !== "" ? (  
             <IonSlide>
               <div className="slide-content">
                 <IonImg
@@ -344,36 +352,27 @@ const Service = ({ serviceID }: ServiceProps) => {
                 </div>
                 <div className="text-content text-content-dir">
                   <div className="title-content title-content-dir">
-                    <IonLabel className={`title title-non-select-${theme}`}>
-                      benefícios
-                    </IonLabel>
+                    {thisServiceData.slideText[0] !== "" ? (  
+                      <IonLabel className={`title title-non-select-${theme}`}>
+                        benefícios
+                      </IonLabel>
+                      ) : ""
+                    }
                     <IonLabel className="title">o que inclui?</IonLabel>
                     {title}
                   </div>
                 </div>
-                <IonImg
-                  className="mailIcon"
-                  src="/assets/mailIcon.svg"
-                  onClick={openModal}
-                />
-              </div>
-              <div>
-                <IonLabel className="title text-time">
-                  {thisServiceData.duration}
-                </IonLabel>
-                <IonProgressBar
-                  className={`ion-progress-bar-${theme}`}
-                  value={duration}
-                ></IonProgressBar>
-              </div>
-
-              <MailModal
-                open={showModal}
-                onClose={closeModal}
-                serviceId={serviceID}
+              </div> 
+              { thisServiceData.boasMasEscolhas === false ? ( 
+              <Navbar
+                serviceID={serviceID}
+                consultancyID={"undefined"}
               />
-              <br />
+                ) : ""
+              }
             </IonSlide>
+             ) : ""
+            }
             {slide}
           </IonSlides>
         </IonContent>

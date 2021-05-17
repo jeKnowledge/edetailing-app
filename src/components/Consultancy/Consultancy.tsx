@@ -4,10 +4,11 @@ import React, {
   useEffect,
   useMemo,
   useRef,
-  useState,
+  useState
 } from "react";
-import { consultancyData } from "../../data/data";
+import { consultancyData, ServiceData, serviceData } from "../../data/data";
 import { getConsultancyMedia } from "../../hooks/getConsultancyMedia";
+import { getServiceData } from "../../hooks/getServiceData";
 import { useConsultancyStaticAssets } from "../../hooks/useConsultancyStaticAssets";
 import { isImage } from "../../utils/isImage";
 import { IsVideo } from "../../utils/isVideo";
@@ -22,6 +23,8 @@ import "./Consultancy.css";
 interface ConsultancyProps {
   consultancyId: string;
   variant: "single" | "double";
+  serviceId: string;
+  serviceIdDouble: string;
   leftInfoBox?: InfoBoxProps;
   rightInfoBox?: InfoBoxProps;
   centerInfoBox?: InfoBoxProps;
@@ -34,6 +37,8 @@ const mod = (n: number, m: number): number => {
 const Consultancy = ({
   consultancyId,
   variant,
+  serviceId,
+  serviceIdDouble,
   leftInfoBox,
   rightInfoBox,
   centerInfoBox,
@@ -42,6 +47,12 @@ const Consultancy = ({
   const thisConsultancyData = useMemo(() => consultancyData[consultancyId], [
     consultancyId,
   ]);
+
+
+  const [loading, setLoading] = useState<{
+    data: boolean;
+    media: boolean;
+  }>({ data: true, media: true });
 
   const [photos, setPhotos] = useState<string[]>(staticAssests);
   const [videos, setVideos] = useState<string[]>(
@@ -135,10 +146,53 @@ const Consultancy = ({
       clearTimeout(timer1);
     };
   }, [setIsLoading]);
+  
+  const staticServiceData = useMemo(() => serviceData[serviceId], [serviceId]);
+  const [thisServiceData, setThisServiceData] = useState<ServiceData>(
+    staticServiceData
+  );
+
+  const staticServiceDataDouble = useMemo(() => serviceData[serviceIdDouble], [serviceIdDouble]);
+  const [thisServiceDataDouble, setThisServiceDataDouble] = useState<ServiceData>(
+    staticServiceDataDouble
+  );
+
+  const getServiceDataWrapper = useCallback(
+    () =>
+      getServiceData(serviceId)
+        .then((res) => {
+          if (res) setThisServiceData(res);
+        })
+        .catch((error) => console.error(error))
+        .finally(() =>
+          setLoading((prevL) => ({ data: false, media: prevL.media }))
+        ),
+    [serviceId]
+  );
+
+  const getServiceDataWrapperDouble = useCallback(
+    () =>
+      getServiceData(serviceIdDouble)
+        .then((res) => {
+          if (res) setThisServiceDataDouble(res);
+        })
+        .catch((error) => console.error(error))
+        .finally(() =>
+          setLoading((prevL) => ({ data: false, media: prevL.media }))
+        ),
+    [serviceIdDouble]
+  );
+
+  useEffect(() => {
+    getServiceDataWrapper();
+    if(variant === "double") {
+      getServiceDataWrapperDouble();
+    }
+  }, [getServiceDataWrapper, getServiceDataWrapperDouble, variant]);
 
   return (
     <IonPage>
-      {isLoading || isLoadingData ? (
+      {(isLoading || loading.data || isLoadingData) ? (
         <Loader id={consultancyId} />
       ) : (
         <IonContent forceOverscroll={false} scrollY={false}>
@@ -170,7 +224,7 @@ const Consultancy = ({
               <>
                 <div id="infobox-left">
                   <InfoBox
-                    text={leftInfoBox?.text as string[]}
+                    text={thisServiceData.description}
                     title={leftInfoBox?.title as string}
                     to={"/services/" + leftInfoBox?.to}
                     consultancyID={leftInfoBox?.consultancyID as string}
@@ -179,7 +233,7 @@ const Consultancy = ({
                 </div>
                 <div id="infobox-right">
                   <InfoBox
-                    text={rightInfoBox?.text as string[]}
+                    text={thisServiceDataDouble.description}
                     title={rightInfoBox?.title as string}
                     to={"/services/" + rightInfoBox?.to}
                     consultancyID={rightInfoBox?.consultancyID as string}
@@ -192,7 +246,7 @@ const Consultancy = ({
               <div id="infobox-central">
                 <InfoBox
                   expands={false}
-                  text={centerInfoBox?.text as string[]}
+                  text={thisServiceData.description}
                   title={centerInfoBox?.title as string}
                   to={"/services/" + centerInfoBox?.to}
                   consultancyID={centerInfoBox?.consultancyID as string}

@@ -5,11 +5,11 @@ import React, { useCallback, useEffect, useState } from "react";
 import {
   consultancyDropboxName,
   serviceData,
-  serviceDropboxName,
+  serviceDropboxName
 } from "../../data/data";
 import { DROPBOX_API } from "../../secrets";
 import OtherPagesFloatingMenu from "../OtherPagesFloatingMenu";
-import "./Dropbox.css";
+import "./DropboxPage.css";
 const { Filesystem } = Plugins;
 
 type DownloadStatus = "done" | "downloading";
@@ -93,7 +93,7 @@ const DropboxPage = () => {
           try {
             const result = await Filesystem.mkdir({
               path: fileFolder,
-              directory: FilesystemDirectory.External,
+              directory: FilesystemDirectory.Data,
               recursive: true,
             });
             console.log("result of mkdir", result);
@@ -119,7 +119,7 @@ const DropboxPage = () => {
                         Filesystem.writeFile({
                           data: base64data,
                           path: fileFolder + f.name,
-                          directory: FilesystemDirectory.External,
+                          directory: FilesystemDirectory.Data,
                           recursive: true,
                         }).then(
                           (_) => {
@@ -168,7 +168,7 @@ const DropboxPage = () => {
               Filesystem.writeFile({
                 data: base64data,
                 path: "serviços.csv",
-                directory: FilesystemDirectory.External,
+                directory: FilesystemDirectory.Data,
                 recursive: true,
               }).then(
                 (_) => {
@@ -205,7 +205,7 @@ const DropboxPage = () => {
               Filesystem.writeFile({
                 data: base64data,
                 path: pricesFile,
-                directory: FilesystemDirectory.External,
+                directory: FilesystemDirectory.Data,
                 recursive: true,
               }).then(
                 (_) => {
@@ -240,7 +240,7 @@ const DropboxPage = () => {
               Filesystem.writeFile({
                 data: base64data,
                 path: paulaPrada,
-                directory: FilesystemDirectory.External,
+                directory: FilesystemDirectory.Data,
                 recursive: true,
               }).then(
                 (_) => {
@@ -267,12 +267,12 @@ const DropboxPage = () => {
             {downloadStatus
               .sort((a, b) => a.id.localeCompare(b.id))
               .map((dI) => (
-                <div className="consultancy">
-                  <div className="box">
+                <div key={dI.id} className="consultancy">
+                  <div className="box-dropbox">
                     <IonLabel id="consultancy-style">{dI.id}</IonLabel>
                   </div>
                   <div>
-                    <div className="box">
+                    <div className="box-dropbox">
                       <IonLabel id="consultancy-style">
                         {downloadStarted ? dI.status : "not downloading"}
                       </IonLabel>

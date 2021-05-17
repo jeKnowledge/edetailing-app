@@ -28,3 +28,11 @@
     rgb(196, 196, 196) 87.22%
   ) !important;
 }
+
+.chameleon-signature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+   

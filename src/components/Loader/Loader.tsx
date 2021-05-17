@@ -15,14 +15,15 @@ const Loader = ({ id }: Theme) => {
 
   return (
     <IonContent fullscreen id="loader-content">
-      <div id="loader-container">
-        <ReactLoading
-          type="bubbles"
-          color={theme}
-          height={"70%"}
-          width={"50%"}
-        />
-      </div>
+        <div id="loader-container">
+          <ReactLoading
+            type="bubbles"
+            color={theme}
+            height={"none"}
+            width={"50%"}
+          />
+        </div>
+      
     </IonContent>
   );
 };

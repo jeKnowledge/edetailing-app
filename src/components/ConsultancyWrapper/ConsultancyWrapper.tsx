@@ -13,6 +13,8 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
       return (
         <Consultancy
           consultancyId="ip"
+          serviceId= "cii"
+          serviceIdDouble= "iit"
           variant={consultancyData["ip"].variant as "double"}
           rightInfoBox={consultancyData["ip"].rightInfoBox}
           leftInfoBox={consultancyData["ip"].leftInfoBox}
@@ -22,6 +24,8 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
       return (
         <Consultancy
           consultancyId="cp"
+          serviceId= "cp"
+          serviceIdDouble= ""
           variant={consultancyData["cp"].variant}
           centerInfoBox={consultancyData["cp"].centerInfoBox}
         />
@@ -30,6 +34,8 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
       return (
         <Consultancy
           consultancyId="af"
+          serviceId= "af"
+          serviceIdDouble= ""
           variant={consultancyData["af"].variant}
           centerInfoBox={consultancyData["af"].centerInfoBox}
         />
@@ -38,6 +44,8 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
       return (
         <Consultancy
           consultancyId="ps"
+          serviceId= "ps"
+          serviceIdDouble= ""
           variant={consultancyData["ps"].variant}
           centerInfoBox={consultancyData["ps"].centerInfoBox}
         />
@@ -46,6 +54,8 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
       return (
         <Consultancy
           consultancyId="cd"
+          serviceId= "cd"
+          serviceIdDouble= ""
           variant={consultancyData["cd"].variant}
           centerInfoBox={consultancyData["cd"].centerInfoBox}
         />
@@ -54,6 +64,8 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
       return (
         <Consultancy
           consultancyId="cn"
+          serviceId= "cn"
+          serviceIdDouble= ""
           variant={consultancyData["cn"].variant}
           centerInfoBox={consultancyData["cn"].centerInfoBox}
         />
@@ -62,6 +74,8 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
       return (
         <Consultancy
           consultancyId="ceo"
+          serviceId= "ceo"
+          serviceIdDouble= ""
           variant={consultancyData["ceo"].variant}
           centerInfoBox={consultancyData["ceo"].centerInfoBox}
         />
@@ -70,6 +84,8 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
       return (
         <Consultancy
           consultancyId="fp"
+          serviceId= "fp"
+          serviceIdDouble= ""
           variant={consultancyData["fp"].variant}
           centerInfoBox={consultancyData["fp"].centerInfoBox}
         />
@@ -78,6 +94,8 @@ const ConsultancyWrapper = ({ consultancyId }: ConsultancyWrapperProps) => {
       return (
         <Consultancy
           consultancyId="mp"
+          serviceId= "mp"
+          serviceIdDouble= ""
           variant={consultancyData["mp"].variant}
           centerInfoBox={consultancyData["mp"].centerInfoBox}
         />

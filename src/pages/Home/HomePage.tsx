@@ -22,17 +22,18 @@ const HomePage: React.FC = () => {
         scrollY={false}
         className="ion-padding"
       >
-        <>
-          <div className="stack ">
-            <div id="logo">
-              <Chameleon id="main-chameleon" />
+          <div className="chameleon-signature">
+            <div className="stack">
+              <div id="logo">
+                <Chameleon id="main-chameleon" />
+              </div>
+              <IonImg
+                id="signature"
+                src="/assets/paula_prada/signature_paula.svg"
+                alt="signature"
+                onClick={() => redirect("/paulaprada")}
+              />
             </div>
-            <IonImg
-              id="signature"
-              src="/assets/paula_prada/signature_paula.svg"
-              alt="signature"
-              onClick={() => redirect("/paulaprada")}
-            />
           </div>
           <HomeFloatingMenu />
           {/*
@@ -59,7 +60,6 @@ const HomePage: React.FC = () => {
             view Emails
           </IonButton>
           */}
-        </>
       </IonContent>
     </IonPage>
   );

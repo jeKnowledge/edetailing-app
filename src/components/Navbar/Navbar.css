@@ -1,0 +1,62 @@
+.title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 35px;
+  line-height: 48px;
+  text-transform: uppercase;
+  color: #f0f0f0;
+}
+
+ion-progress-bar {
+  position: absolute;
+  top: 10px;
+  right: 120px;
+  width: 200px;
+  height: 50px !important;
+  border-radius: 15px !important;
+  --progress-background: #ffffff !important;
+  border: 4px solid #ffffff;
+  --buffer-background: #a05d63 !important;
+}
+
+.text-time {
+  position: absolute;
+  top: 10px;
+  right: 330px;
+  font-size: 30px;
+}
+
+.ion-progress-bar-yellow {
+  --buffer-background: #fcd9a4 !important;
+}
+.ion-progress-bar-purple {
+  --buffer-background: #a184a5 !important;
+}
+.ion-progress-bar-orange {
+  --buffer-background: #eda48a !important;
+}
+.ion-progress-bar-blue {
+  --buffer-background: #8cb8ba !important;
+}
+.ion-progress-bar-red {
+  --buffer-background: #a05d63 !important;
+}
+.ion-progress-bar-green {
+  --buffer-background: #98a881 !important;
+}
+.ion-progress-bar-pink {
+  --buffer-background: #d376b4 !important;
+}
+.ion-progress-bar-brown {
+  --buffer-background: #ad8679 !important;
+}
+.ion-progress-bar-turquoise {
+  --buffer-background: #7fb29d !important;
+}
+
+.mailIcon {
+  width: 70px;
+  position: absolute;
+  right: 10px;
+  top: 0px;
+}

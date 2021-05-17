@@ -37,6 +37,7 @@ export const getServiceData = async (
       return result
         ? {
             name: serviceData[serviceId].name,
+            description: result["Descrição"].split("\n"),
             boasMasEscolhas:
               !!result["Boas Escolhas"] && !!result["Mas Escolhas"],
             boasMasText: [

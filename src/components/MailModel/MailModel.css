@@ -4,7 +4,7 @@
 
 .mail-model > div[role="dialog"] {
   border-radius: 40px !important;
-  --height: 75% !important;
+  --height: 80% !important;
   --width: 80% !important;
 }
 

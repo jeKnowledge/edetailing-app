@@ -95,6 +95,7 @@ export const consultancyDropboxName: Record<string, string> = {
 export interface ServiceData {
   name: string;
   consultancyId: string;
+  description: string[];
   slideText: string[];
   labelsSlide: string[];
   imgSlideSize: number;
@@ -109,6 +110,8 @@ export interface ServiceData {
 export const serviceData: Record<string, ServiceData> = {
   cii: {
     name: "Consultoria de Imagem Inteligente",
+    description: [
+    ],
     consultancyId: "ip",
     slideText: [
       "Identificar o seu estilo;",
@@ -139,6 +142,8 @@ export const serviceData: Record<string, ServiceData> = {
   },
   iit: {
     name: "Consultoria de Imagem Total Inteligente",
+    description: [
+    ],
     consultancyId: "ip",
     slideText: [
       "Serviço desenhado individualmente à medida das suas necessidades;",
@@ -168,6 +173,8 @@ export const serviceData: Record<string, ServiceData> = {
   },
   cp: {
     name: "Coloração Pessoal",
+    description: [
+    ],
     consultancyId: "cp",
     slideText: [
       "Acompanhamento personalizado até ao objectivo definido;",
@@ -209,6 +216,8 @@ export const serviceData: Record<string, ServiceData> = {
   },
   af: {
     name: "Consultoria De Análise Facial Detalhada",
+    description: [
+    ],
     consultancyId: "af",
     slideText: [
       "Protagonismo do rosto na imagem;",
@@ -234,6 +243,8 @@ export const serviceData: Record<string, ServiceData> = {
   },
   ps: {
     name: "Personal Shopping",
+    description: [
+    ],
     consultancyId: "ps",
     slideText: [
       "Compras mais inteligentes e conscientes, aprendendo a investir nas peças certas e deixando de fazer compras por impulso desperdiçando dinheiro em peças inúteis ou que não o favoreçam;",
@@ -256,6 +267,8 @@ export const serviceData: Record<string, ServiceData> = {
   },
   cd: {
     name: "Closet Detox",
+    description: [
+    ],
     consultancyId: "cd",
     slideText: [
       'Organizar e limpar o seu armário de toda a "poluição" visual, para que o mesmo possa ser coerente, prático e faça sentido de modo a maximizar o seu potencial;',
@@ -278,6 +291,8 @@ export const serviceData: Record<string, ServiceData> = {
   },
   cn: {
     name: "Consultoria de Noivos",
+    description: [
+    ],
     consultancyId: "cn",
     slideText: [
       "Auxiliamos na escolha, compra e criação de um visual inesquecível para um único dia na vida dos noivos;",  
@@ -298,6 +313,8 @@ export const serviceData: Record<string, ServiceData> = {
   },
   ceo: {
     name: "Consultoria Escolha de Óculos",
+    description: [
+    ],
     consultancyId: "ceo",
     slideText: [
       "Serviço desenhado individualmente à medida das suas necessidades;",    
@@ -323,6 +340,8 @@ export const serviceData: Record<string, ServiceData> = {
   },
   fp: {
     name: "Formações e Palestras",
+    description: [
+    ],
     consultancyId: "fp",
     slideText: [],
     labelsSlide: [
@@ -339,6 +358,8 @@ export const serviceData: Record<string, ServiceData> = {
   },
   mp: {
     name: "Maquilhagem Profissional",
+    description: [
+    ],
     consultancyId: "mp",
     slideText: [],
     labelsSlide: [],
@@ -355,6 +376,8 @@ export const serviceData: Record<string, ServiceData> = {
 export interface ConsultancyData {
   color: string;
   variant: "double" | "single";
+  serviceId: string;
+  serviceIdDouble: string;
   topCornerVideo?: {
     url: string;
   };
@@ -374,6 +397,8 @@ export const consultancyData: Record<string, ConsultancyData> = {
   ip: {
     color: "blue",
     variant: "double",
+    serviceId: "cii",
+    serviceIdDouble: "iit",
     topCornerVideo: {
       url: "/assets/sample.mp4",
     },
@@ -404,6 +429,8 @@ export const consultancyData: Record<string, ConsultancyData> = {
   cp: {
     color: "red",
     variant: "single",
+    serviceId: "cp",
+    serviceIdDouble: "",
     centerInfoBox: {
       title: "Coloração Pessoal",
       to: "cp",
@@ -423,6 +450,8 @@ export const consultancyData: Record<string, ConsultancyData> = {
   af: {
     color: "green",
     variant: "single",
+    serviceId: "af",
+    serviceIdDouble: "",
     centerInfoBox: {
       title: "Consultoria De Análise Facial Detalhada",
       to: "af",
@@ -442,6 +471,8 @@ export const consultancyData: Record<string, ConsultancyData> = {
   ps: {
     color: "orange",
     variant: "single",
+    serviceId: "ps",
+    serviceIdDouble: "",
     centerInfoBox: {
       title: "Personal Shopping",
       to: "ps",
@@ -460,6 +491,8 @@ export const consultancyData: Record<string, ConsultancyData> = {
   cd: {
     color: "pink",
     variant: "single",
+    serviceId: "cd",
+    serviceIdDouble: "",
     centerInfoBox: {
       title: "Closet Detox",
       to: "cd",
@@ -478,6 +511,8 @@ export const consultancyData: Record<string, ConsultancyData> = {
   cn: {
     color: "yellow",
     variant: "single",
+    serviceId: "cn",
+    serviceIdDouble: "",
     centerInfoBox: {
       title: "Consultoria de Noivos",
       to: "cn",
@@ -496,6 +531,8 @@ export const consultancyData: Record<string, ConsultancyData> = {
   ceo: {
     color: "purple",
     variant: "single",
+    serviceId: "ceo",
+    serviceIdDouble: "",
     centerInfoBox: {
       title: "Consultoria Escolha de Óculos",
       to: "ceo",
@@ -515,6 +552,8 @@ export const consultancyData: Record<string, ConsultancyData> = {
   fp: {
     color: "brown",
     variant: "single",
+    serviceId: "fp",
+    serviceIdDouble: "",
     centerInfoBox: {
       title: "Formações e Palestras",
       to: "fp",
@@ -533,6 +572,8 @@ export const consultancyData: Record<string, ConsultancyData> = {
   mp: {
     color: "turquoise",
     variant: "single",
+    serviceId: "mp",
+    serviceIdDouble: "",
     centerInfoBox: {
       title: "Maquilhagem Profissional",
       to: "mp",
