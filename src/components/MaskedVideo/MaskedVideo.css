@@ -1,7 +1,7 @@
 .video-stack {
   position: relative;
-  width: 400px;
-  height: 280px;
+  width: 300px;
+  height: 210px;
 }
 
 .video-stack > :first-child {
