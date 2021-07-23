@@ -12,8 +12,5 @@
       "resize": "none"
     }
   },
-  "linuxAndroidStudioPath": "/opt/android-studio/bin/studio.sh",
-  "server": {
-    "cleartext": true
-  }
+  "linuxAndroidStudioPath": "/opt/android-studio/bin/studio.sh"
 }

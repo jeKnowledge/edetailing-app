@@ -4,7 +4,7 @@ import {
   IonCheckbox,
   IonContent,
   IonLabel,
-  IonPage,
+  IonPage
 } from "@ionic/react";
 import React, { useCallback, useEffect, useState } from "react";
 import Loader from "../../components/Loader/index";
@@ -143,7 +143,7 @@ const PendingEmails = () => {
                       onClick={emailsChecked}
                     />
                     <div className="box box-email">{email.to}</div>
-                    <div className="box">{email.timeOfWrite}</div>
+                    <div className="box box-date">{email.timeOfWrite}</div>
                   </div>
                 ))}
               </div>

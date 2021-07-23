@@ -5,18 +5,20 @@
 }
 
 #logo {
-  width: 650px;
-  height: 460px;
+  display: flex;
+  align-items: flex-end;
+  width: 760px;
+  height: 370px;
 }
 
 #main-chameleon {
-  transform: scale(1.8, 1.5);
+  transform: scale(1.7, 1.4);
   margin-top: 100px;
   height: 100%;
 }
 
 #signature {
-  width: 500px;
+  width: 350px;
   z-index: 1;
 }
 

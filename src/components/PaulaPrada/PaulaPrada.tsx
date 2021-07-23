@@ -4,7 +4,7 @@ import {
   IonLabel,
   IonPage,
   IonSlide,
-  IonSlides,
+  IonSlides
 } from "@ionic/react";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { paulaprada, PaulaPradaData } from "../../data/data";
@@ -75,8 +75,8 @@ const PaulaPrada: React.FC = () => {
                 src="/assets/paula_prada_page/forma_esq.png"
               />
             </IonSlide>
-            <IonSlide className="ion-slide-left">
-              <IonImg src="/assets/paula_prada_page/forma_dir.png" />
+            <IonSlide className="ion-slide-right">
+              <IonImg className="forma-dir" src="/assets/paula_prada_page/forma_dir.png" />
               <div className="content-dir content-missao">
                 <IonLabel className="title-quem-sou title-quem-sou-dir">
                   {paulaPradaData.text[0].title}

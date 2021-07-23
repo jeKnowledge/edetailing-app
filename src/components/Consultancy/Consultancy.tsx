@@ -6,7 +6,8 @@ import React, {
   useRef,
   useState
 } from "react";
-import { consultancyData, ServiceData, serviceData } from "../../data/data";
+import { ConsultancyData, consultancyData, ServiceData, serviceData } from "../../data/data";
+import { getConsultancyData } from "../../hooks/getConsultancyData";
 import { getConsultancyMedia } from "../../hooks/getConsultancyMedia";
 import { getServiceData } from "../../hooks/getServiceData";
 import { useConsultancyStaticAssets } from "../../hooks/useConsultancyStaticAssets";
@@ -129,7 +130,7 @@ const Consultancy = ({
   useEffect(() => {
     const timer = setInterval(() => {
       updateSlideImg();
-    }, 1500);
+    }, 3000);
     return () => {
       clearTimeout(timer);
     };
@@ -140,8 +141,9 @@ const Consultancy = ({
   }, [getConsultancyMediaWrapper]);
 
   useEffect(() => {
-    let timer1 = setTimeout(() => setIsLoading(false), 1000);
-
+    let timer1 = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
     return () => {
       clearTimeout(timer1);
     };
@@ -157,6 +159,11 @@ const Consultancy = ({
     staticServiceDataDouble
   );
 
+  const [thisConsultancyDataDropbox, setThisConsultancyDataDropbox] = useState<ConsultancyData>(
+    thisConsultancyData
+  );
+
+
   const getServiceDataWrapper = useCallback(
     () =>
       getServiceData(serviceId)
@@ -168,6 +175,19 @@ const Consultancy = ({
           setLoading((prevL) => ({ data: false, media: prevL.media }))
         ),
     [serviceId]
+  );
+
+  const getConsultancyDataWrapper = useCallback(
+    () =>
+      getConsultancyData(consultancyId)
+        .then((res) => {
+          if (res) setThisConsultancyDataDropbox(res);
+        })
+        .catch((error) => console.error(error))
+        .finally(() =>
+          setLoading((prevL) => ({ data: false, media: prevL.media }))
+        ),
+    [consultancyId]
   );
 
   const getServiceDataWrapperDouble = useCallback(
@@ -188,32 +208,36 @@ const Consultancy = ({
     if(variant === "double") {
       getServiceDataWrapperDouble();
     }
-  }, [getServiceDataWrapper, getServiceDataWrapperDouble, variant]);
-
+    getConsultancyDataWrapper();
+  }, [getServiceDataWrapper, getServiceDataWrapperDouble, getConsultancyDataWrapper, variant]);
+  
   return (
     <IonPage>
-      {(isLoading || loading.data || isLoadingData) ? (
-        <Loader id={consultancyId} />
-      ) : (
         <IonContent forceOverscroll={false} scrollY={false}>
-          <div id="page">
+          {(isLoading || loading.data || isLoadingData) ? (
+            <Loader id={consultancyId}/>
+          ) :
+          ("")}
+          <div id="page" style={{display: isLoading  ? ("none") : ("block")}}>
             <ConsultancyFloatingMenu />
-            <div id="top-right-stack">
               {videos.length > 0 ? (
-                <MaskedVideo
-                  mask={`/assets/consultorias/${consultancyId}/top-mask.svg`}
-                  url={videos[0]}
-                  variant="top"
-                />
+                <div id="top-right-stack">
+                  <MaskedVideo
+                    mask={`/assets/consultorias/${consultancyId}/top-mask.svg`}
+                    url={videos[0]}
+                    variant="top"
+                  />
+                </div>
               ) : (
+                <div id="top-right-stack">
                 <MaskedImage
                   mask={`/assets/consultorias/${consultancyId}/top-mask.svg`}
                   image={photos[currentTopImg]}
                   variant="top"
-                />
+                  />
+                </div> 
               )}
-            </div>
-            <div id="bottom-left-stack">
+            <div id="bottom-left-stack" >
               <MaskedImage
                 mask={`/assets/consultorias/${consultancyId}/bottom-mask.svg`}
                 image={photos[currentBottomImg]}
@@ -267,10 +291,9 @@ const Consultancy = ({
             open={showModal}
             onClose={closeModal}
             theme={thisConsultancyData.color}
-            lampData={thisConsultancyData.lampData}
+            lampData={thisConsultancyDataDropbox.lampData}
           />
         </IonContent>
-      )}
     </IonPage>
   );
 };

@@ -17,7 +17,7 @@ export const getPaulaPradaData = async (): Promise<
   try {
     const file = await Filesystem.readFile({
       path: "/" + filename,
-      directory: FilesystemDirectory.External,
+      directory: FilesystemDirectory.Data,
     });
     // base64 to text
     const stringData = new Buffer(file.data, "base64").toString("utf-8");

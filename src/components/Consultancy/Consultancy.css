@@ -29,14 +29,14 @@ ion-content {
 #infobox-left {
   position: absolute;
   top: -9%;
-  left: 0%;
+  left: 3%;
   z-index: 1;
 }
 
 #infobox-right {
   position: absolute;
   top: 20%;
-  right: 0%;
+  right: 3%;
 }
 
 #infobox-central {
@@ -45,10 +45,6 @@ ion-content {
   width: 100%;
   justify-content: center;
   align-items: center;
-}
-
-#infobox-central > #infobox-stack {
-  width: 700px;
 }
 
 #infobox-central > * > .infobox-button {

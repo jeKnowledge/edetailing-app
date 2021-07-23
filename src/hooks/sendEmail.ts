@@ -88,7 +88,7 @@ export const sendEmail = async ({
           },
         ],
         from: {
-          email: "paula.prada@jeknowledge.com",
+          email: "paulaprada@imageminteligente.com",
         },
         reply_to: {
           email: "paulaprada@imageminteligente.com",

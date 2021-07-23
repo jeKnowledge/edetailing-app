@@ -399,9 +399,6 @@ export const consultancyData: Record<string, ConsultancyData> = {
     variant: "double",
     serviceId: "cii",
     serviceIdDouble: "iit",
-    topCornerVideo: {
-      url: "/assets/sample.mp4",
-    },
     leftInfoBox: {
       title: "Consultoria de Imagem Inteligente",
       to: "cii",
@@ -444,7 +441,7 @@ export const consultancyData: Record<string, ConsultancyData> = {
     lampData: {
       title: "vermelho",
       text:
-        "sabia que o vermelho tem a capacidade de estimular, podendo mesmo aumentar a temperatura corporal e até provocar taquicardia?",
+        "Sabia que o vermelho tem a capacidade de estimular, podendo mesmo aumentar a temperatura corporal e até provocar taquicardia?",
     },
   },
   af: {

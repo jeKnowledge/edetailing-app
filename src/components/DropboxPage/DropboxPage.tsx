@@ -1,4 +1,4 @@
-import { FilesystemDirectory, Plugins } from "@capacitor/core";
+import { FilesystemDirectory, NetworkStatus, Plugins } from "@capacitor/core";
 import { IonButton, IonContent, IonLabel, IonPage } from "@ionic/react";
 import { Dropbox } from "dropbox";
 import React, { useCallback, useEffect, useState } from "react";
@@ -8,9 +8,11 @@ import {
   serviceDropboxName
 } from "../../data/data";
 import { DROPBOX_API } from "../../secrets";
+import Loader from "../Loader";
 import OtherPagesFloatingMenu from "../OtherPagesFloatingMenu";
 import "./DropboxPage.css";
 const { Filesystem } = Plugins;
+const { Network } = Plugins;
 
 type DownloadStatus = "done" | "downloading";
 
@@ -28,6 +30,10 @@ const downloadsInitStatus: { id: string; status: DownloadStatus }[] = [
     status: "downloading" as DownloadStatus,
   },
   {
+    id: "Configuração das Consultarias",
+    status: "downloading" as DownloadStatus,
+  },
+  {
     id: "Paula Prada",
     status: "downloading" as DownloadStatus,
   },
@@ -39,6 +45,31 @@ const DropboxPage = () => {
   const [downloadStatus, setDownloadStatus] = useState<
     { id: string; status: DownloadStatus }[]
   >(downloadsInitStatus);
+  const [isLoading, setIsLoading] = useState(true);
+  const [netStatus, setNetStatus] = useState<NetworkStatus | undefined>(
+    undefined
+  );
+
+  const handler = Network.addListener("networkStatusChange", (status) => {
+    console.log("Network status changed", netStatus);
+    setNetStatus(status);
+  });
+
+  useEffect(() => {
+    return () => {
+      handler.remove();
+    };
+  }, [handler]);
+
+  const getNetworkStatus = useCallback(() => {
+    Network.getStatus()
+      .then((s) => setNetStatus(s))
+      .catch((error) => console.error(error));
+  }, []);
+
+  useEffect(() => {
+    getNetworkStatus();
+  }, [getNetworkStatus]);
 
   const setStartValues = useCallback(() => {
     setDownloadStarted(false);
@@ -90,6 +121,16 @@ const DropboxPage = () => {
             ]);
           // Foreach entry download its file
           const fileFolder = `${consultancyDbxName}/${serviceDbxName}/`;
+          try {
+            const result = await Filesystem.rmdir({
+              path: fileFolder,
+              directory: FilesystemDirectory.Data,
+              recursive: true,
+            });
+            console.log("result of rmdir", result);
+          } catch (error) {
+            console.warn("error in rmdir", error);
+          }
           try {
             const result = await Filesystem.mkdir({
               path: fileFolder,
@@ -149,6 +190,43 @@ const DropboxPage = () => {
         })
         .catch((err) => console.error(err));
     });
+
+    //Consultancies information
+    const consultancyDataFile = "/consultorias/consultorias.csv";
+    dbx
+      .filesDownload({
+        path: consultancyDataFile,
+      })
+      .then((file) => {
+        const fileBlob = (file.result as any).fileBlob;
+        // the blob is valid but we need to convert it to a base64 string to be saved
+        if (fileBlob) {
+          const reader = new FileReader();
+          reader.readAsDataURL(fileBlob);
+          reader.onloadend = () => {
+            const base64data = reader.result;
+            if (typeof base64data === "string") {
+              Filesystem.writeFile({
+                data: base64data,
+                path: "consultorias.csv",
+                directory: FilesystemDirectory.Data,
+                recursive: true,
+              }).then(
+                (_) => {
+                  setDownloadStatus((prevStatus) => [
+                    ...prevStatus.filter(
+                      (s) => s.id !== "Configuração das Consultarias"
+                    ),
+                    { id: "Configuração das Consultarias", status: "done" },
+                  ]);
+                },
+                (error) => console.error("error writing file", error)
+              );
+            }
+          };
+        }
+      })
+      .catch((error) => console.error("error downloading file", error));
 
     // Services information
     const serviceDataFile = "/consultorias/serviços.csv";
@@ -258,8 +336,19 @@ const DropboxPage = () => {
       .catch((error) => console.error("error downloading file", error));
   }, [startDownload]);
 
+  useEffect(() => {
+    let timer1 = setTimeout(() => setIsLoading(false), 1000);
+
+    return () => {
+      clearTimeout(timer1);
+    };
+  }, [isLoading]);
+
   return (
     <IonPage>
+      {isLoading  ? (
+        <Loader id={"paulaprada"} />
+      ) : (
       <IonContent>
         <OtherPagesFloatingMenu />
         <div id="content">
@@ -280,6 +369,7 @@ const DropboxPage = () => {
                   </div>
                 </div>
               ))}
+            {netStatus?.connected ? (
             <div id="button-content">
               <IonButton
                 id="download-button-dropbox"
@@ -288,10 +378,12 @@ const DropboxPage = () => {
               >
                 <IonLabel id="download-button-style">download</IonLabel>
               </IonButton>
-            </div>
+            </div> 
+            )  : undefined }
           </div>
         </div>
       </IonContent>
+      )}
     </IonPage>
   );
 };

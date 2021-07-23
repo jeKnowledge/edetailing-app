@@ -17,34 +17,42 @@ ion-slide {
 }
 
 .forma_paula_prada {
-  width: 1000px;
+  width: 800px;
   position: absolute;
   top: 0px;
-  right: 150px;
+  right: 100px;
 }
 
 .forma_esq {
-  height: 568px;
-  width: 78px;
+  height: 655px;
+  width: 100px;
   position: absolute;
-  top: 28px;
-  right: 0px;
+  top: -133px;
+  right: -6px;
 }
 
 .content-text-paula-prada {
-  width: 350px;
+  width: 270px;
   text-align: start;
   position: absolute;
-  top: 210px;
-  left: 350px;
+  top: 165px;
+  left: 257px;
 }
 
-.ion-slide-left {
+.ion-slide-right {
   background-color: #7b7b7b !important;
 }
 
+.forma-dir {
+  width: 900px;
+  height: 700px;
+  position: absolute;
+  top: -18%;
+  left: 0%;
+}
+
 .content-dir {
-  width: 250px;
+  width: 200px;
   height: 200px;
   display: flex;
   flex-direction: column;
@@ -53,19 +61,19 @@ ion-slide {
 }
 
 .content-missao {
-  top: 250px;
-  left: 20px;
+  top: 50px;
+  left: 570px;
 }
 
 .content-visao {
-  top: 450px;
-  left: 380px;
+  top: 250px;
+  left: 280px;
 }
 
 .content-valores {
   position: absolute;
-  top: 200px;
-  left: 700px;
+  top: 100px;
+  left: 0px;
 }
 
 .title-quem-sou {
@@ -82,11 +90,12 @@ ion-slide {
 }
 
 .text-paula-prada > p {
-  font-size: 16px;
+  font-size: 13px;
   color: #000000;
 }
 
 .title-quem-sou-dir {
+  font-size: 25px;
   padding-bottom: 20px;
 }
 

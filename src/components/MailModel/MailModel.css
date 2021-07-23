@@ -2,9 +2,14 @@
   background: transparent;
 }
 
+p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .mail-model > div[role="dialog"] {
   border-radius: 40px !important;
-  --height: 80% !important;
+  --height: 90% !important;
   --width: 80% !important;
 }
 
@@ -27,11 +32,13 @@
 
 .mail-modal-color {
   color: #000000;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .mail-modal-item {
-  height: 45px;
+  display: flex;
+  height: 37px;
+  width: 500px;
   --background: transparent;
   color: #121212;
   --border-style: none !important;

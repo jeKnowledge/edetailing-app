@@ -21,7 +21,7 @@
   text-transform: uppercase;
   font-weight: bold;
   font-size: x-large;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem !important;
 }
 
 #lamp-modal-text {

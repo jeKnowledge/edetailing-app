@@ -24,7 +24,7 @@ export const getMediaFromDirectory = async (
   try {
     const result = await Filesystem.readdir({
       path,
-      directory: FilesystemDirectory.External,
+      directory: FilesystemDirectory.Data,
     });
     const mediaFiles: Media[] = [];
     if (resultsAreFolders) {
@@ -32,14 +32,14 @@ export const getMediaFromDirectory = async (
         const folder = result.files[i];
         const foldersFiles = await Filesystem.readdir({
           path: `${path}${folder}/`,
-          directory: FilesystemDirectory.External,
+          directory: FilesystemDirectory.Data,
         });
         for (let j = 0; j < foldersFiles.files.length; j++) {
           const f = foldersFiles.files[j];
           try {
             const file = await Filesystem.readFile({
               path: `${path}${folder}/${f}`,
-              directory: FilesystemDirectory.External,
+              directory: FilesystemDirectory.Data,
             });
             const mediaType = getMediaType(f);
             const mimeInfo = await fileType.fromBuffer(
@@ -61,7 +61,7 @@ export const getMediaFromDirectory = async (
         try {
           const file = await Filesystem.readFile({
             path: `${path}${f}`,
-            directory: FilesystemDirectory.External,
+            directory: FilesystemDirectory.Data,
           });
           const mediaType = getMediaType(f);
           const mimeInfo = await fileType.fromBuffer(
